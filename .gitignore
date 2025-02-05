@@ -21,3 +21,4 @@ assets/uploads/usuarios/*
 !assets/uploads/usuarios/*.txt
 
 application/cache/sessions/*
+.DS_Store
