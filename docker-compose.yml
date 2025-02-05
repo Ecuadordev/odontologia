@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  db:
+    platform: linux/amd64
+    image: mysql:5.7
+    container_name: mysql_server
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=codeigniter
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    ports:
+      - "3306:3306"
+
+  app:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php_server
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+    command: >
+      sh -c "
+      mkdir -p /var/www/html/application/cache/sessions &&
+      chmod -R 0777 /var/www/html/application/cache/sessions &&
+      apache2-foreground
+      "
