@@ -67,34 +67,32 @@
         </tr>
         <tr>
             <td class="center green word-break vertical-center" style="width: 70px;">1. ALERGIA<br/>ANTIBIÓTICO</td>
-            <td class="yellow check vertical-center"><?= $historia->alergia_antibiotico ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= $historia->padece === "Alergia Antibiotico" ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">2. ALERGIA<br/>ANESTESIA</td>
-            <td class="yellow check vertical-center"><?= $historia->alergia_antibiotico ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= $historia->padece === "Alergia Anestesia" ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">3. HEMO<br/>RRAGIAS</td>
-            <td class="yellow check vertical-center"><?= $historia->alergia_antibiotico ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= $historia->padece === "Hemorragias" ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">4. VIH/SIDA</td>
-            <td class="yellow check vertical-center"><?= $historia->alergia_antibiotico ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= $historia->padece === "VIH" ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">5. TUBER<br/>CULOSIS</td>
-            <td class="yellow check vertical-center"><?= $historia->alergia_antibiotico ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= $historia->padece === "Tuberculosis" ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">6. ASMA</td>
-            <td class="yellow check vertical-center"><?= $historia->alergia_antibiotico ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= $historia->padece === "Asma" ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">7. DIABETES</td>
-            <td class="yellow check vertical-center"><?= $historia->alergia_antibiotico ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= $historia->padece === "Diabetes" ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">8. HIPER<br/>TENSIÓN</td>
-            <td class="yellow check vertical-center"><?= $historia->alergia_antibiotico ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= $historia->padece === "Hipertension" ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">9. ENF.<br/>CARDIACA</td>
-            <td class="yellow check vertical-center"><?= $historia->alergia_antibiotico ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= $historia->padece === "Enf. cardiaca" ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">10. OTRO</td>
-            <td class="yellow check vertical-center"><?= $historia->alergia_antibiotico ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= $historia->padece === "Otro" ? "X" : "&nbsp;" ?></td>
         </tr>
         <tr>
             <td colspan="20">
-                <p><strong></strong></p>
-                <p></p>
-                <p><strong></strong></p>
-                <p></p>
-                <p><strong></strong></p>
-                <p></p>
+                <p><strong>Antecedentes familiares</strong></p>
+                <p><?=$historia->antecfamiliares ?></p>
+                <p><strong>Antecedentes personales</strong></p>
+                <p><?=$historia->antecpersonales ?></p>
             </td>
         </tr>
     </table>
@@ -102,15 +100,18 @@
     <!-- Section 5 -->
     <table>
         <tr class="header">
-            <th colspan="6">4 SIGNOS VITALES</th>
+            <th colspan="9">4 SIGNOS VITALES</th>
         </tr>
         <tr>
-            <td>PRESIÓN ARTERIAL</td>
-            <td>FRECUENCIA CARDIACA min.</td>
-            <td>TEMPERATURA °C</td>
-            <td>F. RESPIRAT. min.</td>
-            <td></td>
-            <td></td>
+            <td class="smaller green center vertical-center">PRESIÓN<br/>ARTERIAL</td>
+            <td class="center vertical-center check"><?= isset($historia->exploracion) ? $historia->exploracion : 0 ?> mn Hg</td>
+            <td class="smaller green center vertical-center">FRECUENCIA<br/>CARDIACA min.</td>
+            <td class="center vertical-center check"><?= isset($historia->fcardiaca) ? $historia->fcardiaca : 0 ?> x min.</td>
+            <td class="smaller green center vertical-center">TEMPERATURA<br/>°C</td>
+            <td class="center vertical-center check"><?= isset($historia->temperatura) ? $historia->temperatura : 0 ?> °C</td>
+            <td class="smaller green center vertical-center">F. RESPIRAT.<br/> min.</td>
+            <td class="center vertical-center check"><?= isset($historia->frespiratoria) ? $historia->frespiratoria : 0 ?> /min</td>
+            <td width="30%">&nbsp;</td>
         </tr>
     </table>
 
