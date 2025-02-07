@@ -24,9 +24,3 @@ services:
       - "8000:80"
     depends_on:
       - db
-    command: >
-      sh -c "
-      mkdir -p /var/www/html/application/cache/sessions &&
-      chmod -R 0777 /var/www/html/application/cache/sessions &&
-      apache2-foreground
-      "
