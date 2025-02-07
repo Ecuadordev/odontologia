@@ -12,7 +12,7 @@
       <div role="tabpanel" class="tab-pane active" id="enfermedad">
         <form id="FormHistoriaMovimientoPacienteEnfermedad" action="<?= base_url('historia/movimiento/guardarPacienteEnfermedad') ?>" method="post">
           <input type="hidden" name="paciente" value="<?= $this->uri->segment(4) ?>">
-         
+
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
@@ -97,7 +97,7 @@
       <div role="tabpanel" class="tab-pane" id="consulta">
         <form id="FormHistoriaMovimientoPacienteConsulta" action="<?= base_url('historia/movimiento/guardarPacienteConsulta') ?>" method="post">
           <input type="hidden" name="paciente" value="<?= $this->uri->segment(4) ?>">
-        
+
           <div class="row">
             <div class="col-md-12">
               <label class="control-label">¿Ha tenido alguna vez tratamiento de ortodoncia?</label>
@@ -208,38 +208,38 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label class="control-label">¿Padece o a padecido alguna de las siguientes enfermedades?</label>
-                <div>
-                  <label class="radio-inline">
-                    <input type="radio" name="padeceEnfermedad" value="Asma" <?= ($consulta->padece_paccon=='Asma')?'checked':'' ?>>Asma
+                <div style="display: flex; flex-wrap: wrap; padding: 10px 20px;">
+                  <label class="radio-inline" style="flex: 1 1 20%;margin: 0 0 5px 0;">
+                  <input type="radio" name="padeceEnfermedad" value="Alergia Antibiotico" <?= ($consulta->padece_paccon=='Alergia Antibiotico')?'checked':'' ?>>Alergia a antibióticos
                   </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="padeceEnfermedad" value="Hepatitis" <?= ($consulta->padece_paccon=='Hepatitis')?'checked':'' ?>>Hepatitis
+                  <label class="radio-inline" style="flex: 1 1 20%;margin: 0 0 5px 0;">
+                  <input type="radio" name="padeceEnfermedad" value="Alergia Anestesia" <?= ($consulta->padece_paccon=='Alergia Anestesia')?'checked':'' ?>>Alergia a anestesia
                   </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="padeceEnfermedad" value="Epilepsia" <?= ($consulta->padece_paccon=='Epilepsia')?'checked':'' ?>>Epilepsia
+                  <label class="radio-inline" style="flex: 1 1 20%;margin: 0 0 5px 0;">
+                  <input type="radio" name="padeceEnfermedad" value="Hemorragias" <?= ($consulta->padece_paccon=='Hemorragias')?'checked':'' ?>>Hemorragias
                   </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="padeceEnfermedad" value="Enf. renal" <?= ($consulta->padece_paccon=='Enf. renal')?'checked':'' ?>>Enf. renal
+                  <label class="radio-inline" style="flex: 1 1 20%;margin: 0 0 5px 0;">
+                  <input type="radio" name="padeceEnfermedad" value="VIH" <?= ($consulta->padece_paccon=='VIH')?'checked':'' ?>>VIH/Sida
                   </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="padeceEnfermedad" value="Sarampion" <?= ($consulta->padece_paccon=='Sarampion')?'checked':'' ?>>Sarampion
+                  <label class="radio-inline" style="flex: 1 1 20%;margin: 0 0 5px 0;">
+                  <input type="radio" name="padeceEnfermedad" value="Tuberculosis" <?= ($consulta->padece_paccon=='Tuberculosis')?'checked':'' ?>>Tuberculosis
                   </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="padeceEnfermedad" value="Varicela" <?= ($consulta->padece_paccon=='Varicela')?'checked':'' ?>>Varicela
+                  <label class="radio-inline" style="flex: 1 1 20%;margin: 0 0 5px 0;">
+                  <input type="radio" name="padeceEnfermedad" value="Asma" <?= ($consulta->padece_paccon=='Asma')?'checked':'' ?>>Asma
                   </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="padeceEnfermedad" value="Tuberculosis" <?= ($consulta->padece_paccon=='Tuberculosis')?'checked':'' ?>>Tuberculosis
+                  <label class="radio-inline" style="flex: 1 1 20%;margin: 0 0 5px 0;">
+                  <input type="radio" name="padeceEnfermedad" value="Diabetes" <?= ($consulta->padece_paccon=='Diabetes')?'checked':'' ?>>Diabetes
                   </label>
-                      </div>
-
-
-                  <label class="radio-inline">
-                    <input type="radio" name="padeceEnfermedad" value="Diabetes" <?= ($consulta->padece_paccon=='Diabetes')?'checked':'' ?>>Diabetes
+                  <label class="radio-inline" style="flex: 1 1 20%;margin: 0 0 5px 0;">
+                  <input type="radio" name="padeceEnfermedad" value="Hipertension" <?= ($consulta->padece_paccon=='Hipertension')?'checked':'' ?>>Hipertensión
                   </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="padeceEnfermedad" value="Otras" <?= ($consulta->padece_paccon=='Otras')?'checked':'' ?>>Otras
+                  <label class="radio-inline" style="flex: 1 1 20%;margin: 0 0 5px 0;">
+                  <input type="radio" name="padeceEnfermedad" value="Enf. cardiaca" <?= ($consulta->padece_paccon=='Enf. cardiaca')?'checked':'' ?>>Enf. cardiaca
                   </label>
-            
+                  <label class="radio-inline" style="flex: 1 1 20%;margin: 0 0 5px 0;">
+                  <input type="radio" name="padeceEnfermedad" value="Otro" <?= ($consulta->padece_paccon=='Otro')?'checked':'' ?>>Otro
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -259,7 +259,7 @@
             </div>
             <div class="col-md-9">
               <div class="form-group">
-                <textarea name="cepillaDientesTexto" class="form-control" rows="2" 
+                <textarea name="cepillaDientesTexto" class="form-control" rows="2"
                   <?= ($consulta->cepilla_paccon=='0' OR $consulta->cepilla_paccon=='')?'disabled':'' ?>
                 ><?= $consulta->cepillatexto_paccon ?></textarea>
               </div>
@@ -301,14 +301,14 @@
       <div role="tabpanel" class="tab-pane" id="exploracion">
         <form id="FormHistoriaMovimientoPacienteExploracion" action="<?= base_url('historia/movimiento/guardarPacienteExploracion') ?>" method="post">
           <input type="hidden" name="paciente" value="<?= $this->uri->segment(4) ?>">
-          
+
                <div class="col-md-14">
           <div class="box box-default box-solid">
             <div class="box-header with-border">
               <h6 class="box-title">Funciones Vitales</h6>
 
               <div class="box-tools pull-right">
-               
+
               </div>
               <!-- /.box-tools -->
             </div>
@@ -316,7 +316,7 @@
             <div class="box-body">
                   <div class="form-horizontal form-valid">
 <div class="form-group">
-  
+
                 <div class="col-sm-3 val-smk">
                    <label class="control-label">Presion arterial:</label>
                     <div class="input-group">
@@ -325,7 +325,7 @@
                    mn Hg
                  </div>
                   </div>
-                </div>  
+                </div>
             <div class="col-sm-3 val-smk">
                 <label class="control-label">Pulso:</label>
               <div class="input-group">
@@ -336,7 +336,7 @@
               </div>
             </div>
             <div class="col-sm-3 val-smk">
-             
+
                 <label class="control-label">Temperatura:</label>
                  <div class="input-group">
                 <input type="text" name="temperatura" class="form-control input-sm" value="<?= $exploracion->temperat_exp ?>">
@@ -348,7 +348,7 @@
             <div class="col-sm-3 val-smk">
                 <label class="control-label">Frecuencia cardiaca:</label>
               <div class="input-group">
-              
+
                 <input type="text" name="FC" class="form-control input-sm" value="<?= $exploracion->fc_exp ?>">
                 <div class="input-group-addon">
                   x min.
@@ -358,7 +358,7 @@
             <div class="col-sm-3 val-smk">
                       <label class="control-label">Frec. Respiratoria:</label>
               <div class="input-group">
-        
+
                 <input type="text" name="frecRep" class="form-control input-sm" value="<?= $exploracion->frec_exp ?>">
                  <div class="input-group-addon">
                   / min
@@ -380,7 +380,7 @@
               <h6 class="box-title">Peso - Talla</h6>
 
               <div class="box-tools pull-right">
-               
+
               </div>
               <!-- /.box-tools -->
             </div>
@@ -388,11 +388,11 @@
             <div class="box-body">
                   <div class="form-horizontal form-valid">
                     <div class="form-group">
-  
+
             <div class="col-sm-3 val-smk">
                <label class="control-label">Peso:</label>
               <div class="input-group">
-               
+
                 <input type="text" name="peso" class="form-control input-sm" value="<?= $exploracion->peso_exp ?>">
                 <div class="input-group-addon">
                    Kg.
@@ -402,7 +402,7 @@
             <div class="col-sm-3 val-smk">
               <label class="control-label">Talla:</label>
               <div class="input-group">
-                
+
                 <input type="text" name="talla" class="form-control input-sm" value="<?= $exploracion->talla_exp ?>">
                  <div class="input-group-addon">
                    m.
@@ -412,14 +412,14 @@
             <div class="col-sm-3 val-smk">
                <label class="control-label">IMC:</label>
               <div class="input-group">
-               
+
                 <input type="text" name="masa" class="form-control input-sm" value="<?= $exploracion->masa_exp ?>">
                 <div class="input-group-addon">
                    Kg/m.
                  </div>
               </div>
             </div>
-           
+
           </div>
           </div>
             </div>
@@ -427,7 +427,7 @@
           </div>
           <!-- /.box -->
         </div>
-      
+
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
@@ -478,7 +478,7 @@
                 </tr>
               </thead>
               <tbody>
-                
+
               </tbody>
             </table>
           </div>
