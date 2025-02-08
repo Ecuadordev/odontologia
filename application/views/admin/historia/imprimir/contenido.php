@@ -118,23 +118,38 @@
     <!-- Section 6 -->
     <table>
         <tr class="header">
-            <th colspan="6">5 EXAMEN DEL SISTEMA ESTOMATOGNÁTICO</th>
+            <th colspan="12">5 EXAMEN DEL SISTEMA ESTOMATOGNÁTICO</th>
         </tr>
         <tr>
-            <td>1. LABIOS</td>
-            <td>2. MEJILLAS</td>
-            <td>3. MAXILAR SUPERIOR</td>
-            <td>4. MAXILAR INFERIOR</td>
-            <td>5. LENGUA</td>
-            <td>6. PALADAR</td>
+            <td class="yellow check">&nbsp;</td>
+            <td class="small green vertical-center" width="80px">1. LABIOS</td>
+            <td class="yellow check">&nbsp;</td>
+            <td class="small green vertical-center" width="80px">2. MEJILLAS</td>
+            <td class="yellow check">&nbsp;</td>
+            <td class="small green vertical-center" width="80px">3. MAXILAR SUPERIOR</td>
+            <td class="yellow check">&nbsp;</td>
+            <td class="small green vertical-center" width="80px">4. MAXILAR INFERIOR</td>
+            <td class="yellow check">&nbsp;</td>
+            <td class="small green vertical-center" width="80px">5. LENGUA</td>
+            <td class="yellow check">&nbsp;</td>
+            <td class="small green vertical-center" width="80px">6. PALADAR</td>
         </tr>
         <tr>
-            <td>7. PISO</td>
-            <td>8. CARRILLOS</td>
-            <td>9. GLÁNDULAS SALIVALES</td>
-            <td>10. ORO FARINGE</td>
-            <td>11. A. T. M.</td>
-            <td>12. GANGLIOS</td>
+            <td class="yellow check">&nbsp;</td>
+            <td class="small green vertical-center" width="80px">7. PISO</td>
+            <td class="yellow check">&nbsp;</td>
+            <td class="small green vertical-center" width="80px">8. CARRILLOS</td>
+            <td class="yellow check">&nbsp;</td>
+            <td class="small green vertical-center" width="80px">9. GLÁNDULAS SALIVALES</td>
+            <td class="yellow check">&nbsp;</td>
+            <td class="small green vertical-center" width="80px">10. ORO FARINGE</td>
+            <td class="yellow check">&nbsp;</td>
+            <td class="small green vertical-center" width="80px">11. A. T. M.</td>
+            <td class="yellow check">&nbsp;</td>
+            <td class="small green vertical-center" width="80px">12. GANGLIOS</td>
+        </tr>
+        <tr>
+            <td colspan="12">&nbsp;</td>
         </tr>
     </table>
 
