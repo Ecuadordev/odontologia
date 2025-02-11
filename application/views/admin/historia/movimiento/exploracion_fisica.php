@@ -443,7 +443,24 @@
             </div>
             <div class="col-md-12">
               <div class="form-group">
-                <label class="control-label">Odontoestomatologico</label>
+                <label class="control-label">Sistema Estomatogántico</label>
+                <div style="display: flex; flex-wrap: wrap; padding: 10px 20px;">
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="lips" name="estomgtc[]"> Labios</label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="cheeks" name="estomgtc[]"> Mejillas</label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="maxilla" name="estomgtc[]"> Maxilar Superior</label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="lower_jaw" name="estomgtc[]"> Maxilar Inferior</label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="tongue" name="estomgtc[]"> Lengua</label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="palate" name="estomgtc[]"> Paladar</label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="floor" name="estomgtc[]"> Piso</label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="jowls" name="estomgtc[]"> Carrillos</label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="salivary" name="estomgtc[]"> Glándulas Salivales</label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="pharynx" name="estomgtc[]"> Oro Faringe</label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="atm" name="estomgtc[]"> A.T.M.</label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="lymph_nodes" name="estomgtc[]"> Ganglios</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label">Observaciones</label>
                 <textarea name="odontoestomatologico" class="form-control input-sm" rows="3"><?= $exploracion->odontoesto_exp ?></textarea>
               </div>
             </div>

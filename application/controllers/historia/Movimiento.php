@@ -202,6 +202,7 @@ class Movimiento extends CI_Controller {
 		$data['masa_exp'] = $this->input->post('masa');
 		$data['clinico_exp'] = $this->input->post('examenClinicoGeneral');
 		$data['complement_exp'] = $this->input->post('examenComplementario');
+		$data['estomgtc_exp'] = join(",",$this->input->post('estomgtc'));
 		$data['odontoesto_exp'] = $this->input->post('odontoestomatologico');
 
 		$where['codi_pac'] = $this->input->post('paciente');
