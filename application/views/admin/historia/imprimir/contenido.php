@@ -149,7 +149,7 @@
             <td class="small green vertical-center" width="80px">12. GANGLIOS</td>
         </tr>
         <tr>
-            <td colspan="12">&nbsp;</td>
+            <td colspan="12"><?= $historia->exmodonto ?></td>
         </tr>
     </table>
 
