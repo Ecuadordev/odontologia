@@ -121,32 +121,32 @@
             <th colspan="12">5 EXAMEN DEL SISTEMA ESTOMATOGNÁTICO</th>
         </tr>
         <tr>
-            <td class="yellow check">&nbsp;</td>
             <td class="small green vertical-center" width="80px">1. LABIOS</td>
-            <td class="yellow check">&nbsp;</td>
+            <td class="center vertical-center yellow check"><?= in_array("lips", explode(",",$historia->estomgtc)) ? "X" : "" ?></td>
             <td class="small green vertical-center" width="80px">2. MEJILLAS</td>
-            <td class="yellow check">&nbsp;</td>
+            <td class="center vertical-center yellow check"><?= in_array("cheeks", explode(",",$historia->estomgtc)) ? "X" : "" ?></td>
             <td class="small green vertical-center" width="80px">3. MAXILAR SUPERIOR</td>
-            <td class="yellow check">&nbsp;</td>
+            <td class="center vertical-center yellow check"><?= in_array("maxilla", explode(",",$historia->estomgtc)) ? "X" : "" ?></td>
             <td class="small green vertical-center" width="80px">4. MAXILAR INFERIOR</td>
-            <td class="yellow check">&nbsp;</td>
+            <td class="center vertical-center yellow check"><?= in_array("lower_jaw", explode(",",$historia->estomgtc)) ? "X" : "" ?></td>
             <td class="small green vertical-center" width="80px">5. LENGUA</td>
-            <td class="yellow check">&nbsp;</td>
+            <td class="center vertical-center yellow check"><?= in_array("tongue", explode(",",$historia->estomgtc)) ? "X" : "" ?></td>
             <td class="small green vertical-center" width="80px">6. PALADAR</td>
+            <td class="center vertical-center yellow check"><?= in_array("palate", explode(",",$historia->estomgtc)) ? "X" : "" ?></td>
         </tr>
         <tr>
-            <td class="yellow check">&nbsp;</td>
             <td class="small green vertical-center" width="80px">7. PISO</td>
-            <td class="yellow check">&nbsp;</td>
+            <td class="center vertical-center yellow check"><?= in_array("floor", explode(",",$historia->estomgtc)) ? "X" : "" ?></td>
             <td class="small green vertical-center" width="80px">8. CARRILLOS</td>
-            <td class="yellow check">&nbsp;</td>
+            <td class="center vertical-center yellow check"><?= in_array("jowls", explode(",",$historia->estomgtc)) ? "X" : "" ?></td>
             <td class="small green vertical-center" width="80px">9. GLÁNDULAS SALIVALES</td>
-            <td class="yellow check">&nbsp;</td>
+            <td class="center vertical-center yellow check"><?= in_array("salivary", explode(",",$historia->estomgtc)) ? "X" : "" ?></td>
             <td class="small green vertical-center" width="80px">10. ORO FARINGE</td>
-            <td class="yellow check">&nbsp;</td>
+            <td class="center vertical-center yellow check"><?= in_array("pharynx", explode(",",$historia->estomgtc)) ? "X" : "" ?></td>
             <td class="small green vertical-center" width="80px">11. A. T. M.</td>
-            <td class="yellow check">&nbsp;</td>
+            <td class="center vertical-center yellow check"><?= in_array("atm", explode(",",$historia->estomgtc)) ? "X" : "" ?></td>
             <td class="small green vertical-center" width="80px">12. GANGLIOS</td>
+            <td class="center vertical-center yellow check"><?= in_array("lymph_nodes", explode(",",$historia->estomgtc)) ? "X" : "" ?></td>
         </tr>
         <tr>
             <td colspan="12"><?= $historia->exmodonto ?></td>
