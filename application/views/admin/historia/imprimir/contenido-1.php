@@ -7,55 +7,55 @@
 		</div>
 		<div class="w60 text-center">
 		<h3 style=" font-weight: bold; padding-top: 30px;">HISTORIA CLINICA</h3>
-	
+
 	</div>
 		<!-- <h3 style="text-align: center; font-weight:bold; ">
 		HISTORIA ODONTOLOGICA
 		</h3> -->
-		
+
 	</div>
 	<br>
 	<br>
 
 	<div class="w100">
 			<div style="padding: 0px">
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 
 				H.C: <?= $historia->codi_pac ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha impresion: <?= date('d/m/Y   h:i:s')?>  
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha impresion: <?= date('d/m/Y   h:i:s')?>
 			</div>
 
 		</div>
 
 		<div style="padding: 0px; padding-top: 2px">
-			
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center; font-weight:bold; font-size: 16; background-color: #B5ADAD;" height="20">
 				<label>
 					ANAMNESIS
 				</label>
-					
-				
-						
-				
 
-			
-			
+
+
+
+
+
+
 			</div>
 
 		</div>
 
 		<div style="padding: 0px; padding-top: 2px">
-			
+
 			<div style="border:1px solid #070707; padding:3px; font-size: 14;" height="20">
 				I. AFILIACION
-					
+
 			</div>
 
 		</div>
 
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px; font-size: 12;" height="80">
 				<b>Apellidos y Nombres:</b> <?= $historia->paciente ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Edad:</b> <?= $historia->edad ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<b>Sexo:</b> <?= $historia->sexo ?><br>
 				<b>D.N.I:</b> <?= $historia->dni ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Telefono:</b> <?=$historia->telefono ?>
@@ -67,8 +67,8 @@
 				<b>Ocupacion:</b> <?=$historia->ocupacion ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Estado civil:</b> <?=$historia->civil ?><br>
 				<b>Como se entero de la clinica: </b> <?=$historia->entero ?>
 
-		
-					
+
+
 			</div>
 
 		</div>
@@ -76,31 +76,31 @@
 
 
 		<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px; font-size: 14;" height="20">
 				II. ENFERMEDAD ACTUAL
-					
+
 			</div>
 
 		</div>
 
 	<div>
-	
+
 
 		<div class="w20">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
-				Motivo consulta: 
+				Motivo consulta:
 			</div>
 
 			</div>
 		</div>
 		<div class="w80">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
-		  <?=$historia->motivo ?> 
+		  <?=$historia->motivo ?>
 			</div>
 
 			</div>
@@ -108,11 +108,11 @@
 	</div>
 
 	<div>
-	
+
 
 		<div class="w20">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
 				Tiempo de la enfermedad:
 			</div>
@@ -121,9 +121,9 @@
 		</div>
 		<div class="w80">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
-		   <?= $historia->enfermedad ?> 
+		   <?= $historia->enfermedad ?>
 			</div>
 
 			</div>
@@ -131,11 +131,11 @@
 	</div>
 
 	<div>
-	
+
 
 		<div class="w20">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
 				Relato:
 			</div>
@@ -144,7 +144,7 @@
 		</div>
 		<div class="w80">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
 		  <!--  <?= $historia->codi_pac ?>  -->
 			</div>
@@ -155,11 +155,11 @@
 
 
 	<div>
-	
+
 
 		<div class="w20">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
 				Esta tomando algun medicamento:
 			</div>
@@ -168,10 +168,10 @@
 		</div>
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
 				<?= $historia->medicamento ?>
-		  <!--  <?= $historia->codi_pac ?> 
+		  <!--  <?= $historia->codi_pac ?>
 		   <?php foreach ($historia->alergias as $a): ?>
 		   	<?= $a->pacale_observacion ?>
 		   <?php endforeach ?> -->
@@ -181,10 +181,10 @@
 		</div>
 	<div class="w20">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
 				Nombre del medicamento:
-		  <!--  <?= $historia->codi_pac ?> 
+		  <!--  <?= $historia->codi_pac ?>
 		   <?php foreach ($historia->alergias as $a): ?>
 		   	<?= $a->pacale_observacion ?>
 		   <?php endforeach ?> -->
@@ -195,11 +195,11 @@
 
 			<div class="w50">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
-				
+
 				<?= $historia->nombmedi ?>
-		  <!--  <?= $historia->codi_pac ?> 
+		  <!--  <?= $historia->codi_pac ?>
 		   <?php foreach ($historia->alergias as $a): ?>
 		   	<?= $a->pacale_observacion ?>
 		   <?php endforeach ?> -->
@@ -211,11 +211,11 @@
 
 
 		<div>
-	
+
 
 		<div class="w20">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
 				Via de uso:
 			</div>
@@ -224,7 +224,7 @@
 		</div>
 		<div class="w80">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
 		  <!--  <?= $historia->codi_pac ?>  -->
 			</div>
@@ -234,11 +234,11 @@
 	</div>
 
 		<div>
-	
+
 
 		<div class="w20">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
 				Dosis:
 			</div>
@@ -247,7 +247,7 @@
 		</div>
 		<div class="w80">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
 		  <!--  <?= $historia->codi_pac ?>  -->
 			</div>
@@ -257,31 +257,31 @@
 	</div>
 
 	<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px; font-size: 14;" height="20">
 				III. ANTECEDENTES
-					
+
 			</div>
 
 	</div>
 
 		<div>
-	
+
 
 		<div class="w20">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
-				Personales: 
+				Personales:
 			</div>
 
 			</div>
 		</div>
 		<div class="w80">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
-		  <?=$historia->antecpersonales ?> 
+		  <?=$historia->antecpersonales ?>
 			</div>
 
 			</div>
@@ -290,22 +290,22 @@
 
 
 		<div>
-	
+
 
 		<div class="w20">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
-				Familiares: 
+				Familiares:
 			</div>
 
 			</div>
 		</div>
 		<div class="w80">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="50">
-		  <?=$historia->antecfamiliares ?> 
+		  <?=$historia->antecfamiliares ?>
 			</div>
 
 			</div>
@@ -315,39 +315,39 @@
 
 <!--CONSULTA DE SALUD  -->
 	<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px; font-size: 14;" height="20">
 				IV. CONSULTA DE SALUD
-					
+
 			</div>
 
 
 		<div>
-	
+
 <!--------CABECERA----------->
 
 		<div class="w5">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center;" height="20">
 				Nro.
 			</div>
 
-	
+
 		</div>
 
 			<div class="w55">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center;" height="20">
 				¿Pregunta?
 			</div>
 
-	
+
 		</div>
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center;" height="20">
 				Respuesta
 			</div>
@@ -357,43 +357,43 @@
 
 		<div class="w30">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center;" height="20">
 			 Comentario
 			</div>
 
 			</div>
 		</div>
-	</div>		
+	</div>
 
 <!--------------------------->
 <!------PREGUNTA ORTODONCIA------------>
 	<div>
-	
+
 
 
 		<div class="w5">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center;" height="20">
-				1 
+				1
 			</div>
 
-	
+
 		</div>
 
 			<div class="w55">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				¿Ha tenido alguna vez tratamiento de ortodoncia?
 			</div>
 
-	
+
 		</div>
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 					<?=$historia->consulortodoncia?>
 			</div>
@@ -403,7 +403,7 @@
 
 		<div class="w30">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				<?=$historia->respuesta1 ?>
 			</div>
@@ -416,31 +416,31 @@
 
 <!------PREGUNTA TOMA MEDICAMENTO------------>
 	<div>
-	
+
 
 
 		<div class="w5">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center;" height="20">
-				2 
+				2
 			</div>
 
-	
+
 		</div>
 
 			<div class="w55">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				¿Esta tomando algun medicamento?
 			</div>
 
-	
+
 		</div>
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 					<?=$historia->consutmedicamento?>
 			</div>
@@ -450,7 +450,7 @@
 
 		<div class="w30">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				<?=$historia->respuesta2 ?>
 			</div>
@@ -463,31 +463,31 @@
 
 <!------PREGUNTA ALERGICO------------>
 	<div>
-	
+
 
 
 		<div class="w5">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center;" height="20">
-				3 
+				3
 			</div>
 
-	
+
 		</div>
 
 			<div class="w55">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				¿Es alergico algun medicamento o anestesico?
 			</div>
 
-	
+
 		</div>
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 					<?=$historia->consulalergico?>
 			</div>
@@ -497,7 +497,7 @@
 
 		<div class="w30">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				<?=$historia->respuesta3 ?>
 			</div>
@@ -509,31 +509,31 @@
 
 <!------PREGUNTA HOSPITALIZADO------------>
 	<div>
-	
+
 
 
 		<div class="w5">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center;" height="20">
-				4 
+				4
 			</div>
 
-	
+
 		</div>
 
 			<div class="w55">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px;" height="20">
 				¿Has estado hospitalizado o tenido una cirugia?
 			</div>
 
-	
+
 		</div>
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 					<?=$historia->consulhospi?>
 			</div>
@@ -543,7 +543,7 @@
 
 		<div class="w30">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				<?=$historia->respuesta4 ?>
 			</div>
@@ -555,31 +555,31 @@
 
 <!------PREGUNTA TRANSTORNO EMOCIONAL------------>
 	<div>
-	
+
 
 
 		<div class="w5">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center;" height="20">
-				5 
+				5
 			</div>
 
-	
+
 		</div>
 
 			<div class="w55">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				¿Ha tenido algun transtorno nervioso o emocional?
 			</div>
 
-	
+
 		</div>
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 					<?=$historia->consultranstorno?>
 			</div>
@@ -589,7 +589,7 @@
 
 		<div class="w30">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				<?=$historia->respuesta5 ?>
 			</div>
@@ -601,33 +601,33 @@
 
 <!------PREGUNTA TRANSTORNO EMOCIONAL------------>
 	<div>
-	
+
 
 
 		<div class="w5">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center;" height="20">
-				6 
+				6
 			</div>
 
-	
+
 		</div>
 
 			<div class="w55">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px;" height="20">
 				¿Padece o a padecido alguna enfermedad?
 			</div>
 
-	
+
 		</div>
 
 
 		<div class="w40">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				<?=$historia->padece?>
 			</div>
@@ -639,31 +639,31 @@
 
 <!------PREGUNTA CEPILLA LOS DIENTES------------>
 	<div>
-	
+
 
 
 		<div class="w5">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center;" height="20">
-				7 
+				7
 			</div>
 
-	
+
 		</div>
 
 			<div class="w55">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px;" height="20">
 				¿Cepilla los dientes diariamente?
 			</div>
 
-	
+
 		</div>
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				<?=$historia->consulcepilla?>
 			</div>
@@ -673,7 +673,7 @@
 
 		<div class="w30">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				<?=$historia->respuesta6?>
 			</div>
@@ -685,31 +685,31 @@
 
 	<!------PREGUNTA CEPILLA LOS DIENTES------------>
 	<div>
-	
+
 
 
 		<div class="w5">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center;" height="20">
-				8 
+				8
 			</div>
 
-	
+
 		</div>
 
 			<div class="w55">
-	
-			
+
+
 			<div style="border:1px solid #070707; padding:3px;" height="20">
 				¿Sufre de presión arterial alta?
 			</div>
 
-	
+
 		</div>
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				<?=$historia->consulpresion?>
 			</div>
@@ -719,7 +719,7 @@
 
 		<div class="w30">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 				<?=$historia->respuesta7?>
 			</div>
@@ -736,7 +736,7 @@
 
 	<!--EXAMEN CLINICO  -->
 	<div style="padding: 0px; padding-top: 10px">
-			
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center; font-weight:bold; font-size: 16; background-color: #B5ADAD;" height="20">
 				<label>
 					EXAMEN CLINICO
@@ -746,31 +746,31 @@
 	</div>
 
 		<div style="padding: 0px; padding-top: 2px">
-			
+
 			<div style="border:1px solid #070707; padding:3px; font-size: 14;" height="20">
 				1. FUNCIONES VITALES
-					
+
 			</div>
 
 		</div>
 
 			<div>
-	
+
 
 		<div class="w15">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-				Presion arterial:		
+				Presion arterial:
 			</div>
 
 			</div>
 		</div>
 		<div class="w15">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-		   <?= $historia->exploracion ?> 
+		   <?= $historia->exploracion ?>
 			</div>
 
 			</div>
@@ -778,7 +778,7 @@
 
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 		    mn Hg
 			</div>
@@ -788,18 +788,18 @@
 
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-				Pulso:		
+				Pulso:
 			</div>
 
 			</div>
 		</div>
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-		    <?= $historia->pulso ?> 
+		    <?= $historia->pulso ?>
 			</div>
 
 			</div>
@@ -807,7 +807,7 @@
 
 		<div class="w5">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 		    /min
 			</div>
@@ -816,18 +816,18 @@
 		</div>
 		<div class="w15">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-				Temperatura:		
+				Temperatura:
 			</div>
 
 			</div>
 		</div>
 		<div class="w15">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-		   <?= $historia->temperatura ?> 
+		   <?= $historia->temperatura ?>
 			</div>
 
 			</div>
@@ -835,7 +835,7 @@
 
 		<div class="w5">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 		    °C
 			</div>
@@ -847,22 +847,22 @@
 
 
 			<div>
-	
+
 
 		<div class="w15">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-				Frec. cardiaca:		
+				Frec. cardiaca:
 			</div>
 
 			</div>
 		</div>
 		<div class="w15">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-		    <?= $historia->fcardiaca ?> 
+		    <?= $historia->fcardiaca ?>
 			</div>
 
 			</div>
@@ -870,7 +870,7 @@
 
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 		    x min.
 			</div>
@@ -880,16 +880,16 @@
 
 		<div class="w15">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-				Frec. Respiratoria:		
+				Frec. Respiratoria:
 			</div>
 
 			</div>
 		</div>
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 		    <?= $historia->frespiratoria ?>
 			</div>
@@ -899,7 +899,7 @@
 
 		<div class="w5">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 		    /min
 			</div>
@@ -910,33 +910,33 @@
 
 
 	</div>
-      
+
 	<div style="padding: 0px; padding-top: 0px">
-			
+
 			<div style="border:1px solid #070707; padding:3px; font-size: 14;" height="20">
 				2. PESO - TALLA
-					
+
 			</div>
 
    </div>
 
    		<div>
-	
+
 
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-				Peso:		
+				Peso:
 			</div>
 
 			</div>
 		</div>
 		<div class="w5">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-		   <?= $historia->peso ?>  
+		   <?= $historia->peso ?>
 			</div>
 
 			</div>
@@ -944,7 +944,7 @@
 
 		<div class="w5">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 		    Kg.
 			</div>
@@ -954,18 +954,18 @@
 
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-				Talla:		
+				Talla:
 			</div>
 
 			</div>
 		</div>
 		<div class="w5">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-		    <?= $historia->talla ?>  
+		    <?= $historia->talla ?>
 			</div>
 
 			</div>
@@ -973,7 +973,7 @@
 
 		<div class="w5">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 		    m.
 			</div>
@@ -982,18 +982,18 @@
 		</div>
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-				IMC:		
+				IMC:
 			</div>
 
 			</div>
 		</div>
 		<div class="w5">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
-		    <?= $historia->imc ?>  
+		    <?= $historia->imc ?>
 			</div>
 
 			</div>
@@ -1001,7 +1001,7 @@
 
 		<div class="w10">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="20">
 		    Kg/m.
 			</div>
@@ -1014,75 +1014,75 @@
 
 
 	<div style="padding: 0px; padding-top: 0px">
-			
+
 			<div style="border:1px solid #070707; padding:3px; font-size: 14;" height="20">
 				3. EXAMEN CLINICO GENERAL
-					
+
 			</div>
 
    </div>
 
    	<div>
-	
+
 
 		<div class="w100">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="60">
-				 <?= $historia->exmclinico ?>  
+				 <?= $historia->exmclinico ?>
 			</div>
 
 			</div>
 		</div>
-	
+
 	</div>
 
 	<div style="padding: 0px; padding-top: 0px">
-			
+
 			<div style="border:1px solid #070707; padding:3px; font-size: 14;" height="20">
 				4. EXAMEN COMPLEMENTARIO
-					
+
 			</div>
 
    </div>
 
    	<div>
-	
+
 
 		<div class="w100">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="60">
-				<?= $historia->exmcomplet ?>  
+				<?= $historia->exmcomplet ?>
 			</div>
 
 			</div>
 		</div>
-	
+
 	</div>
 
 	<div style="padding: 0px; padding-top: 0px">
-			
+
 			<div style="border:1px solid #070707; padding:3px; font-size: 14;" height="20">
 				5. ODONTOESTOMATOLOGICO
-					
+
 			</div>
 
    </div>
 
    	<div>
-	
+
 
 		<div class="w100">
 			<div>
-			
+
 			<div style="border:1px solid #070707; padding:3px" height="60">
-					<?= $historia->exmodonto ?>  
+					<?= $historia->exmodonto ?>
 			</div>
 
 			</div>
 		</div>
-	
+
 	</div>
 
 
@@ -1090,13 +1090,13 @@
 
 
 </div>
-	
+
 
 
 
 
 <div style="padding: 0px; padding-top: 210px">
-			
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center; font-weight:bold; font-size: 16; background-color: #B5ADAD;" height="20">
 				<label>
 					ODONTOGRAMA INICIAL
@@ -1106,33 +1106,33 @@
 </div>
 
    	<div>
-	
 
-		<div class="w100">
+
+			<div class="w100">
+				<div style="padding: 0px; padding-top: 5px">
+
+					<div style="border:1px solid #070707; padding:3px">
+
+
+						<img style="width: 100%" alt="" src="<?= base_url('assets/img/odontogramas/odontograma-'.$paciente->codi_pac.'-ini.png') ?>">
+
+					</div>
+
+				</div>
+			</div>
+
+			<br>
 			<div style="padding: 0px; padding-top: 5px">
-			
-			<div style="border:1px solid #070707; padding:3px">
-			
-				
-				<img src="" style="width: 100%" alt="" src="<?= base_url('assets/img/odontogramas/odontograma-'.$paciente->codi_pac.'-ini.png') ?>">
 
-			</div>
+				<div style="border:1px solid #070707; padding:3px; font-size: 14;" height="20">
+				- ESTADO DE LAS PIEZAS DENTALES (ODONTOGRAMA INICIAL)
 
-			</div>
-		</div>
-	
-		<br>
-			<div style="padding: 0px; padding-top: 5px">
-			
-			<div style="border:1px solid #070707; padding:3px; font-size: 14;" height="20">
-			- ESTADO DE LAS PIEZAS DENTALES (ODONTOGRAMA INICIAL)
-					
-			</div>
+				</div>
 
  		  </div>
 
  		  <table class="table table-bordered">
-	<thead>	
+	<thead>
 		<tr>
 			<th style="border:1px solid #070707; padding: 6px; background-color: #B5ADAD; text-align: center; width: 240px;">Descripción</th>
 			<th style="border:1px solid #070707; padding: 6px; background-color: #B5ADAD; text-align: center; width: 75px;">Pieza</th>
@@ -1153,12 +1153,12 @@
 		<?php endforeach ?>
 	</tbody>
 </table>
-	
+
 	</div>
-	
+
 
 	<div style="padding: 0px; padding-top: 0px">
-			
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center; font-weight:bold; font-size: 16; background-color: #B5ADAD;" height="20">
 				<label>
 					ODONTOGRAMA EVOLUCIONADO
@@ -1167,11 +1167,11 @@
 
    </div>
 	   	<div>
-	
+
 
 
    <div style="padding: 0px; padding-top: 20px">
-			
+
 			<div style="border:1px solid #070707; padding:3px; text-align: center; font-weight:bold; font-size: 16; background-color: #B5ADAD;" height="20">
 				<label>
 					ALERGIAS
@@ -1181,7 +1181,7 @@
 	</div>
 
 	<table class="table table-bordered">
-	<thead>	
+	<thead>
 		<tr>
 			<th style="border:1px solid #070707; padding: 6px; background-color: #B5ADAD; text-align: center;">NOMBRE</th>
 			<th style="border:1px solid #070707; padding: 6px; background-color: #B5ADAD; text-align: center;">OBSERVACION</th>
@@ -1199,7 +1199,7 @@
 
 
 		    <div style="padding: 0px; padding-top: 20px">
-					
+
 					<div style="border:1px solid #070707; padding:3px; text-align: center; font-weight:bold; font-size: 16; background-color: #B5ADAD;" height="20">
 						<label>
 							DIAGNOSTICO
@@ -1209,11 +1209,11 @@
 			</div>
 
 					<table class="table table-bordered">
-					<thead>	
+					<thead>
 						<tr>
 							<th style="border:1px solid #070707; padding: 6px; background-color: #B5ADAD; text-align: center; width: 100px;">SIGLAS</th>
 							<th style="border:1px solid #070707; padding: 6px; background-color: #B5ADAD; text-align: center; width: 380px;">CIE10</th>
-				
+
 						</tr>
 					</thead>
 					<tbody>
@@ -1228,7 +1228,7 @@
 
 
 			  <div style="padding: 0px; padding-top: 0px">
-					
+
 					<div style="border:1px solid #070707; padding:3px; text-align: center; font-weight:bold; font-size: 16; background-color: #B5ADAD;" height="20">
 						<label>
 							EVOLUCIÓN
@@ -1238,13 +1238,13 @@
 			</div>
 
 					<table class="table table-bordered">
-					<thead>	
+					<thead>
 						<tr>
 							<th style="border:1px solid #070707; padding: 6px; background-color: #B5ADAD; text-align: center; width: 100px;">FECHA</th>
 							<th style="border:1px solid #070707; padding: 6px; background-color: #B5ADAD; text-align: center; width: 230px;">DESCRIPCION DE EVOLUCION</th>
 							<th style="border:1px solid #070707; padding: 6px; background-color: #B5ADAD; text-align: center; width: 115px;">ESPECIALIDAD</th>
 							<th style="border:1px solid #070707; padding: 6px; background-color: #B5ADAD; text-align: center; width: 180px;">DOCTOR</th>
-						
+
 						</tr>
 					</thead>
 					<tbody>
@@ -1254,20 +1254,16 @@
 							<td style="border:1px solid #070707; padding: 6px;  "><?= $ev->pacevol_descripcion ?></td>
 							<td style="border:1px solid #070707; padding: 6px;  "><?= $ev->nombre_especialidad ?></td>
 							<td style="border:1px solid #070707; padding: 6px; "><?= $ev->apel_med.' '. $ev->nomb_med?></td>
-							
+
 						</tr>
 						<?php endforeach ?>
 					</tbody>
 				</table>
 
-	
+
 	</div>
 
 
 
 
 </div>
-
-
-
-

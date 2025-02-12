@@ -156,85 +156,189 @@
     <!-- Section 7 -->
     <table>
         <tr class="header">
-            <th colspan="6">6 ODONTOGRAMA</th>
+            <th width="50%" class="vertical-center purple" style="border:none;">6 ODONTOGRAMA</th>
+            <td width="50%" class="purple small" style="border:none;">PINTAR CON: AZUL PARA TRATAMIENTO REALIZADO - ROJO PARA PATOLOGÍA ACTUAL MOVILIDAD Y RECESIÓN: MARCAR "X" (1, 2 ó 3), SI APLICA</td>
         </tr>
         <tr>
-            <td colspan="6" class="center blue">PINTAR CON: AZUL PARA TRATAMIENTO REALIZADO - ROJO PARA PATOLOGÍA ACTUAL MOVILIDAD Y RECESIÓN: MARCAR "X" (1, 2 ó 3), SI APLICA</td>
-        </tr>
-        <tr>
-            <td colspan="6" class="center red">RECESIÓN</td>
-        </tr>
-        <tr>
-            <td colspan="6" class="center red">MOVILIDAD</td>
+            <td colspan="2">
+                <img style="width: 100%" alt="" src="<?= base_url('assets/img/odontogramas/odontograma-'.$paciente->codi_pac.'-ini.png') ?>">
+            </td>
         </tr>
     </table>
 
     <!-- Section 8 -->
-    <table>
-        <tr class="header purple">
-            <th colspan="6">8 INDICADORES DE SALUD BUCAL</th>
+    <table style="border-collapse: collapse">
+        <tr>
+            <th colspan="15" class="section-title purple">7 INDICADORES DE SALUD BUCAL</th>
+            <td rowspan="5" style="border:none;">
+                <table style="border:none;">
+                    <tr>
+                        <th colspan="5" class="section-title purple">8 ÍNDICES CPO-ceo</th>
+                    </tr>
+                    <tr>
+                        <th class="center vertical-center green" rowspan="2">D</th>
+                        <th class="center vertical-center green">C</th>
+                        <th class="center vertical-center green">P</th>
+                        <th class="center vertical-center green">O</th>
+                        <th class="center vertical-center green">Total</th>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td class="center vertical-center yellow">0</td>
+                    </tr>
+                    <tr>
+                        <th class="center vertical-center green" rowspan="2">d</th>
+                        <th class="center vertical-center green">c</th>
+                        <th class="center vertical-center green">e</th>
+                        <th class="center vertical-center green">o</th>
+                        <th class="center vertical-center green">Total</th>
+                    </tr>
+                    <tr>
+                        <td></td><td></td><td></td><td class="center vertical-center yellow">0</td>
+                    </tr>
+                </table>
+            </td>
         </tr>
-        <tr class="green">
-            <td>HIGIENE ORAL SIMPLIFICADA</td>
-            <td>ENFERMEDAD PERIODONTAL</td>
-            <td>MAL OCLUSIÓN</td>
-            <td>FLUOROSIS</td>
-            <td></td>
-            <td></td>
+        <tr>
+            <th colspan="9" class="section-title green">Higiene Oral Simplificada</th>
+            <th colspan="2" class="section-title green">Enfermedad Periodontal</th>
+            <th colspan="2" class="section-title green">Mal Oclusión</th>
+            <th colspan="2" class="section-title green">Fluorosis</th>
         </tr>
-        <tr class="yellow">
-            <td>PIEZAS DENTALES</td>
-            <td>PLACA</td>
-            <td>CÁLCULO</td>
-            <td>GINGIVITIS</td>
-            <td>ANGLE I</td>
-            <td>LEVE</td>
+        <tr>
+            <td class="blue vertical-center" colspan="6">PIEZAS DENTALES</td>
+            <td class="blue center">PLACA<br/><small>0-1-2-3-9</small></td>
+            <td class="blue center">CÁLCULO<br/><small>0-1-2-3</small></td>
+            <td class="blue center">GINGIVITIS<br/><small>0-1</small></td>
+            <td class="blue center vertical-center">LEVE</td>
+            <td class="check yellow center vertical-center">&nbsp;</td>
+            <td class="blue center vertical-center">ANGLE I</td>
+            <td class="check yellow center vertical-center">&nbsp;</td>
+            <td class="blue center vertical-center">LEVE</td>
+            <td class="check yellow center vertical-center">&nbsp;</td>
         </tr>
-        <tr class="orange">
-            <td>TOTALES</td>
-            <td>C</td>
-            <td>P</td>
-            <td>O</td>
-            <td>TOTAL</td>
-            <td>0</td>
+        <tr>
+            <td class="center vertical-center blue">16</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center blue">17</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center blue">55</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="blue center vertical-center">MODERADA</td>
+            <td class="check yellow center vertical-center">&nbsp;</td>
+            <td class="blue center vertical-center">ANGLE II</td>
+            <td class="check yellow center vertical-center">&nbsp;</td>
+            <td class="blue center vertical-center">MODERADA</td>
+            <td class="check yellow center vertical-center">&nbsp;</td>
         </tr>
-    </table>
+        <tr>
+            <td class="center vertical-center blue">11</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center blue">21</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center blue">51</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="blue center vertical-center">SEVERA</td>
+            <td class="check yellow center vertical-center">&nbsp;</td>
+            <td class="blue center vertical-center">ANGLE III</td>
+            <td class="check yellow center vertical-center">&nbsp;</td>
+            <td class="blue center vertical-center">SEVERA</td>
+            <td class="check yellow center vertical-center">
 
-    <!-- Section 9 -->
-    <table>
-        <tr class="header">
-            <th colspan="6">9 SIMBOLOGÍA DEL ODONTOGRAMA</th>
+
+            </td>
         </tr>
         <tr>
-            <td>U U ═ rojo SELLANTE NECESARIO</td>
-            <td>PÉRDIDA (OTRA CAUSA)</td>
-            <td>PRÓTESIS TOTAL</td>
-            <td>r ª azul SELLANTE REALIZADO</td>
-            <td>ENDODONCIA</td>
-            <td>CORONA</td>
+            <td class="center vertical-center blue">26</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center blue">27</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center blue">65</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center" colspan="7" rowspan="5">
+                <table>
+                    <tr>
+                        <th colspan="2" class="section-title blue" width="100%">9 SIMBOLOGÍA DEL ODONTOGRAMA</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table class="nested-table">
+                                <tr><td width="100%">
+                                    <img style="width: 100%" alt="" src="<?= base_url('assets/img/simbologia.png') ?> width="100%"">
+                                </td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
-            <td>X rojo EXTRACCIÓN INDICADA</td>
-            <td>¨ ----- ¨ PRÓTESIS FIJA</td>
-            <td>azul OBTURADO</td>
-            <td>- X azul PÉRDIDA POR CARIES</td>
-            <td>( ------- ) PRÓTESIS REMOVIBLE</td>
-            <td>rojo CARIES</td>
+            <td class="center vertical-center blue">36</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center blue">37</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center blue">75</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="center vertical-center blue">31</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center blue">41</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center blue">71</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="center vertical-center blue">46</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center blue">47</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center blue">85</td>
+            <td class="center vertical-center check yellow">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+            <td class="center vertical-center">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="6">Totales</td>
+            <td class="center vertical-center yellow">&nbsp;</td>
+            <td class="center vertical-center yellow">&nbsp;</td>
+            <td class="center vertical-center yellow">&nbsp;</td>
         </tr>
     </table>
 
     <!-- Section 10 -->
     <table>
-        <tr class="header">
-            <th colspan="6">10 PLANES DE DIAGNÓSTICO, TERAPÉUTICO Y EDUCACIONAL</th>
+        <tr class="purple">
+            <th colspan="9">10 PLANES DE DIAGNÓSTICO, TERAPÉUTICO Y EDUCACIONAL</th>
         </tr>
         <tr>
-            <td>BIOMETRIA</td>
-            <td>QUIMICA SANGUINEA</td>
-            <td>RAYOS - X</td>
-            <td>OTROS</td>
-            <td></td>
-            <td></td>
+            <td class="small right vertical-center green">BIOMETRIA</td>
+            <td class="center vertical-center check yellow"></td>
+            <td class="small right vertical-center green">QUIMICA<br/>SANGUINEA</td>
+            <td class="center vertical-center check yellow"></td>
+            <td class="small right vertical-center green">RAYOS - X</td>
+            <td class="center vertical-center check yellow"></td>
+            <td class="small right vertical-center green">OTROS</td>
+            <td class="center vertical-center check yellow"></td>
+            <td width="40%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="9">&nbsp;</td>
         </tr>
     </table>
 
