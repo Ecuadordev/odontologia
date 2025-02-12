@@ -594,7 +594,7 @@ $('.odontograma-item').click(function(event) {
 		}
 	}
 	var hallazgo = $(seleccionado).data('hallazgo');
-	
+
 	var estado = $(this).data('estado');
 	var categoria = $(this).data('categoria');
 
@@ -641,12 +641,12 @@ $('.odontograma-item').click(function(event) {
 	if (estado=='malo') {
 		$('#modalEstado').val('Mal Estado');
 		$('#FormHistoriaMovimientoAgregarHallazgo input[name="estado"]').val('malo');
-		$('#BotonNombreSeleccionado').addClass('btn-danger');	
+		$('#BotonNombreSeleccionado').addClass('btn-danger');
 	}
 	if (typeof estado === "undefined") {
 		$('#colEstado').hide();
 		$('#FormHistoriaMovimientoAgregarHallazgo input[name="estado"]').val('');
-	  $('#BotonNombreSeleccionado').addClass('btn-default');	
+	  $('#BotonNombreSeleccionado').addClass('btn-default');
 	}
 
 	if (typeof sigla === "undefined") {
@@ -660,11 +660,11 @@ $('.odontograma-item').click(function(event) {
 	if (typeof categoria === "undefined") {
 		$('#colCategoria').hide();
 		$('#FormHistoriaMovimientoAgregarHallazgo input[name="categoria"]').val('');
-	  $('#BotonNombreSeleccionado').addClass('btn-default');	
+	  $('#BotonNombreSeleccionado').addClass('btn-default');
 	}else{
 		$('#FormHistoriaMovimientoAgregarHallazgo input[name="categoria"]').val(categoria);
 	}
-	
+
 	$('#FormHistoriaMovimientoAgregarHallazgo input[name=hallazgo]').val(hallazgo);
 
 
@@ -687,7 +687,7 @@ $('#odontograma').on('click', '#odontograma-contenido.unico .cursor', function(e
 	$('#dibujar img').removeClass('rotar');
 	$('#pieza').removeClass('categoria-centro categoria-nocentro');
 	$('.direccionPieza').hide().removeClass('giro');
-	$('#FormMarcarPieza input[type=checkbox], #FormMarcarPieza input[type=radio]').each(function() { 
+	$('#FormMarcarPieza input[type=checkbox], #FormMarcarPieza input[type=radio]').each(function() {
 		this.checked = false;
 	});
 
@@ -724,7 +724,7 @@ $('#odontograma').on('click', '#odontograma-contenido.unico .cursor', function(e
 		if (propiedades.girar) {
 			$('#pieza img').addClass('rotar');
 		}else{
-			$('#pieza img').removeClass('rotar');		
+			$('#pieza img').removeClass('rotar');
 		}
 
 		$('#dibujar img').attr('src',path+'assets/odontograma/images/'+propiedades.img);
@@ -767,7 +767,7 @@ $('#FormMarcarPieza input[type=radio]').click(function(event) {
 	var estado = $(this).val();
 	var num_diente = $('#FormHistoriaMovimientoAgregarHallazgo input[name=diente]').val();
 	var propiedades = piezas[num_diente];
-	
+
 	var marcador = $(this).parent().siblings('.checkbox-inline').find('input').val();
 	var direcccion = propiedades[marcador];
 	$('#direccionPieza-'+direcccion).removeClass('bueno malo');
@@ -776,7 +776,6 @@ $('#FormMarcarPieza input[type=radio]').click(function(event) {
 		$('#direccionPieza-'+direcccion).addClass('giro')
 	}
 });
-
 
 $('#odontograma').on('click', '#odontograma-contenido.inicio .cursor', function(event) {
 	event.preventDefault();
@@ -898,7 +897,7 @@ $('#ModalOdontogramaDetalle table>tbody').on('click', '.eliminar-hallazgo', func
 						});
 					}
 			});
-			
+
 		}
 	})
 
@@ -945,13 +944,13 @@ $('#TipoOdontogramaSpan').click(function(event) {
 });
 
 function guardarImagenOdontograma()
-{	
+{
 	html2canvas(document.querySelector("#OdontogramaImprimir")).then(canvas => {
 		var imgData = canvas.toDataURL('image/png');
-		
+
 		var imagen = imgData.replace('data:image/png:base64,','');
 		var img = `<img src="${imagen}" style="width:100%">`;
-		
+
 		var paciente = $('#HistoriaContenido').data('paciente');
 		var tipo = $('#FormHistoriaMovimientoAgregarHallazgo input[name=tipoOdontograma]').val();
 		$.ajax({
@@ -983,7 +982,7 @@ var tipoOdontograma = $('#FormHistoriaMovimientoAgregarHallazgo input[name=tipoO
 $.getJSON(path+'historia/movimiento/getOdontograma', {paciente,tipoOdontograma}, function(json, textStatus) {
 	$.each(json, function(index, val) {
 		pintarHallazgos(val);
-	});	
+	});
 });
 /*=====  End of PINTAR ODONTOGRAMA ACTUAL  ======*/
 
@@ -1067,7 +1066,7 @@ function pintarHallazgos(val){
 		sellantes(val['id'],val['inicio'],val['diente'],val['marcas'],'S')
 
 	//console.log(val);
-	
+
 }
 /*=====  End of PINTAR HALLAZGOS  ======*/
 
@@ -1375,7 +1374,7 @@ $('#GuardarDetalle').click(function(event) {
 			});
 		}
 	});
-	
+
 });
 /*=====  End of GUARDAR DETALLE DE ODONTOGRAMA  ======*/
 
@@ -1398,9 +1397,9 @@ $('#tipoOdontograma li').click(function(event) {
 		$('#cursoresRecuadros').empty().html(resp['html']);
 		$.each(resp['odontograma'], function(index, val) {
 			pintarHallazgos(val);
-		});	
+		});
 	})
-	
+
 });
 /*=====  End of SELECCIONAR TIPO ODONTOGRAMA  ======*/
 
@@ -1416,7 +1415,7 @@ $('#CapturarOdontograma').click(function(event) {
 	$(this).text('Procesando').prop('disabled',true);
 	html2canvas(document.querySelector("#OdontogramaImprimir")).then(canvas => {
 		var imgData = canvas.toDataURL('image/png');
-		
+
 		var imagen = imgData.replace('data:image/png:base64,','');
 		var img = `<img src="${imagen}" style="width:100%">`;
 
