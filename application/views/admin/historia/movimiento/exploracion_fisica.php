@@ -445,7 +445,6 @@
               <div class="form-group">
                 <label class="control-label">Sistema Estomatogántico</label>
                 <div style="display: flex; flex-wrap: wrap; padding: 10px 20px;">
-                  <? error_log("Exploracion: ".$exploracion->estomgtc_exp) ?>
                   <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
                     <input type="checkbox" value="lips" name="estomgtc[]" <?= in_array("lips", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
                     Labios
