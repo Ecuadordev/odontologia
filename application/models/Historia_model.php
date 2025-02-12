@@ -24,7 +24,7 @@ class Historia_model extends CI_Model {
 		$this->db->where_not_in('cita_medica.cod_citado','2');
 		$this->db->where('DATE(fech_cit) >=',$data['desde']);
 		$this->db->where('DATE(fech_cit) <=',$data['hasta']);
-		
+
 		if ($rol==1) {
 			$this->db->where('codi_med',$medico);
 		}
@@ -37,19 +37,19 @@ class Historia_model extends CI_Model {
 		$result['sEcho'] = $data['sEcho'];
 		$result['iTotalRecords'] = $queryLike->num_rows();
 		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
-		
+
 		$row = [];
 		foreach ($query->result() as $q) {
 			if ($q->esta_pac=='S') {
 				$estado = '<label class="label label-success">Activo</label>';
 			}elseif($q->esta_pac=='N'){
 				$estado = '<label class="label label-info" style="text-align: center;">Inactivo</label>';
-			}	
+			}
 
 			$opciones = '<div class="btn-footer text-center">
 
 			<a href="'.base_url('historia/movimiento/historia/'.$q->codi_pac).'" class="btn btn-info btn-xs" style="text-align:center"><i class="fa fa-edit"></i></a>';
-	    
+
 			$row[] = [$q->codi_pac,$q->NombresApellidos,$q->edad_pac,$q->dni_pac,$q->fecha_cita,$q->hora_cita,$estado,$opciones];
 		}
 		$result['aaData'] = $row;
@@ -80,7 +80,7 @@ class Historia_model extends CI_Model {
 		$result['sEcho'] = $data['sEcho'];
 		$result['iTotalRecords'] = $queryLike->num_rows();
 		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
-		
+
 		$row = [];
 		foreach ($query->result() as $q) {
 			$boton = '<div class="btn-footer text-center">
@@ -94,7 +94,7 @@ class Historia_model extends CI_Model {
 		return $result;
 	}
 
-	
+
 
 	function getDiagnostico($data)
 	{
@@ -120,7 +120,7 @@ class Historia_model extends CI_Model {
 		$result['sEcho'] = $data['sEcho'];
 		$result['iTotalRecords'] = $queryLike->num_rows();
 		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
-		
+
 		$row = [];
 		foreach ($query->result() as $q) {
 			$boton = '<div class="btn-footer text-center">
@@ -162,7 +162,7 @@ class Historia_model extends CI_Model {
 		$result['sEcho'] = $data['sEcho'];
 		$result['iTotalRecords'] = $queryLike->num_rows();
 		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
-		
+
 		$row = [];
 		foreach ($query->result() as $q) {
 			$boton = '<div class="btn-footer text-center">
@@ -222,8 +222,9 @@ class Historia_model extends CI_Model {
 		    paciente_exploracion.masa_exp as imc,
 		    paciente_exploracion.clinico_exp as exmclinico,
 		    paciente_exploracion.complement_exp as exmcomplet,
+		    paciente_exploracion.estomgtc_exp as estomgtc,
 		    paciente_exploracion.odontoesto_exp as exmodonto" )
-		  
+
 		->join('paises','paciente.pais_id=paises.id')
 		->join('departamento','paciente.departamento_id=departamento.departamento_id')
 		->join('provincia','paciente.provincia_id=provincia.provincia_id')
@@ -304,7 +305,7 @@ class Historia_model extends CI_Model {
 		$result['sEcho'] = $data['sEcho'];
 		$result['iTotalRecords'] = $queryLike->num_rows();
 		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
-		
+
 		$row = [];
 		foreach ($query->result() as $q) {
 			$boton = '<div class="btn-footer text-center">
@@ -348,7 +349,7 @@ class Historia_model extends CI_Model {
 		$result['iTotalRecords'] = $queryLike->num_rows();
 		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
 		$row = [];
-			foreach ($query->result() as $q) {	
+			foreach ($query->result() as $q) {
 
 
 			$botones = '<div class="btn-footer text-center">
@@ -380,8 +381,8 @@ class Historia_model extends CI_Model {
 		if (isset($data['orderCampo'])) {
 			$this->db->order_by($data['orderCampo'],$data['orderDireccion']);
 		}
-	
-		
+
+
 		if ($data['estado']=='Activo') {
 			$this->db->where('estado_tra',TRATAMIENTO_ACTIVO);
 		}elseif($data['estado']=='Anulado'){
@@ -393,7 +394,7 @@ class Historia_model extends CI_Model {
 		$result['sEcho'] = $data['sEcho'];
 		$result['iTotalRecords'] = $queryLike->num_rows();
 		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
-		
+
 		$row = [];
 		foreach ($query->result() as $q) {
 			if ($q->estadopago_tra==POR_COBRAR) {
@@ -405,9 +406,9 @@ class Historia_model extends CI_Model {
 			}elseif($q->estadopago_tra==ANULADO){
 				$estado = '<label class="label label-danger">Anulado</label>';
 			}
-	    
+
 	    $opciones= '<a href="'.base_url('tratamientos/panel/imprimirTratamiento/'.$q->codi_tra).'" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>';
-	    
+
 			$row[] = [$q->codi_tra,$q->asunto_tra,$q->fecha_tra,$q->total_tra,$estado,$opciones];
 		}
 		$result['aaData'] = $row;

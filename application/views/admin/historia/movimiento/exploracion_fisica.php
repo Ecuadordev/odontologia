@@ -445,18 +445,55 @@
               <div class="form-group">
                 <label class="control-label">Sistema Estomatogántico</label>
                 <div style="display: flex; flex-wrap: wrap; padding: 10px 20px;">
-                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="lips" name="estomgtc[]"> Labios</label>
-                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="cheeks" name="estomgtc[]"> Mejillas</label>
-                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="maxilla" name="estomgtc[]"> Maxilar Superior</label>
-                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="lower_jaw" name="estomgtc[]"> Maxilar Inferior</label>
-                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="tongue" name="estomgtc[]"> Lengua</label>
-                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="palate" name="estomgtc[]"> Paladar</label>
-                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="floor" name="estomgtc[]"> Piso</label>
-                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="jowls" name="estomgtc[]"> Carrillos</label>
-                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="salivary" name="estomgtc[]"> Glándulas Salivales</label>
-                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="pharynx" name="estomgtc[]"> Oro Faringe</label>
-                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="atm" name="estomgtc[]"> A.T.M.</label>
-                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;"><input type="checkbox" value="lymph_nodes" name="estomgtc[]"> Ganglios</label>
+                  <? error_log("Exploracion: ".$exploracion->estomgtc_exp) ?>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
+                    <input type="checkbox" value="lips" name="estomgtc[]" <?= in_array("lips", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
+                    Labios
+                  </label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
+                    <input type="checkbox" value="cheeks" name="estomgtc[]" <?= in_array("cheeks", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
+                    Mejillas
+                  </label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
+                    <input type="checkbox" value="maxilla" name="estomgtc[]" <?= in_array("maxilla", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
+                    Maxilar Superior
+                  </label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
+                    <input type="checkbox" value="lower_jaw" name="estomgtc[]" <?= in_array("lower_jaw", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
+                    Maxilar Inferior
+                  </label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
+                    <input type="checkbox" value="tongue" name="estomgtc[]" <?= in_array("tongue", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
+                    Lengua
+                  </label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
+                    <input type="checkbox" value="palate" name="estomgtc[]" <?= in_array("palate", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
+                    Paladar
+                  </label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
+                    <input type="checkbox" value="floor" name="estomgtc[]" <?= in_array("floor", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
+                    Piso
+                  </label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
+                    <input type="checkbox" value="jowls" name="estomgtc[]" <?= in_array("jowls", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
+                    Carrillos
+                  </label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
+                    <input type="checkbox" value="salivary" name="estomgtc[]" <?= in_array("salivary", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
+                    Glándulas Salivales
+                  </label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
+                    <input type="checkbox" value="pharynx" name="estomgtc[]" <?= in_array("pharynx", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
+                    Oro Faringe
+                  </label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
+                    <input type="checkbox" value="atm" name="estomgtc[]" <?= in_array("atm", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
+                    A.T.M.
+                  </label>
+                  <label class="radio-inline" style="flex: 1 1 15%;margin: 0 0 5px 0;">
+                    <input type="checkbox" value="lymph_nodes" name="estomgtc[]" <?= in_array("lymph_nodes", explode(",",$exploracion->estomgtc_exp)) ? "checked" : "" ?>>
+                    Ganglios
+                  </label>
                 </div>
               </div>
               <div class="form-group">
