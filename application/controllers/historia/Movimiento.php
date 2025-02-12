@@ -5,8 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Movimiento extends CI_Controller {
 	private $permisos;
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct();
 
 		if(!$this->session->userdata("login")){
@@ -18,8 +17,7 @@ class Movimiento extends CI_Controller {
 		$this->load->model('clinica_model');
 	}
 
-	public function index()
-	{
+	public function index() {
 		$data['permisos'] =$this->permisos;
 		$this->load->view('layouts/header');
 		$this->load->view('layouts/aside');
@@ -27,8 +25,7 @@ class Movimiento extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
-	public function jsonHistoriaClinica()
-	{
+	public function jsonHistoriaClinica() {
 		$data['start'] = $this->input->get_post('start', true);
 		$data['length'] = $this->input->get_post('length', true);
 		$data['sEcho']  = $this->input->get_post('_', true);
@@ -57,8 +54,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($datos);
 	}
 
-	function historia($id)
-	{
+	function historia($id) {
 
 		$data['paciente'] = $this->modelgeneral->getTableWhereRow('paciente',['codi_pac'=>$id]);
 		$data['departamentos'] = $this->modelgeneral->getTable('departamento');
@@ -84,8 +80,7 @@ class Movimiento extends CI_Controller {
 		$this->load->view('layouts/footer');
 	}
 
-	public function guardarPacienteEnfermedad()
-	{
+	public function guardarPacienteEnfermedad() {
 		$data['tiempo_enfact'] = $this->input->post('tiempoEnfermedad');
 		$data['motivo_enfact'] = $this->input->post('motivoConsulta');
 		$data['signo_enfact'] = $this->input->post('signosSintomas');
@@ -108,8 +103,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	public function guardarDatosPaciente()
-	{
+	public function guardarDatosPaciente() {
 		$data['nomb_pac'] = $this->input->post('nombres');
 		$data['apel_pac'] = $this->input->post('apellidos');
 		$data['fena_pac'] = $this->input->post('fechaNacimiento');
@@ -138,8 +132,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	public function guardarPacienteConsulta()
-	{
+	public function guardarPacienteConsulta() {
 		if (isset($_POST['algunaVezMedicamento'])) {
 			$data['ortod_paccon'] = $this->input->post('algunaVezMedicamento');
 		}
@@ -190,8 +183,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	public function guardarPacienteExploracion()
-	{
+	public function guardarPacienteExploracion() {
 		$data['pa_exp'] = $this->input->post('PA');
 		$data['pulso_exp'] = $this->input->post('pulso');
 		$data['temperat_exp'] = $this->input->post('temperatura');
@@ -216,8 +208,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	public function jsonAlergias()
-	{
+	public function jsonAlergias() {
 		$data['start'] = $this->input->get_post('start', true);
 		$data['length'] = $this->input->get_post('length', true);
 		$data['sEcho']  = $this->input->get_post('_', true);
@@ -237,8 +228,7 @@ class Movimiento extends CI_Controller {
 	}
 
 
-	public function jsonCitasHistoria()
-	{
+	public function jsonCitasHistoria() {
 		$data['start'] = $this->input->get_post('start', true);
 		$data['length'] = $this->input->get_post('length', true);
 		$data['sEcho']  = $this->input->get_post('_', true);
@@ -260,8 +250,7 @@ class Movimiento extends CI_Controller {
 
 
 
-	public function jsonEvolucion()
-	{
+	public function jsonEvolucion() {
 		$data['start'] = $this->input->get_post('start', true);
 		$data['length'] = $this->input->get_post('length', true);
 		$data['sEcho']  = $this->input->get_post('_', true);
@@ -280,8 +269,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($datos);
 	}
 
-	function agregarEvolucion()
-	{
+	function agregarEvolucion() {
 		$this->form_validation->set_rules('paciente','','required');
 		$this->form_validation->set_rules('especialidad','','required');
 		$this->form_validation->set_rules('medico','','required');
@@ -305,8 +293,7 @@ class Movimiento extends CI_Controller {
 
 	}
 
-	function getEvolucion()
-	{
+	function getEvolucion() {
 		$id = $this->input->get('id');
 		$evolucion = $this->modelgeneral->getTableWhereRow('paciente_evolucion',['pacevol_id'=>$id]);
 		$evolucion->especialidades = $this->db->from('especialidad')
@@ -320,8 +307,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($evolucion);
 	}
 
-	function getMedicos()
-	{
+	function getMedicos() {
 		$especialidad = $this->input->get_post('especialidad');
 		$resp = $this->db->from('medico')
 		->select('codi_med as id,CONCAT(COALESCE(nomb_med,"")," ",COALESCE(apel_med,"")) AS text')
@@ -330,8 +316,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	function editarEvolucion()
-	{
+	function editarEvolucion() {
 		$this->form_validation->set_rules('id','','required');
 		$this->form_validation->set_rules('paciente','','required');
 		$this->form_validation->set_rules('especialidad','','required');
@@ -357,8 +342,7 @@ class Movimiento extends CI_Controller {
 		}
 	}
 
-		function anularEvolucion()
-	{
+		function anularEvolucion() {
 		$where['pacevol_id'] = $this->input->get('id');
 		$data['pacevol_estado'] = 2;//anulado
 		$edit = $this->modelgeneral->editRegist('paciente_evolucion',$where,$data);
@@ -372,8 +356,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	function agregarAlergia()
-	{
+	function agregarAlergia() {
 		$this->form_validation->set_rules('paciente', '', 'required');
 		$this->form_validation->set_rules('alergia', '', 'required');
 		if ($this->form_validation->run() == TRUE){
@@ -392,15 +375,13 @@ class Movimiento extends CI_Controller {
 		}
 	}
 
-	function getAlergia()
-	{
+	function getAlergia() {
 		$id = $this->input->get('id');
 		$alergia = $this->modelgeneral->getTableWhereRow('paciente_alergia',['pacale_id'=>$id]);
 		echo json_encode($alergia);
 	}
 
-	function editarAlergia()
-	{
+	function editarAlergia() {
 		$this->form_validation->set_rules('id', '', 'required');
 		$this->form_validation->set_rules('paciente', '', 'required');
 		$this->form_validation->set_rules('alergia', '', 'required');
@@ -420,8 +401,7 @@ class Movimiento extends CI_Controller {
 		}
 	}
 
-	function anularAlergia()
-	{
+	function anularAlergia() {
 		$where['pacale_id'] = $this->input->get('id');
 		$data['pacale_estado'] = 2;//anulado
 		$edit = $this->modelgeneral->editRegist('paciente_alergia',$where,$data);
@@ -441,8 +421,7 @@ class Movimiento extends CI_Controller {
 
 
 
-	function jsonDiagnostico()
-	{
+	function jsonDiagnostico() {
 		$data['start'] = $this->input->get_post('start', true);
 		$data['length'] = $this->input->get_post('length', true);
 		$data['sEcho']  = $this->input->get_post('_', true);
@@ -462,8 +441,7 @@ class Movimiento extends CI_Controller {
 	}
 
 
-	public function agregarDiagnostico()
-	{
+	public function agregarDiagnostico() {
 		$data['codi_pac'] = $this->input->post('paciente');
 		$data['pacdiag_fecha'] = date('Y-m-d');
 		if ($this->input->post('diagnostico01')!='') {
@@ -484,15 +462,13 @@ class Movimiento extends CI_Controller {
 	}
 
 
-	function getDiagnosticos()
-	{
+	function getDiagnosticos() {
 		$id = $this->input->get('id');
 		$diagnostico = $this->modelgeneral->getTableWhereRow('paciente_diagnostico',['pacdiag_id'=>$id]);
 		echo json_encode($diagnostico);
 	}
 
-	function editarDiagnostico()
-	{
+	function editarDiagnostico() {
 
 		if ($this->input->post('diagnostico01')!='') {
 			$data['codi_enf01'] = $this->input->post('diagnostico01');
@@ -513,8 +489,7 @@ class Movimiento extends CI_Controller {
 	}
 
 
-	function anularDiagnostico()
-	{
+	function anularDiagnostico() {
 		$data['pacdiag_estado'] = 2; //ANULAR
 		$where['pacdiag_id'] = $this->input->get('id');
 		$edit = $this->modelgeneral->editRegist('paciente_diagnostico',$where,$data);
@@ -527,8 +502,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	function jsonPlacas()
-	{
+	function jsonPlacas() {
 		$data['start'] = $this->input->get_post('start', true);
 		$data['length'] = $this->input->get_post('length', true);
 		$data['sEcho']  = $this->input->get_post('_', true);
@@ -547,8 +521,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($datos);
 	}
 
-	function subir()
-	{
+	function subir() {
 		$config['upload_path'] = 'assets/uploads/placas/';
 		$config['allowed_types'] = 'png|jpg|jpeg';
 		$config['max_size'] = '40000';
@@ -575,8 +548,7 @@ class Movimiento extends CI_Controller {
 	}
 
 
-	function agregarPlaca()
-	{
+	function agregarPlaca() {
 		$data['codi_pac'] = $this->input->post('paciente');
 		$data['pla_nombre'] = $this->input->post('nombre');
 		$data['pla_notas'] = $this->input->post('notas');
@@ -591,8 +563,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	function anularPlaca()
-	{
+	function anularPlaca() {
 		$data['pla_estado'] = 2; //ANULAR
 		$where['pla_id'] = $this->input->get('id');
 		$edit = $this->modelgeneral->editRegist('paciente_placa',$where,$data);
@@ -605,15 +576,13 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	function getPlaca()
-	{
+	function getPlaca() {
 		$id = $this->input->get('id');
 		$placa = $this->modelgeneral->getTableWhereRow('paciente_placa',['pla_id'=>$id]);
 		echo json_encode($placa);
 	}
 
-	function editarPlaca()
-	{
+	function editarPlaca() {
 		$data['pla_nombre'] = $this->input->post('nombre');
 		$data['pla_notas'] = $this->input->post('notas');
 		if ($_POST['archivo']!='') {
@@ -631,8 +600,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	function imprimirHistoria($id)
-	{
+	function imprimirHistoria($id) {
 
 		$this->mpdf = new mPDF('utf-8','A4','','',
 			5, //LEFT
@@ -647,17 +615,16 @@ class Movimiento extends CI_Controller {
 		//$htmlHeader = $this->load->view('admin/historia/imprimir/header',NULL,true);
 		$htmlFooter = $this->load->view('admin/historia/imprimir/footer',NULL,true);
 		$css = $css = file_get_contents('assets/styles_historia_pdf.css');
+
 		$this->mpdf->SetTitle('Historia');
 		$this->mpdf->setHTMLHeader($htmlHeader);
 		$this->mpdf->setHTMLFooter($htmlFooter);
 		$this->mpdf->writeHTML($css,1);
 		$this->mpdf->writeHTML($html,2);
 		$this->mpdf->Output('Historia','I');
-
 	}
 
-	public function getMedicosHistoria()
-	{
+	public function getMedicosHistoria() {
 		$especialidad = $this->input->post('especialidad');
 
 		$medicos = $this->db->from('medico')
@@ -667,14 +634,12 @@ class Movimiento extends CI_Controller {
 		echo json_encode($medicos);
 	}
 
-	function getCitaHistoria()
-	{
+	function getCitaHistoria() {
 		$cita = $this->citas_model->getCita($this->input->get('id'));
 		echo json_encode($cita);
 	}
 
-	function editarCitaHistoria()
-	{
+	function editarCitaHistoria() {
 		$this->form_validation->set_rules('id', '', 'required');
 		$this->form_validation->set_rules('hora', '', 'required');
 		$this->form_validation->set_rules('fecha', '', 'required');
@@ -724,8 +689,7 @@ class Movimiento extends CI_Controller {
 			echo json_encode($datos);
 		}
 
-	function getOdontograma($json=null)
-	{
+	function getOdontograma($json=null) {
 		$paciente = $this->input->get('paciente');
 		$tipo = $this->input->get('tipoOdontograma');
 		$odontograma = $this->db->from('paciente_odontograma')
@@ -742,8 +706,7 @@ class Movimiento extends CI_Controller {
 		}
 	}
 
-	function getHallazgo($id)
-	{
+	function getHallazgo($id) {
 		return $this->db->from('paciente_odontograma')
 		->select('pacodo_id as id,id_hal,pacodo_categoria as categoria,pacodo_estado as estado,pacodo_sigla as sigla,pacodo_id,inicio.orden_die as inicio, fin.orden_die as fin,pacodo_marcas as marcas, paciente_odontograma.numero_die as diente')
 		->join('dientes as inicio','paciente_odontograma.numero_die = inicio.numero_die')
@@ -752,8 +715,7 @@ class Movimiento extends CI_Controller {
 		->get()->row();
 	}
 
-	function getHallazgosDientePaciente()
-	{
+	function getHallazgosDientePaciente() {
 		$tipoOdontograma = $this->input->get('tipoOdontograma');
 		$paciente = $this->input->get('paciente');
 		$diente = $this->input->get('diente');
@@ -769,8 +731,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($query);
 	}
 
-	function agregarHallazgo()
-	{
+	function agregarHallazgo() {
 		$data['codi_pac'] = $this->input->post('paciente');
 		$data['pacodo_tipo'] = $this->input->post('tipoOdontograma');
 		$data['id_hal'] = $this->input->post('hallazgo');
@@ -843,8 +804,7 @@ class Movimiento extends CI_Controller {
     echo json_encode($resp);
 	}
 
-	function eliminarHallazgo()
-	{
+	function eliminarHallazgo() {
 		$id = $this->input->get('id');
 		$delete = $this->db->where('pacodo_id',$id)
 		->delete('paciente_odontograma');
@@ -857,8 +817,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	function guardarImagenOdontograma()
-	{
+	function guardarImagenOdontograma() {
 		// baseFromJavascript will be the javascript base64 string retrieved of some way (async or post submited)
 		$baseFromJavascript = $this->input->post('imgData'); // $_POST['base64']; //your data in base64 'data:image/png....';
 		// We need to remove the "data:image/png;base64,"
@@ -880,8 +839,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	function guardarDetalleOdontograma()
-	{
+	function guardarDetalleOdontograma() {
 		$data['detalleodontograma_pac'] = $this->input->post('detalle');
 		$where['codi_pac'] = $this->input->post('paciente');
 		$edit = $this->modelgeneral->editRegist('paciente',$where,$data);
@@ -894,8 +852,7 @@ class Movimiento extends CI_Controller {
 		echo json_encode($resp);
 	}
 
-	function cambiarTipoOdontograma()
-	{
+	function cambiarTipoOdontograma() {
 		$resp = [];
 		$resp['html'] = $this->load->view('admin/historia/movimiento/odontograma/cursores',$data,TRUE);
 		$resp['odontograma'] = $this->getOdontograma('Json');
