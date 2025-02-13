@@ -30,3 +30,52 @@ legend.scheduler-border {
   width:auto;
   padding: 0 5px;
 }
+.blue {
+  background-color: #e6f3ff;
+}
+.red {
+  background-color: #ffe6e6;
+}
+.purple {
+  background-color: #f3e5f5;
+}
+.green {
+  background-color: #e8f5e9;
+}
+.yellow {
+  background-color: #fff9c4;
+}
+.orange {
+  background-color: #ffe0b2;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.small {
+  font-size: 85%;
+}
+.smaller {
+  font-size: 75%;
+}
+.vertical-center {
+  vertical-align: middle;
+}
+.word-break {
+  word-break: break-word;
+
+}
+td.check {
+  padding: 5px 10px;
+}
+label.error {
+  display: none !important;
+}
+input[aria-invalid="true"] {
+  border: 2px solid red;
+}
+.pcg_* {
+  text-align: center;
+}

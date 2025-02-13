@@ -159,7 +159,6 @@ class Movimiento extends CI_Controller {
 		$data['transtexto_paccon'] = $this->input->post('transtornoNerviosoEmocionalTexto');
 		#error_log('padeceEnfermedad: '.$_POST);
 		if (isset($_POST['padeceEnfermedad'])) {
-			error_log('padeceEnfermedad: '.join(",",$this->input->post('padeceEnfermedad')));
 			$data['padece_paccon'] = join(",",$this->input->post('padeceEnfermedad'));
 		}
 
@@ -171,7 +170,11 @@ class Movimiento extends CI_Controller {
 		if (isset($_POST['presionArterial'])) {
 			$data['presion_paccon'] = $this->input->post('presionArterial');
 		}
+
 		$data['presiontexto_paccon'] = $this->input->post('presionArterialTexto');
+		error_log("_POST: ".join(",",$this->input->post('pcg')));
+		$data['health_piece'] = join(",",$this->input->post('health_piece'));
+		$data['pcg'] = join(",",$this->input->post('pcg'));
 
 		$where['codi_pac'] = $this->input->post('paciente');
 		$edit = $this->modelgeneral->editRegist('paciente_consulta',$where,$data);
