@@ -157,9 +157,10 @@ class Movimiento extends CI_Controller {
 			$data['trans_paccon'] = $this->input->post('transtornoNerviosoEmocional');
 		}
 		$data['transtexto_paccon'] = $this->input->post('transtornoNerviosoEmocionalTexto');
-
+		#error_log('padeceEnfermedad: '.$_POST);
 		if (isset($_POST['padeceEnfermedad'])) {
-			$data['padece_paccon'] = $this->input->post('padeceEnfermedad');
+			error_log('padeceEnfermedad: '.join(",",$this->input->post('padeceEnfermedad')));
+			$data['padece_paccon'] = join(",",$this->input->post('padeceEnfermedad'));
 		}
 
 		if (isset($_POST['cepillaDientes'])) {

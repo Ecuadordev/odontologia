@@ -67,25 +67,25 @@
         </tr>
         <tr>
             <td class="center green word-break vertical-center" style="width: 70px;">1. ALERGIA<br/>ANTIBIÓTICO</td>
-            <td class="yellow check vertical-center"><?= $historia->padece === "Alergia Antibiotico" ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= in_array('alergia_antibiotico',explode(",",$historia->padece)) ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">2. ALERGIA<br/>ANESTESIA</td>
-            <td class="yellow check vertical-center"><?= $historia->padece === "Alergia Anestesia" ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= in_array('alergia_anestesia',explode(",",$historia->padece)) ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">3. HEMO<br/>RRAGIAS</td>
-            <td class="yellow check vertical-center"><?= $historia->padece === "Hemorragias" ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= in_array('hemorragias',explode(",",$historia->padece)) ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">4. VIH/SIDA</td>
-            <td class="yellow check vertical-center"><?= $historia->padece === "VIH" ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= in_array('vih',explode(",",$historia->padece)) ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">5. TUBER<br/>CULOSIS</td>
-            <td class="yellow check vertical-center"><?= $historia->padece === "Tuberculosis" ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= in_array('tuberculosis',explode(",",$historia->padece)) ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">6. ASMA</td>
-            <td class="yellow check vertical-center"><?= $historia->padece === "Asma" ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= in_array('asma',explode(",",$historia->padece)) ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">7. DIABETES</td>
-            <td class="yellow check vertical-center"><?= $historia->padece === "Diabetes" ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= in_array('diabetes',explode(",",$historia->padece)) ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">8. HIPER<br/>TENSIÓN</td>
-            <td class="yellow check vertical-center"><?= $historia->padece === "Hipertension" ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= in_array('hipertension',explode(",",$historia->padece)) ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">9. ENF.<br/>CARDIACA</td>
-            <td class="yellow check vertical-center"><?= $historia->padece === "Enf. cardiaca" ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= in_array('cardiaca',explode(",",$historia->padece)) ? "X" : "&nbsp;" ?></td>
             <td class="center green word-break vertical-center" style="width: 70px;">10. OTRO</td>
-            <td class="yellow check vertical-center"><?= $historia->padece === "Otro" ? "X" : "&nbsp;" ?></td>
+            <td class="yellow check vertical-center"><?= in_array('otro',explode(",",$historia->padece)) ? "X" : "&nbsp;" ?></td>
         </tr>
         <tr>
             <td colspan="20">
