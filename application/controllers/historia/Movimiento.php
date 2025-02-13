@@ -178,6 +178,9 @@ class Movimiento extends CI_Controller {
 		$data['periodontal'] = $this->input->post('periodontal');
 		$data['oclusion'] = $this->input->post('oclusion');
 		$data['flourosis'] = $this->input->post('flourosis');
+		$data['cpo'] = join(",", array_map(function($value) {
+			return $value === "" ? 0 : $value;
+		}, $this->input->post('cpo')));
 
 		$where['codi_pac'] = $this->input->post('paciente');
 		$edit = $this->modelgeneral->editRegist('paciente_consulta',$where,$data);

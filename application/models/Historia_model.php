@@ -214,6 +214,7 @@ class Historia_model extends CI_Model {
 		    paciente_consulta.presiontexto_paccon as respuesta7,
 		    paciente_consulta.health_piece as health_piece,
 		    paciente_consulta.pcg as pcg,
+		    paciente_consulta.cpo as cpo,
 		    paciente_exploracion.pa_exp as exploracion,
 		    paciente_exploracion.pulso_exp as pulso,
 		    paciente_exploracion.temperat_exp as temperatura,
