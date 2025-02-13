@@ -172,9 +172,12 @@ class Movimiento extends CI_Controller {
 		}
 
 		$data['presiontexto_paccon'] = $this->input->post('presionArterialTexto');
-		error_log("_POST: ".join(",",$this->input->post('pcg')));
+
 		$data['health_piece'] = join(",",$this->input->post('health_piece'));
 		$data['pcg'] = join(",",$this->input->post('pcg'));
+		$data['periodontal'] = $this->input->post('periodontal');
+		$data['oclusion'] = $this->input->post('oclusion');
+		$data['flourosis'] = $this->input->post('flourosis');
 
 		$where['codi_pac'] = $this->input->post('paciente');
 		$edit = $this->modelgeneral->editRegist('paciente_consulta',$where,$data);

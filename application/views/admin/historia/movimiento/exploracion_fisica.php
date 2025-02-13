@@ -338,11 +338,11 @@
             <td class="blue center">CÁLCULO<br/><small>0-1-2-3</small></td>
             <td class="blue center">GINGIVITIS<br/><small>0-1</small></td>
             <td class="blue center vertical-center">LEVE</td>
-            <td class="check yellow center vertical-center"><input type="radio" name="periodontal" value="leve"></td>
+            <td class="check yellow center vertical-center"><input type="radio" name="periodontal" value="leve" <?= $consulta->health_piece == "leve" ? "checked" : "" ?>></td>
             <td class="blue center vertical-center">ANGLE I</td>
-            <td class="check yellow center vertical-center"><input type="radio" name="oclusion" value="angle"></td>
+            <td class="check yellow center vertical-center"><input type="radio" name="oclusion" value="angle" <?= $consulta->health_piece == "angle" ? "checked" : "" ?>></td>
             <td class="blue center vertical-center">LEVE</td>
-            <td class="check yellow center vertical-center"><input type="radio" name="flourosis" value="leve"></td>
+            <td class="check yellow center vertical-center"><input type="radio" name="flourosis" value="leve" <?= $consulta->health_piece == "leve" ? "checked" : "" ?>></td>
           </tr>
           <tr>
             <td class="center vertical-center blue">16</td>
@@ -355,11 +355,11 @@
             <td class="center vertical-center"><input type="number" name="pcg[12]" value="<?= $pcg[0][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:70px;" pattern="[0,1,2,3]{1}"/></td>
             <td class="center vertical-center"><input type="number" name="pcg[13]" value="<?= $pcg[0][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:70px;" pattern="[0,1]{1}"/></td>
             <td class="blue center vertical-center">MODERADA</td>
-            <td class="check yellow center vertical-center"><input type="radio" name="periodontal" value="leve"></td>
+            <td class="check yellow center vertical-center"><input type="radio" name="periodontal" value="moderada" <?= $consulta->health_piece == "moderada" ? "checked" : "" ?>></td>
             <td class="blue center vertical-center">ANGLE II</td>
-            <td class="check yellow center vertical-center"><input type="radio" name="oclusion" value="angle"></td>
+            <td class="check yellow center vertical-center"><input type="radio" name="oclusion" value="angle2" <?= $consulta->health_piece == "angle2" ? "checked" : "" ?>></td>
             <td class="blue center vertical-center">MODERADA</td>
-            <td class="check yellow center vertical-center"><input type="radio" name="flourosis" value="leve"></td>
+            <td class="check yellow center vertical-center"><input type="radio" name="flourosis" value="moderada" <?= $consulta->health_piece == "moderada" ? "checked" : "" ?>></td>
           </tr>
           <tr>
             <td class="center vertical-center blue">11</td>
@@ -372,11 +372,11 @@
             <td class="center vertical-center"><input type="number" name="pcg[22]" value="<?= $pcg[1][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:70px;" pattern="[0,1,2,3]{1}"/></td>
             <td class="center vertical-center"><input type="number" name="pcg[23]" value="<?= $pcg[1][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:70px;" pattern="[0,1]{1}"/></td>
             <td class="blue center vertical-center">SEVERA</td>
-            <td class="check yellow center vertical-center"><input type="radio" name="periodontal" value="leve"></td>
+            <td class="check yellow center vertical-center"><input type="radio" name="periodontal" value="severa" <?= $consulta->health_piece == "severa" ? "checked" : "" ?>></td>
             <td class="blue center vertical-center">ANGLE III</td>
-            <td class="check yellow center vertical-center"><input type="radio" name="oclusion" value="angle"></td>
+            <td class="check yellow center vertical-center"><input type="radio" name="oclusion" value="angle3" <?= $consulta->health_piece == "angle3" ? "checked" : "" ?>></td>
             <td class="blue center vertical-center">SEVERA</td>
-            <td class="check yellow center vertical-center"><input type="radio" name="flourosis" value="leve"> </td>
+            <td class="check yellow center vertical-center"><input type="radio" name="flourosis" value="severa" <?= $consulta->health_piece == "severa" ? "checked" : "" ?>></td>
           </tr>
           <tr>
             <td class="center vertical-center blue">26</td>
