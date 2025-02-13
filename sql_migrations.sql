@@ -15,3 +15,6 @@ ADD COLUMN oclusion VARCHAR(50);
 
 ALTER TABLE paciente_consulta
 ADD COLUMN flourosis VARCHAR(50);
+
+ALTER TABLE paciente_consulta
+ADD COLUMN cpo VARCHAR(255);
