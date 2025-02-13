@@ -169,6 +169,7 @@
   <!-- Section 8 -->
   <table style="border-collapse: collapse">
     <? $pcg = array_chunk(explode(",",$historia->pcg), 3) ?>
+    <? $cpo = array_chunk(explode(",",$historia->cpo), 4) ?>
     <tr>
       <th colspan="15" class="section-title purple">7 INDICADORES DE SALUD BUCAL</th>
       <td rowspan="5" style="border:none;">
@@ -184,7 +185,18 @@
             <th class="center vertical-center green">Total</th>
           </tr>
           <tr>
-            <td></td><td></td><td></td><td class="center vertical-center yellow">0</td>
+            <td>
+              <?= $cpo[0][0]?>
+            </td>
+            <td>
+              <?= $cpo[0][1]?>
+            </td>
+            <td>
+              <?= $cpo[0][2]?>
+            </td>
+            <td class="center vertical-center yellow">
+              <?= $cpo[0][3]?>
+            </td>
           </tr>
           <tr>
             <th class="center vertical-center green" rowspan="2">d</th>
@@ -194,7 +206,18 @@
             <th class="center vertical-center green">Total</th>
           </tr>
           <tr>
-            <td></td><td></td><td></td><td class="center vertical-center yellow">0</td>
+            <td>
+              <?= $cpo[1][0]?>
+            </td>
+            <td>
+              <?= $cpo[1][1]?>
+            </td>
+            <td>
+              <?= $cpo[1][2]?>
+            </td>
+            <td class="center vertical-center yellow">
+              <?= $cpo[1][3]?>
+            </td>
           </tr>
         </table>
       </td>
@@ -211,11 +234,11 @@
       <td class="blue center">CÁLCULO<br/><small>0-1-2-3</small></td>
       <td class="blue center">GINGIVITIS<br/><small>0-1</small></td>
       <td class="blue center vertical-center">LEVE</td>
-      <td class="check yellow center vertical-center">&nbsp;</td>
+      <td class="check yellow center vertical-center"><?= $historia->periodontal == "leve" ? "X" : "" ?></td>
       <td class="blue center vertical-center">ANGLE I</td>
-      <td class="check yellow center vertical-center">&nbsp;</td>
+      <td class="check yellow center vertical-center"><?= $historia->oclusion == "angle" ? "X" : "" ?></td>
       <td class="blue center vertical-center">LEVE</td>
-      <td class="check yellow center vertical-center">&nbsp;</td>
+      <td class="check yellow center vertical-center"><?= $historia->flourosis == "leve" ? "X" : "" ?></td>
     </tr>
     <tr>
       <td class="center vertical-center blue">16</td>
@@ -228,11 +251,11 @@
       <td class="center vertical-center"><?= $pcg[0][1] ?></td>
       <td class="center vertical-center"><?= $pcg[0][2] ?></td>
       <td class="blue center vertical-center">MODERADA</td>
-      <td class="check yellow center vertical-center">&nbsp;</td>
+      <td class="check yellow center vertical-center"><?= $historia->periodontal == "moderada" ? "X" : "" ?></td>
       <td class="blue center vertical-center">ANGLE II</td>
-      <td class="check yellow center vertical-center">&nbsp;</td>
+      <td class="check yellow center vertical-center"><?= $historia->oclusion == "angle2" ? "X" : "" ?></td>
       <td class="blue center vertical-center">MODERADA</td>
-      <td class="check yellow center vertical-center">&nbsp;</td>
+      <td class="check yellow center vertical-center"><?= $historia->flourosis == "moderada" ? "X" : "" ?></td>
     </tr>
     <tr>
       <td class="center vertical-center blue">11</td>
@@ -245,14 +268,11 @@
       <td class="center vertical-center"><?= $pcg[1][1] ?></td>
       <td class="center vertical-center"><?= $pcg[1][2] ?></td>
       <td class="blue center vertical-center">SEVERA</td>
-      <td class="check yellow center vertical-center">&nbsp;</td>
+      <td class="check yellow center vertical-center"><?= $historia->periodontal == "severa" ? "X" : "" ?></td>
       <td class="blue center vertical-center">ANGLE III</td>
-      <td class="check yellow center vertical-center">&nbsp;</td>
+      <td class="check yellow center vertical-center"><?= $historia->oclusion == "angle3" ? "X" : "" ?></td>
       <td class="blue center vertical-center">SEVERA</td>
-      <td class="check yellow center vertical-center">
-
-
-      </td>
+      <td class="check yellow center vertical-center"><?= $historia->flourosis == "severa" ? "X" : "" ?></td>
     </tr>
     <tr>
       <td class="center vertical-center blue">26</td>
