@@ -19,36 +19,9 @@ th, td {
 th.no-border, td.no-border {
   border: none;
 }
-td.check {
-  padding: 5px 10px;
-}
 .header {
   background-color: #f2f2f2;
   font-weight: bold;
-}
-.blue {
-  background-color: #e6f3ff;
-}
-.red {
-  background-color: #ffe6e6;
-}
-.purple {
-  background-color: #f3e5f5;
-}
-.green {
-  background-color: #e8f5e9;
-}
-.yellow {
-  background-color: #fff9c4;
-}
-.orange {
-  background-color: #ffe0b2;
-}
-.center {
-  text-align: center;
-}
-.right {
-  text-align: right;
 }
 h1,
 h2,
@@ -190,6 +163,30 @@ h6,
 .h6 {
   font-size: 12px;
 }
+.blue {
+  background-color: #e6f3ff;
+}
+.red {
+  background-color: #ffe6e6;
+}
+.purple {
+  background-color: #f3e5f5;
+}
+.green {
+  background-color: #e8f5e9;
+}
+.yellow {
+  background-color: #fff9c4;
+}
+.orange {
+  background-color: #ffe0b2;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
 .small {
   font-size: 85%;
 }
@@ -202,4 +199,7 @@ h6,
 .word-break {
   word-break: break-word;
 
+}
+td.check {
+  padding: 5px 10px;
 }
