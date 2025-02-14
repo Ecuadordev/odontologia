@@ -301,158 +301,142 @@
         <? $pcg = array_chunk(explode(",",$consulta->pcg), 3) ?>
         <? $cpo = array_chunk(explode(",",$consulta->cpo), 4) ?>
           <tr>
-            <th colspan="9" class="section-title green">Higiene Oral Simplificada</th>
-            <th colspan="2" class="section-title green">Enfermedad Periodontal</th>
-            <th colspan="2" class="section-title green">Mal Oclusión</th>
-            <th colspan="2" class="section-title green">Fluorosis</th>
+            <th colspan="9" class="section-title green check">Higiene Oral Simplificada</th>
+            <th colspan="2" class="section-title green check">Enfermedad<br/>Periodontal</th>
+            <th colspan="2" class="section-title green check">Mal<br/>Oclusión</th>
+            <th colspan="2" class="section-title green check">Fluorosis</th>
             <td rowspan="4" style="border:none;">
-              <table style="border:none;">
+              <table style="border:none; margin-left: 10px;">
                 <tr>
-                  <th colspan="5" class="section-title purple">Índices CPO-ceo</th>
+                  <th colspan="5" class="section-title purple check">Índices CPO-ceo</th>
                 </tr>
                 <tr>
-                  <th class="center vertical-center green" rowspan="2">D</th>
-                  <th class="center vertical-center green">C</th>
-                  <th class="center vertical-center green">P</th>
-                  <th class="center vertical-center green">O</th>
-                  <th class="center vertical-center green">Total</th>
+                  <th class="center vertical-center green check" rowspan="2">D</th>
+                  <th class="center vertical-center green check">C</th>
+                  <th class="center vertical-center green check">P</th>
+                  <th class="center vertical-center green check">O</th>
+                  <th class="center vertical-center green check">Total</th>
                 </tr>
                 <tr>
-                  <td>
-                    <input type="number" name="cpo[00]" value="<?= $cpo[0][0]?>" class="text-center cpo_1" onChange="calculateTotals('cpo_1', 'cpo_t_1');" style="width:70px;" pattern="[0-9]{1,}"/>
-                  </td>
-                  <td>
-                    <input type="number" name="cpo[01]" value="<?= $cpo[0][1]?>" class="text-center cpo_1" onChange="calculateTotals('cpo_1', 'cpo_t_1');" style="width:70px;" pattern="[0-9]{1,}"/>
-                  </td>
-                  <td>
-                    <input type="number" name="cpo[02]" value="<?= $cpo[0][2]?>" class="text-center cpo_1" onChange="calculateTotals('cpo_1', 'cpo_t_1');" style="width:70px;" pattern="[0-9]{1,}"/>
-                  </td>
-                  <td class="center vertical-center yellow">
-                    <input type="number" name="cpo[03]" value="<?= $cpo[0][3]?>" class="text-center cpo_t_1" style="width:70px;" pattern="[0-9]{1,}"/>
-                  </td>
+                  <td class="check"> <input type="number" name="cpo[00]" value="<?= $cpo[0][0]?>" class="text-center cpo_1" onChange="calculateTotals('cpo_1', 'cpo_t_1');" style="width:60px;" pattern="[0-9]{1,}"/> </td>
+                  <td class="check"> <input type="number" name="cpo[01]" value="<?= $cpo[0][1]?>" class="text-center cpo_1" onChange="calculateTotals('cpo_1', 'cpo_t_1');" style="width:60px;" pattern="[0-9]{1,}"/> </td>
+                  <td class="check"> <input type="number" name="cpo[02]" value="<?= $cpo[0][2]?>" class="text-center cpo_1" onChange="calculateTotals('cpo_1', 'cpo_t_1');" style="width:60px;" pattern="[0-9]{1,}"/> </td>
+                  <td class="center vertical-center yellow check"> <input type="number" name="cpo[03]" value="<?= $cpo[0][3]?>" class="text-center cpo_t_1" style="width:60px;" pattern="[0-9]{1,}" readonly/> </td>
                 </tr>
                 <tr>
-                  <th class="center vertical-center green" rowspan="2">d</th>
-                  <th class="center vertical-center green">c</th>
-                  <th class="center vertical-center green">e</th>
-                  <th class="center vertical-center green">o</th>
-                  <th class="center vertical-center green">Total</th>
+                  <th class="center vertical-center green check" rowspan="2">d</th>
+                  <th class="center vertical-center green check">c</th>
+                  <th class="center vertical-center green check">e</th>
+                  <th class="center vertical-center green check">o</th>
+                  <th class="center vertical-center green check">Total</th>
                 </tr>
                 <tr>
-                  <td>
-                    <input type="number" name="cpo[10]" value="<?= $cpo[1][0]?>" class="text-center cpo_2" onChange="calculateTotals('cpo_2', 'cpo_t_2');" style="width:70px;" pattern="[0-9]{1,}"/>
-                  </td>
-                  <td>
-                    <input type="number" name="cpo[11]" value="<?= $cpo[1][1]?>" class="text-center cpo_2" onChange="calculateTotals('cpo_2', 'cpo_t_2');" style="width:70px;" pattern="[0-9]{1,}"/>
-                  </td>
-                  <td>
-                    <input type="number" name="cpo[12]" value="<?= $cpo[1][2]?>" class="text-center cpo_2" onChange="calculateTotals('cpo_2', 'cpo_t_2');" style="width:70px;" pattern="[0-9]{1,}"/>
-                  </td>
-                  <td class="center vertical-center yellow">
-                    <input type="number" name="cpo[13]" value="<?= $cpo[1][3]?>" class="text-center cpo_t_2" style="width:70px;" pattern="[0-9]{1,}"/>
-                  </td>
+                  <td class="check"> <input type="number" name="cpo[10]" value="<?= $cpo[1][0]?>" class="text-center cpo_2" onChange="calculateTotals('cpo_2', 'cpo_t_2');" style="width:60px;" pattern="[0-9]{1,}"/> </td>
+                  <td class="check"> <input type="number" name="cpo[11]" value="<?= $cpo[1][1]?>" class="text-center cpo_2" onChange="calculateTotals('cpo_2', 'cpo_t_2');" style="width:60px;" pattern="[0-9]{1,}"/> </td>
+                  <td class="check"> <input type="number" name="cpo[12]" value="<?= $cpo[1][2]?>" class="text-center cpo_2" onChange="calculateTotals('cpo_2', 'cpo_t_2');" style="width:60px;" pattern="[0-9]{1,}"/> </td>
+                  <td class="center vertical-center yellow check"> <input type="number" name="cpo[13]" value="<?= $cpo[1][3]?>" class="text-center cpo_t_2" style="width:60px;" pattern="[0-9]{1,}" readonly/> </td>
                 </tr>
               </table>
             </td>
           </tr>
           <tr>
-            <td class="blue vertical-center" colspan="6">PIEZAS DENTALES</td>
-            <td class="blue center">PLACA<br/><small>0-1-2-3-9</small></td>
-            <td class="blue center">CÁLCULO<br/><small>0-1-2-3</small></td>
-            <td class="blue center">GINGIVITIS<br/><small>0-1</small></td>
-            <td class="blue center vertical-center">LEVE</td>
+            <td class="blue check vertical-center" colspan="6">PIEZAS DENTALES</td>
+            <td class="blue check center">PLACA<br/><small>0-1-2-3-9</small></td>
+            <td class="blue check center">CÁLCULO<br/><small>0-1-2-3</small></td>
+            <td class="blue check center">GINGIVITIS<br/><small>0-1</small></td>
+            <td class="blue center vertical-center check">LEVE</td>
             <td class="check yellow center vertical-center"><input type="radio" name="periodontal" value="leve" <?= $consulta->periodontal == "leve" ? "checked" : "" ?>></td>
-            <td class="blue center vertical-center">ANGLE I</td>
+            <td class="blue center vertical-center check">ANGLE I</td>
             <td class="check yellow center vertical-center"><input type="radio" name="oclusion" value="angle" <?= $consulta->oclusion == "angle" ? "checked" : "" ?>></td>
-            <td class="blue center vertical-center">LEVE</td>
+            <td class="blue center vertical-center check">LEVE</td>
             <td class="check yellow center vertical-center"><input type="radio" name="flourosis" value="leve" <?= $consulta->flourosis == "leve" ? "checked" : "" ?>></td>
           </tr>
           <tr>
-            <td class="center vertical-center blue">16</td>
+            <td class="center vertical-center blue check">16</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="16" <?= in_array("16", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center blue">17</td>
+            <td class="center vertical-center blue check">17</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="17" <?= in_array("17", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center blue">55</td>
+            <td class="center vertical-center blue check">55</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="55" <?= in_array("55", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[11]" value="<?= $pcg[0][0]?>" class="text-center pcg_1" onChange="calculateTotals('pcg_1', 'pcg_t_1');" style="width:70px;" pattern="[0,1,2,3,9]{1}"/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[12]" value="<?= $pcg[0][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:70px;" pattern="[0,1,2,3]{1}"/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[13]" value="<?= $pcg[0][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:70px;" pattern="[0,1]{1}"/></td>
-            <td class="blue center vertical-center">MODERADA</td>
+            <td class="center vertical-center check"><input type="number" name="pcg[11]" value="<?= $pcg[0][0]?>" class="text-center pcg_1" onChange="calculateTotals('pcg_1', 'pcg_t_1');" style="width:60px;" pattern="[0,1,2,3,9]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[12]" value="<?= $pcg[0][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:60px;" pattern="[0,1,2,3]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[13]" value="<?= $pcg[0][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:60px;" pattern="[0,1]{1}"/></td>
+            <td class="blue center vertical-center check">MODERADA</td>
             <td class="check yellow center vertical-center"><input type="radio" name="periodontal" value="moderada" <?= $consulta->periodontal == "moderada" ? "checked" : "" ?>></td>
-            <td class="blue center vertical-center">ANGLE II</td>
+            <td class="blue center vertical-center check">ANGLE II</td>
             <td class="check yellow center vertical-center"><input type="radio" name="oclusion" value="angle2" <?= $consulta->oclusion == "angle2" ? "checked" : "" ?>></td>
-            <td class="blue center vertical-center">MODERADA</td>
+            <td class="blue center vertical-center check">MODERADA</td>
             <td class="check yellow center vertical-center"><input type="radio" name="flourosis" value="moderada" <?= $consulta->flourosis == "moderada" ? "checked" : "" ?>></td>
           </tr>
           <tr>
-            <td class="center vertical-center blue">11</td>
+            <td class="center vertical-center blue check">11</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="11" <?= in_array("11", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center blue">21</td>
+            <td class="center vertical-center blue check">21</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="21" <?= in_array("21", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center blue">51</td>
+            <td class="center vertical-center blue check">51</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="51" <?= in_array("51", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[21]" value="<?= $pcg[1][0]?>" class="text-center pcg_1" onChange="calculateTotals('pcg_1', 'pcg_t_1');" style="width:70px;" pattern="[0,1,2,3,9]{1}"/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[22]" value="<?= $pcg[1][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:70px;" pattern="[0,1,2,3]{1}"/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[23]" value="<?= $pcg[1][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:70px;" pattern="[0,1]{1}"/></td>
-            <td class="blue center vertical-center">SEVERA</td>
+            <td class="center vertical-center check"><input type="number" name="pcg[21]" value="<?= $pcg[1][0]?>" class="text-center pcg_1" onChange="calculateTotals('pcg_1', 'pcg_t_1');" style="width:60px;" pattern="[0,1,2,3,9]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[22]" value="<?= $pcg[1][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:60px;" pattern="[0,1,2,3]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[23]" value="<?= $pcg[1][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:60px;" pattern="[0,1]{1}"/></td>
+            <td class="blue center vertical-center check">SEVERA</td>
             <td class="check yellow center vertical-center"><input type="radio" name="periodontal" value="severa" <?= $consulta->periodontal == "severa" ? "checked" : "" ?>></td>
-            <td class="blue center vertical-center">ANGLE III</td>
+            <td class="blue center vertical-center check">ANGLE III</td>
             <td class="check yellow center vertical-center"><input type="radio" name="oclusion" value="angle3" <?= $consulta->oclusion == "angle3" ? "checked" : "" ?>></td>
-            <td class="blue center vertical-center">SEVERA</td>
+            <td class="blue center vertical-center check">SEVERA</td>
             <td class="check yellow center vertical-center"><input type="radio" name="flourosis" value="severa" <?= $consulta->flourosis == "severa" ? "checked" : "" ?>></td>
           </tr>
           <tr>
-            <td class="center vertical-center blue">26</td>
+            <td class="center vertical-center blue check">26</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="26" <?= in_array("26", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center blue">27</td>
+            <td class="center vertical-center blue check">27</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="27" <?= in_array("27", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center blue">65</td>
+            <td class="center vertical-center blue check">65</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="65" <?= in_array("65", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[31]" value="<?= $pcg[2][0]?>" class="text-center pcg_1" onChange="calculateTotals('pcg_1', 'pcg_t_1');" style="width:70px;" pattern="[0,1,2,3,9]{1}"/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[32]" value="<?= $pcg[2][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:70px;" pattern="[0,1,2,3]{1}"/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[33]" value="<?= $pcg[2][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:70px;" pattern="[0,1]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[31]" value="<?= $pcg[2][0]?>" class="text-center pcg_1" onChange="calculateTotals('pcg_1', 'pcg_t_1');" style="width:60px;" pattern="[0,1,2,3,9]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[32]" value="<?= $pcg[2][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:60px;" pattern="[0,1,2,3]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[33]" value="<?= $pcg[2][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:60px;" pattern="[0,1]{1}"/></td>
             <td class="center vertical-center" colspan="7" rowspan="5">
               &nbsp;
             </td>
           </tr>
           <tr>
-            <td class="center vertical-center blue">36</td>
+            <td class="center vertical-center blue check">36</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="36" <?= in_array("36", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center blue">37</td>
+            <td class="center vertical-center blue check">37</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="37" <?= in_array("37", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center blue">75</td>
+            <td class="center vertical-center blue check">75</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="75" <?= in_array("75", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[41]" value="<?= $pcg[3][0]?>" class="text-center pcg_1" onChange="calculateTotals('pcg_1', 'pcg_t_1');" style="width:70px;" pattern="[0,1,2,3,9]{1}"/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[42]" value="<?= $pcg[3][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:70px;" pattern="[0,1,2,3]{1}"/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[43]" value="<?= $pcg[3][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:70px;" pattern="[0,1]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[41]" value="<?= $pcg[3][0]?>" class="text-center pcg_1" onChange="calculateTotals('pcg_1', 'pcg_t_1');" style="width:60px;" pattern="[0,1,2,3,9]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[42]" value="<?= $pcg[3][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:60px;" pattern="[0,1,2,3]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[43]" value="<?= $pcg[3][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:60px;" pattern="[0,1]{1}"/></td>
           </tr>
           <tr>
-            <td class="center vertical-center blue">31</td>
+            <td class="center vertical-center blue check">31</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="31" <?= in_array("31", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center blue">41</td>
+            <td class="center vertical-center blue check">41</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="41" <?= in_array("41", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center blue">71</td>
+            <td class="center vertical-center blue check">71</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="71" <?= in_array("71", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[51]" value="<?= $pcg[4][0]?>" class="text-center pcg_1" onChange="calculateTotals('pcg_1', 'pcg_t_1');" style="width:70px;" pattern="[0,1,2,3,9]{1}"/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[52]" value="<?= $pcg[4][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:70px;" pattern="[0,1,2,3]{1}"/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[53]" value="<?= $pcg[4][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:70px;" pattern="[0,1]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[51]" value="<?= $pcg[4][0]?>" class="text-center pcg_1" onChange="calculateTotals('pcg_1', 'pcg_t_1');" style="width:60px;" pattern="[0,1,2,3,9]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[52]" value="<?= $pcg[4][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:60px;" pattern="[0,1,2,3]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[53]" value="<?= $pcg[4][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:60px;" pattern="[0,1]{1}"/></td>
           </tr>
           <tr>
-            <td class="center vertical-center blue">46</td>
+            <td class="center vertical-center blue check">46</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="46" <?= in_array("46", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center blue">47</td>
+            <td class="center vertical-center blue check">47</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="47" <?= in_array("47", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center blue">85</td>
+            <td class="center vertical-center blue check">85</td>
             <td class="center vertical-center check yellow"><input type="checkbox" name="health_piece[]" value="85" <?= in_array("85", explode(",",$consulta->health_piece)) ? "checked" : ""?>/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[61]" value="<?= $pcg[5][0]?>" class="text-center pcg_1" onChange="calculateTotals('pcg_1', 'pcg_t_1');" style="width:70px;" pattern="[0,1,2,3,9]{1}"/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[62]" value="<?= $pcg[5][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:70px;" pattern="[0,1,2,3]{1}"/></td>
-            <td class="center vertical-center"><input type="number" name="pcg[63]" value="<?= $pcg[5][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:70px;" pattern="[0,1]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[61]" value="<?= $pcg[5][0]?>" class="text-center pcg_1" onChange="calculateTotals('pcg_1', 'pcg_t_1');" style="width:60px;" pattern="[0,1,2,3,9]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[62]" value="<?= $pcg[5][1]?>" class="text-center pcg_2" onChange="calculateTotals('pcg_2', 'pcg_t_2');" style="width:60px;" pattern="[0,1,2,3]{1}"/></td>
+            <td class="center vertical-center check"><input type="number" name="pcg[63]" value="<?= $pcg[5][2]?>" class="text-center pcg_3" onChange="calculateTotals('pcg_3', 'pcg_t_3');" style="width:60px;" pattern="[0,1]{1}"/></td>
           </tr>
           <tr>
             <td colspan="6" class="green center vertical-center">Totales</td>
-            <td class="center vertical-center yellow"><input type="number" name="pcg[71]" value="<?= $pcg[6][0]?>" class="text-center pcg_t_1" style="width:70px;" readonly/></td>
-            <td class="center vertical-center yellow"><input type="number" name="pcg[72]" value="<?= $pcg[6][1]?>" class="text-center pcg_t_2" style="width:70px;" readonly/></td>
-            <td class="center vertical-center yellow"><input type="number" name="pcg[73]" value="<?= $pcg[6][2]?>" class="text-center pcg_t_3" style="width:70px;" readonly/></td>
+            <td class="center vertical-center yellow"><input type="number" name="pcg[71]" value="<?= $pcg[6][0]?>" class="text-center pcg_t_1" style="width:60px;" readonly/></td>
+            <td class="center vertical-center yellow"><input type="number" name="pcg[72]" value="<?= $pcg[6][1]?>" class="text-center pcg_t_2" style="width:60px;" readonly/></td>
+            <td class="center vertical-center yellow"><input type="number" name="pcg[73]" value="<?= $pcg[6][2]?>" class="text-center pcg_t_3" style="width:60px;" readonly/></td>
           </tr>
         </table>
       </div>
