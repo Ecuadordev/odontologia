@@ -67,8 +67,11 @@ legend.scheduler-border {
   word-break: break-word;
 
 }
-th.check,td.check {
+th,td {
   padding: 5px 10px;
+}
+th.uncheck,td.uncheck {
+  padding: 0;
 }
 label.error {
   display: none !important;

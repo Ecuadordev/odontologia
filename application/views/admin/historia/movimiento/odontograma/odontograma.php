@@ -1,5 +1,5 @@
 <style>
-  .checkbox-inline{
+  .checkbox-inline {
     margin-right: 20px;
   }
 </style>
@@ -7,20 +7,19 @@
   <div class="panel-heading">
     <span class="glyphicon glyphicon-list"></span> Odontograma - <span id="TipoOdontogramaSpan">Inicial</span>
     <div class="pull-right action-buttons">
- 
+
     </div>
   </div>
   <div class="panel-body">
     <div class="row">
       <div class="col-md-12">
-         <div id="imprimir" style="width: 800px"></div>
+        <div id="imprimir" style="width: 800px"></div>
       </div>
       <div class="col-md-9" id="OdontogramaImprimir">
         <div id="odontograma">
           <div id="odontograma-contenido" class="detalle" data-marcaClass="">
             <img src="<?= base_url('assets/odontograma/images/plantilla_nuevo11.png') ?>" class="img-responsive">
             <div id="cursoresRecuadros">
-              
               <?php $this->load->view('admin/historia/movimiento/odontograma/cursores.php') ?>
             </div>
           </div>
@@ -37,7 +36,8 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content ">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Lista de Hallazgos</h4>
       </div>
       <div class="modal-body">
@@ -55,12 +55,13 @@
             </tr>
           </thead>
           <tbody>
-            
+
           </tbody>
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Cerrar</button>
+        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>
+          Cerrar</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -69,14 +70,16 @@
 <div id="ModalAgregarHallazgo" class="modal fade" role="dialog">
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content ">
-      <form id="FormHistoriaMovimientoAgregarHallazgo" action="<?= base_url('historia/movimiento/agregarHallazgo') ?>" method="post" autocomplete="off">
+      <form id="FormHistoriaMovimientoAgregarHallazgo" action="<?= base_url('historia/movimiento/agregarHallazgo') ?>"
+        method="post" autocomplete="off">
         <input type="hidden" name="hallazgo">
         <input type="hidden" name="estado">
         <input type="hidden" name="paciente" value="<?= $paciente->codi_pac ?>">
         <input type="hidden" name="marcas" value="0">
         <input type="hidden" name="tipoOdontograma" value="Inicial">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Agregar Hallazgo</h4>
         </div>
         <div class="modal-body">
@@ -123,7 +126,7 @@
               <div class="col-md-12">
                 <p><b>Seleccione las partes</b></p>
               </div>
-            </div> 
+            </div>
             <div class="row">
               <div class="col-md-3">
                 <div id="dibujar">
@@ -145,7 +148,8 @@
                       Vestibular
                     </label>
                     <label class="radio-inline">
-                      <input type="radio" name="VestibularEstado" id="RadioVestibularBuenEstado" value="bueno"> Buen Estado
+                      <input type="radio" name="VestibularEstado" id="RadioVestibularBuenEstado" value="bueno"> Buen
+                      Estado
                     </label>
                     <label class="radio-inline" for="RadioVestibularMalEstado">
                       <input type="radio" name="VestibularEstado" id="RadioVestibularMalEstado" value="malo"> Mal Estado
@@ -225,7 +229,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
+          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>
+            Cancelar</button>
           <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Guardar</button>
         </div>
       </form>
@@ -239,21 +244,24 @@
 <div id="ModalCapturarOdontograma" class="modal fade" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content ">
-      <form id="FormGuardarCapturaOdontograma" action="<?= base_url('historia/movimiento/guardarImagenOdontograma') ?>" method="POST">
+      <form id="FormGuardarCapturaOdontograma" action="<?= base_url('historia/movimiento/guardarImagenOdontograma') ?>"
+        method="POST">
         <input type="hidden" name="paciente">
         <input type="hidden" name="tipo">
         <input type="hidden" name="imgData">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Odontograma Capturado</h4>
         </div>
         <div class="modal-body">
           <div id="ImagenOdontogramaCapturado">
-            
+
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Cerrar</button>
+          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>
+            Cerrar</button>
           <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Guardar</button>
         </div>
       </form>

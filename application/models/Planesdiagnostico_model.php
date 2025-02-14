@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  *
  */
-class Diagnostico_model extends CI_Model{
+class Planesdiagnostico_model extends CI_Model{
 
 
   function getdiagnostico($data) {
