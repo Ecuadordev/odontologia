@@ -1832,8 +1832,8 @@ $('#TableHistoriaMovimientoDiagnostico').on('click', '.editar-diagnostico', func
   var id = $(this).data('id');
   $.getJSON(path+'historia/movimiento/getDiagnosticos', {id}, function(json, textStatus) {
     $('#FormHistoriaMovimientoEditarDiagnostico input[name=id]').val(json.pacdiag_id);
-    $('#FormHistoriaMovimientoEditarDiagnostico select[name=diagnostico01]').select2('val',json.codi_enf01);
-
+    $('#FormHistoriaMovimientoEditarDiagnostico select[name=diagnostico01]').select2('val', json.codi_enf01);
+    $(`input[name=predef][value=${json.predef}]`).prop('checked', true);
   });
 });
 
