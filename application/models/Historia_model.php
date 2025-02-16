@@ -105,7 +105,7 @@ class Historia_model extends CI_Model
     $queryLike = $this->db->get();
 
     $this->db->from('paciente_diagnostico');
-    $this->db->select('pacdiag_id,pacdiag_fecha,codi_enf01,a.desc_enf as diagnostico01');
+    $this->db->select('pacdiag_id,pacdiag_fecha,codi_enf01,predef,a.desc_enf as diagnostico01');
     $this->db->join('enfermedad as a', 'paciente_diagnostico.codi_enf01 = a.codi_enf', 'left');
     $this->db->where('codi_pac', $data['paciente']);
     $this->db->where('pacdiag_estado', 1);

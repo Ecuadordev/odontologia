@@ -507,6 +507,7 @@ class Movimiento extends CI_Controller
     } else {
       $data['codi_enf01'] = null;
     }
+    $data['predef'] = $this->input->post('predef');
 
 
     $insert = $this->modelgeneral->insertRegist('paciente_diagnostico', $data);
@@ -535,7 +536,7 @@ class Movimiento extends CI_Controller
     } else {
       $data['codi_enf01'] = null;
     }
-
+    $data['predef'] = $this->input->post('predef');
 
     $where['pacdiag_id'] = $this->input->post('id');
     $edit = $this->modelgeneral->editRegist('paciente_diagnostico', $where, $data);
