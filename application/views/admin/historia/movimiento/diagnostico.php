@@ -48,22 +48,23 @@
 
               <table>
                 <tr class="purple">
-                  <th colspan="9">PLANES DE DIAGNÓSTICO, TERAPÉUTICO Y EDUCACIONAL</th>
+                  <th class="check" colspan="9">PLANES DE DIAGNÓSTICO, TERAPÉUTICO Y EDUCACIONAL</th>
                 </tr>
                 <tr>
-                  <td class="small right vertical-center green"><label for="checkBiometria">BIOMETRIA</label></td>
-                  <td class="center vertical-center check yellow"><input type="checkbox" name="planesEnfermedades[]"
-                      id="checkBiometria" value="biometria" <?= in_array("biometria", explode(",", $planes_diagnostico->enfermedades)) ? "checked" : "" ?> /></td>
-                  <td class="small right vertical-center green"><label for="checkQuimica">QUIMICA<br />SANGUINEA</label>
+                  <td class="check small right vertical-center green"><label for="checkBiometria">BIOMETRIA</label></td>
+                  <td class="check center vertical-center check yellow"><input type="checkbox"
+                      name="planesEnfermedades[]" id="checkBiometria" value="biometria" <?= in_array("biometria", explode(",", $planes_diagnostico->enfermedades)) ? "checked" : "" ?> /></td>
+                  <td class="check small right vertical-center green"><label
+                      for="checkQuimica">QUIMICA<br />SANGUINEA</label>
                   </td>
-                  <td class="center vertical-center check yellow"><input type="checkbox" name="planesEnfermedades[]"
-                      id="checkQuimica" value="quimica" <?= in_array("quimica", explode(",", $planes_diagnostico->enfermedades)) ? "checked" : "" ?> /></td>
-                  <td class="small right vertical-center green"><label for="checkRayosx">RAYOS - X</label></td>
-                  <td class="center vertical-center check yellow"><input type="checkbox" name="planesEnfermedades[]"
-                      id="checkRayosx" value="rayosx" <?= in_array("rayosx", explode(",", $planes_diagnostico->enfermedades)) ? "checked" : "" ?> /></td>
-                  <td class="small right vertical-center green"><label for="checkOtros">OTROS</label></td>
-                  <td class="center vertical-center check yellow"><input type="checkbox" name="planesEnfermedades[]"
-                      id="checkOtros" value="otros" <?= in_array("otros", explode(",", $planes_diagnostico->enfermedades)) ? "checked" : "" ?> /></td>
+                  <td class="check center vertical-center check yellow"><input type="checkbox"
+                      name="planesEnfermedades[]" id="checkQuimica" value="quimica" <?= in_array("quimica", explode(",", $planes_diagnostico->enfermedades)) ? "checked" : "" ?> /></td>
+                  <td class="check small right vertical-center green"><label for="checkRayosx">RAYOS - X</label></td>
+                  <td class="check center vertical-center check yellow"><input type="checkbox"
+                      name="planesEnfermedades[]" id="checkRayosx" value="rayosx" <?= in_array("rayosx", explode(",", $planes_diagnostico->enfermedades)) ? "checked" : "" ?> /></td>
+                  <td class="check small right vertical-center green"><label for="checkOtros">OTROS</label></td>
+                  <td class="check center vertical-center check yellow"><input type="checkbox"
+                      name="planesEnfermedades[]" id="checkOtros" value="otros" <?= in_array("otros", explode(",", $planes_diagnostico->enfermedades)) ? "checked" : "" ?> /></td>
                   <td width="40%">&nbsp;</td>
                 </tr>
                 <tr>
@@ -134,10 +135,19 @@
                   </div>
                 </div>
 
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">
+                      Presuntivo
+                      <input type="radio" name="predef" value="presuntivo">
+                    </label>&nbsp;
+                    <label class="control-label">
+                      Definitivo
+                      <input type="radio" name="predef" value="definitivo">
+                    </label>
+                  </div>
+                </div>
               </div>
-
-
-
             </div>
 
           </div>
@@ -187,7 +197,7 @@
 
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label class="control-label">Diagnostico 01</label>
+                    <label class="control-label">Diagnostico</label>
                     <select name="diagnostico01" class="form-control select2" style="width: 100%">
                       <option value=""></option>
                       <?php foreach ($diagnosticos as $d): ?>
@@ -197,20 +207,31 @@
                   </div>
                 </div>
 
-
-
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">
+                      Presuntivo
+                      <input type="radio" name="predef" value="presuntivo">
+                    </label>&nbsp;
+                    <label class="control-label">
+                      Definitivo
+                      <input type="radio" name="predef" value="definitivo">
+                    </label>
+                  </div>
+                </div>
               </div>
-
-
-
             </div>
-
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-close"></i>
-            Cancelar</button>
-          <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Guardar</button>
+          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">
+            <i class="fa fa-close"></i>
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-info">
+            <i class="fa fa-save"></i>
+            Guardar
+          </button>
         </div>
       </form>
     </div>
