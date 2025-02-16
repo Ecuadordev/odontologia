@@ -221,8 +221,8 @@
 
 <!-- Section 8 -->
 <table style="border-collapse: collapse">
-  <? $pcg = array_chunk(explode(",", $historia->pcg), 3) ?>
-  <? $cpo = array_chunk(explode(",", $historia->cpo), 4) ?>
+  <?php $pcg = array_chunk(explode(",", $historia->pcg), 3) ?>
+  <?php $cpo = array_chunk(explode(",", $historia->cpo), 4) ?>
   <tr>
     <th colspan="15" class="section-title purple">7 INDICADORES DE SALUD BUCAL</th>
     <td rowspan="5" style="border:none;">
@@ -482,37 +482,43 @@
     <th class="purple vertical-center center">DEF</th>
   </tr>
   <?php foreach ($chunks as $chunk): ?>
-    <tr>
-      <?php foreach ($chunk as $index => $dg): ?>
-        <? if ($index % 2 === 0): ?>
-          <th class="center vertical-center green"><?= $diagnostico_counter ?></th>
+    <?php if (count($chunk) == 2): ?>
+      <tr>
+        <?php foreach ($chunk as $index => $dg): ?>
+          <?php if ($index % 2 === 0): ?>
+            <th class="center vertical-center green" style="width: 30px;"><?= $diagnostico_counter ?></th>
+            <td colspan="2"><?= $dg->desc_enf ?></td>
+            <td><?= $dg->codi_enf01 ?></td>
+            <td class="check yellow"><?= $dg->predef === "presuntivo" ? "X" : "" ?></td>
+            <td class="check yellow"><?= $dg->predef === "definitivo" ? "X" : "" ?></td>
+          <?php else: ?>
+            <th class="center vertical-center green" style="width: 30px;"><?= $diagnostico_counter ?></th>
+            <td width="200px"><?= $dg->desc_enf ?></td>
+            <td><?= $dg->codi_enf01 ?></td>
+            <td class="check yellow"><?= $dg->predef === "presuntivo" ? "X" : "" ?></td>
+            <td class="check yellow"><?= $dg->predef === "definitivo" ? "X" : "" ?></td>
+          <?php endif; ?>
+          <?php $diagnostico_counter++; ?>
+        <?php endforeach ?>
+      </tr>
+    <?php else: ?>
+      <tr>
+        <?php foreach ($chunk as $index => $dg): ?>
+          <th class="center vertical-center green" style="width: 30px;"><?= $diagnostico_counter ?></th>
           <td colspan="2"><?= $dg->desc_enf ?></td>
           <td><?= $dg->codi_enf01 ?></td>
           <td class="check yellow"><?= $dg->predef === "presuntivo" ? "X" : "" ?></td>
           <td class="check yellow"><?= $dg->predef === "definitivo" ? "X" : "" ?></td>
-        <? else: ?>
-          <th class="center vertical-center green"><?= $diagnostico_counter ?></th>
-          <td><?= $dg->desc_enf ?></td>
-          <td><?= $dg->codi_enf01 ?></td>
-          <td class="check yellow"><?= $dg->predef === "presuntivo" ? "X" : "" ?></td>
-          <td class="check yellow"><?= $dg->predef === "definitivo" ? "X" : "" ?></td>
-        <? endif; ?>
-        <? $diagnostico_counter++; ?>
-      <?php endforeach ?>
-    </tr>
+          <th class="center vertical-center green" style="width: 30px;"><?= $diagnostico_counter + 1 ?></th>
+          <td width="200px">&nbsp;</td>
+          <td>&nbsp;</td>
+          <td class="check yellow">&nbsp;</td>
+          <td class="check yellow">&nbsp;</td>
+          <?php $diagnostico_counter++; ?>
+        <?php endforeach ?>
+      </tr>
+    <?php endif; ?>
   <?php endforeach ?>
-  <tr>
-    <td class="green" style="width: 30px;"></td>
-    <td colspan="2"></td>
-    <td></td>
-    <td class="check yellow"></td>
-    <td class="check yellow"></td>
-    <td class="green" style="width: 30px;"></td>
-    <td width="200px"></td>
-    <td></td>
-    <td class="check yellow"></td>
-    <td class="check yellow"></td>
-  </tr>
 </table>
 <table>
   <tr>
