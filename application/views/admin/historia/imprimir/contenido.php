@@ -463,10 +463,58 @@
 </table>
 
 <!-- Section 11 -->
+<?php $chunks = array_chunk($historia->pacdiagnostico, 2) ?>
+<?php $diagnostico_counter = 1; ?>
 <table>
   <tr class="header">
-    <th colspan="6">11 DIAGNÓSTICO</th>
+    <th class="purple vertical-center" style="border: none !important;">11</th>
+    <th class="purple vertical-center" style="border: none !important;">DIAGNÓSTICO</th>
+    <th class="purple vertical-center small" style=" border: none !important; text-align: right; font-weight: normal;">
+      PRE =
+      PRESUNTIVO<br />DEF = DEFINITIVO
+    </th>
+    <th class="purple vertical-center center">CIE</th>
+    <th class="purple vertical-center center">PRE</th>
+    <th class="purple vertical-center center">DEF</th>
+    <th class="purple vertical-center center" colspan="2"></th>
+    <th class="purple vertical-center center">CIE</th>
+    <th class="purple vertical-center center">PRE</th>
+    <th class="purple vertical-center center">DEF</th>
   </tr>
+  <?php foreach ($chunks as $chunk): ?>
+    <tr>
+      <?php foreach ($chunk as $index => $dg): ?>
+        <? if ($index % 2 === 0): ?>
+          <th class="center vertical-center green"><?= $diagnostico_counter ?></th>
+          <td colspan="2"><?= $dg->desc_enf ?></td>
+          <td><?= $dg->codi_enf01 ?></td>
+          <td class="check yellow"><?= $dg->predef === "presuntivo" ? "X" : "" ?></td>
+          <td class="check yellow"><?= $dg->predef === "definitivo" ? "X" : "" ?></td>
+        <? else: ?>
+          <th class="center vertical-center green"><?= $diagnostico_counter ?></th>
+          <td><?= $dg->desc_enf ?></td>
+          <td><?= $dg->codi_enf01 ?></td>
+          <td class="check yellow"><?= $dg->predef === "presuntivo" ? "X" : "" ?></td>
+          <td class="check yellow"><?= $dg->predef === "definitivo" ? "X" : "" ?></td>
+        <? endif; ?>
+        <? $diagnostico_counter++; ?>
+      <?php endforeach ?>
+    </tr>
+  <?php endforeach ?>
+  <tr>
+    <td class="green" style="width: 30px;"></td>
+    <td colspan="2"></td>
+    <td></td>
+    <td class="check yellow"></td>
+    <td class="check yellow"></td>
+    <td class="green" style="width: 30px;"></td>
+    <td width="200px"></td>
+    <td></td>
+    <td class="check yellow"></td>
+    <td class="check yellow"></td>
+  </tr>
+</table>
+<table>
   <tr>
     <td>FECHA DE APERTURA</td>
     <td>FECHA DE CONTROL</td>
