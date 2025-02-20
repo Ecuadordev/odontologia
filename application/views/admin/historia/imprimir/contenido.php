@@ -522,12 +522,27 @@
 </table>
 <table>
   <tr>
-    <td>FECHA DE APERTURA</td>
-    <td>FECHA DE CONTROL</td>
-    <td>PROFESIONAL</td>
-    <td>FIRMA</td>
-    <td>NUMERO DE HOJA</td>
-    <td></td>
+		<td colspan="6"></td>
+		<td class="small center">CODIGO</td>
+		<td colspan="4"></td>
+  </tr>
+  <tr>
+    <td class="green small center vertical-center" style="width: 60px;">FECHA DE<br />APERTURA</td>
+		<td class="vertical-center"><?= $paciente->fecha_registro ?></td>
+    <td class="green small center vertical-center" style="width: 60px;">FECHA DE<br />CONTROL</td>
+		<td class="vertical-center"></td>
+    <td class="green small center vertical-center" style="width: 60px;">PROFESIONAL</td>
+		<td class="vertical-center"><?= $medico->nomb_med . " " . $medico->apel_med ?></td>
+		<td class="vertical-center" style="width: 60px;"><?= $medico->coleg_med?></td>
+    <td class="green small center vertical-center" style="width: 60px;">FIRMA</td>
+		<td class="vertical-center" style="width: 80px;">
+			 <?php if(isset($usuario) && isset($usuario->firma)): ?>
+        <br>
+        <img src="<?= base_url('assets/uploads/usuarios/'.$usuario->firma) ?>" width="80">
+      <?php endif; ?>
+		</td>
+    <td class="green small center vertical-center" style="width: 60px;">NUMERO DE<br />HOJA</td>
+    <td class="vertical-center">&nbsp;</td>
   </tr>
 </table>
 
