@@ -78,6 +78,7 @@ class Movimiento extends CI_Controller
     $data['sedes'] = $this->modelgeneral->getTable('sede');
     $data['tipo_citado'] = $this->modelgeneral->getTable('tipo_citado');
     $data['medicos'] = $this->modelgeneral->getTableWhere('medico', ['cod_especialidad' => $data['especialidad']->cod_especialidad]);
+		$data['usuario'] = $this->modelgeneral->getTableWhereRow('usuario',['codi_usu'=>$data['medicos']->codi_usu]);
 
 
     $this->load->view('layouts/header');
@@ -685,6 +686,10 @@ class Movimiento extends CI_Controller
     );
     $data['historia'] = $this->historia_model->getHistoriaImprimir($id);
     $data['paciente'] = $this->modelgeneral->getTableWhereRow('paciente', ['codi_pac' => $id]);
+    $data['paciente_enfermedadactual'] = $this->modelgeneral->getTableWhereRow('paciente_enfermedadactual', ['codi_pac' => $id]);
+    $data['paciente_evolucion'] = $this->modelgeneral->getTableWhereRow('paciente_evolucion', ['codi_pac' => $id]);
+    $data['medico'] = $this->modelgeneral->getTableWhereRow('medico', ['codi_med' => $data['paciente_evolucion']->codi_med]);
+    $data['usuario'] = $this->modelgeneral->getTableWhereRow('usuario', ['codi_usu' => $data['medico']->codi_usu]);
     $html = $this->load->view('admin/historia/imprimir/contenido', $data, TRUE);
     //$htmlHeader = $this->load->view('admin/historia/imprimir/header',NULL,true);
     $htmlFooter = $this->load->view('admin/historia/imprimir/footer', NULL, true);
