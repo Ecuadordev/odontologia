@@ -37,5 +37,5 @@ CREATE TABLE
 ALTER TABLE paciente_diagnostico
 ADD COLUMN predef VARCHAR(255);
 
-ALTER TABLE medico
+ALTER TABLE usuario
 ADD COLUMN firma VARCHAR(255);

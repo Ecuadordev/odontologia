@@ -28,8 +28,6 @@ class Medico extends CI_Controller
     $this->load->view('layouts/aside');
     $this->load->view('admin/medico/listar',$data);
     $this->load->view('layouts/footer');
-
-
   }
 
   public function jsonmedicos()
@@ -156,15 +154,26 @@ class Medico extends CI_Controller
       $dataUsuario['fecha_registro'] = date('Y-m-d H:i:s');
       $dataUsuario['esta_usu'] = 1;
 
-      $config['upload_path'] = 'assets/uploads/usuarios/';
-      $config['allowed_types'] = 'png|jpg|jpeg';
-      $config['max_size'] = '40000';
-      $config['max_width'] = '40000';
-      $config['max_height'] = '40000';
-      $this->upload->initialize($config);
+      $config_foto['upload_path'] = 'assets/uploads/usuarios/';
+      $config_foto['allowed_types'] = 'png|jpg|jpeg';
+      $config_foto['max_size'] = '40000';
+      $config_foto['max_width'] = '40000';
+      $config_foto['max_height'] = '40000';
+      $this->upload->initialize($config_foto);
       if ($this->upload->do_upload('foto')) {
         $fileData = $this->upload->data();
         $dataUsuario['foto'] = $fileData['file_name'];
+      }
+
+      $config_firma['upload_path'] = 'assets/uploads/usuarios/';
+      $config_firma['allowed_types'] = 'png|jpg|jpeg';
+      $config_firma['max_size'] = '40000';
+      $config_firma['max_width'] = '40000';
+      $config_firma['max_height'] = '40000';
+      $this->upload->initialize($config_firma);
+      if ($this->upload->do_upload('firma')) {
+        $fileData = $this->upload->data();
+        $dataUsuario['firma'] = $fileData['file_name'];
       }
 
       $data['codi_usu'] = $this->modelgeneral->insertRegist('usuario',$dataUsuario);
@@ -261,15 +270,26 @@ class Medico extends CI_Controller
         $dataUsuario['pass_usu'] = sha1($this->input->post('passwordMedico'));
       }
 
-      $config['upload_path'] = 'assets/uploads/usuarios/';
-      $config['allowed_types'] = 'png|jpg|jpeg';
-      $config['max_size'] = '40000';
-      $config['max_width'] = '40000';
-      $config['max_height'] = '40000';
-      $this->upload->initialize($config);
+      $config_foto['upload_path'] = 'assets/uploads/usuarios/';
+      $config_foto['allowed_types'] = 'png|jpg|jpeg';
+      $config_foto['max_size'] = '40000';
+      $config_foto['max_width'] = '40000';
+      $config_foto['max_height'] = '40000';
+      $this->upload->initialize($config_foto);
       if ($this->upload->do_upload('foto')) {
         $fileData = $this->upload->data();
         $dataUsuario['foto'] = $fileData['file_name'];
+      }
+
+      $config_firma['upload_path'] = 'assets/uploads/usuarios/';
+      $config_firma['allowed_types'] = 'png|jpg|jpeg';
+      $config_firma['max_size'] = '40000';
+      $config_firma['max_width'] = '40000';
+      $config_firma['max_height'] = '40000';
+      $this->upload->initialize($config_firma);
+      if ($this->upload->do_upload('firma')) {
+        $fileData = $this->upload->data();
+        $dataUsuario['firma'] = $fileData['file_name'];
       }
 
       $this->modelgeneral->editRegist('usuario',['codi_usu'=>$this->input->post('usuario')],$dataUsuario);

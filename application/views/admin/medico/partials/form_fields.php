@@ -153,9 +153,9 @@ if(isset($medicos)): ?>
     <div class="form-group">
       <label>Firma</label>
       <input type="file" name="firma">
-      <?php if(isset($medicos) && isset($medicos->firma)): ?>
+      <?php if(isset($usuario) && isset($usuario->firma)): ?>
         <br>
-        <img src="<?= base_url('assets/uploads/medicos/'.$medicos->firma) ?>" width="100">
+        <img src="<?= base_url('assets/uploads/usuarios/'.$usuario->firma) ?>" width="100">
       <?php endif; ?>
     </div>
   </div>
