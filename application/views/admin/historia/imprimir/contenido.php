@@ -522,25 +522,24 @@
 </table>
 <table>
   <tr>
-		<td colspan="6"></td>
-		<td class="small center">CODIGO</td>
-		<td colspan="4"></td>
+    <td colspan="6"></td>
+    <td class="small center">CODIGO</td>
+    <td colspan="4"></td>
   </tr>
   <tr>
     <td class="green small center vertical-center" style="width: 60px;">FECHA DE<br />APERTURA</td>
-		<td class="vertical-center"><?= $paciente->fecha_registro ?></td>
+    <td class="vertical-center"><?= $paciente->fecha_registro ?></td>
     <td class="green small center vertical-center" style="width: 60px;">FECHA DE<br />CONTROL</td>
-		<td class="vertical-center"></td>
+    <td class="vertical-center"></td>
     <td class="green small center vertical-center" style="width: 60px;">PROFESIONAL</td>
-		<td class="vertical-center"><?= $medico->nomb_med . " " . $medico->apel_med ?></td>
-		<td class="vertical-center" style="width: 60px;"><?= $medico->coleg_med?></td>
+    <td class="vertical-center"><?= $medico->nomb_med . " " . $medico->apel_med ?></td>
+    <td class="vertical-center" style="width: 60px;"><?= $medico->coleg_med?></td>
     <td class="green small center vertical-center" style="width: 60px;">FIRMA</td>
-		<td class="vertical-center" style="width: 80px;">
-			 <?php if(isset($usuario) && isset($usuario->firma)): ?>
-        <br>
+    <td class="vertical-center" style="width: 80px;">
+       <?php if(isset($usuario) && isset($usuario->firma)): ?>
         <img src="<?= base_url('assets/uploads/usuarios/'.$usuario->firma) ?>" width="80">
       <?php endif; ?>
-		</td>
+    </td>
     <td class="green small center vertical-center" style="width: 60px;">NUMERO DE<br />HOJA</td>
     <td class="vertical-center">&nbsp;</td>
   </tr>
@@ -549,30 +548,64 @@
 <!-- Section 12 -->
 <table>
   <tr class="header purple">
-    <th colspan="6">12 PROCEDIMIENTOS Y PRESCRIPCIONES</th>
+    <th colspan="6">12 TRATAMIENTO</th>
   </tr>
   <tr class="green">
+    <td width="95px;">SESION Y FECHA</td>
+    <td>DIAGNOSTICOS Y COMPLICACIONES</td>
+    <td>&nbsp;</td>
     <td>PROCEDIMIENTOS</td>
     <td>PRESCRIPCIONES</td>
-    <td>CÓDIGO Y FIRMA</td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td width="115px;">CÓDIGO Y FIRMA</td>
   </tr>
-  <tr class="yellow">
-    <td>CÓDIGO</td>
-    <td>FIRMA</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr class="orange">
-    <td>CÓDIGO</td>
-    <td>FIRMA</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
+
+	<? foreach($historia->tratamiento as $index => $tratamiento): ?>
+		<tr class="">
+			<td style="padding:0;">
+				<table style="border:none;margin:0;padding:0;width:95px;">
+					<tr>
+						<td class="blue">SESION</td>
+						<td><?= $index + 1 ?></td>
+					</tr>
+					<tr>
+						<td class="blue" colspan="2">FECHA</td>
+					</tr>
+					<tr>
+						<td colspan="2"><?= $tratamiento->fecha_tra ?></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<?= $tratamiento->asunto_tra ?>
+				<br>
+				<?= $tratamiento->observacion_tra ?>
+			</td>
+			<td></td>
+			<td>
+				<? $procedimientos = $this->historia_model->getTratamientoProcedimientos($tratamiento->codi_tra)?>
+				<? foreach($procedimientos as $procedimiento): ?>
+					<?= $procedimiento->nombre ?><br>
+				<? endforeach; ?>
+			</td>
+			<td><?#= $tratamiento->prescripciones ?></td>
+			<td style="padding:0;">
+				<table style="border:none;margin:0;padding:0;width:115px;">
+					<tr>
+						<td class="blue">CODIGO</td>
+						<td><?= $tratamiento->coleg_med ?></td>
+					</tr>
+					<tr>
+						<td class="blue" colspan="2">FIRMA</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<?php if(isset($tratamiento->firma)): ?>
+								<img src="<?= base_url('assets/uploads/usuarios/'.$tratamiento->firma) ?>" width="115px">
+							<?php endif; ?>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	<? endforeach; ?>
 </table>

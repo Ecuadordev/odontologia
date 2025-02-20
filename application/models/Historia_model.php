@@ -282,11 +282,24 @@ class Historia_model extends CI_Model
       ->where('codi_pac', $id)
       ->get()->result();
 
+    $paciente->tratamiento = $this->db->from('tratamiento')
+      ->join('medico', 'tratamiento.codi_med = medico.codi_med')
+      ->join('usuario', 'medico.codi_usu = usuario.codi_usu')
+      ->where('tratamiento.estado_tra', '1')
+      ->where('codi_pac', $id)
+      ->get()->result();
+
     return $paciente;
   }
 
 
-
+  function getTratamientoProcedimientos($codi_tra)
+  {
+    return $this->db->from('tratamiento_detalle')
+      ->join('procedimiento', 'tratamiento_detalle.id_procedimiento = procedimiento.id_procedimiento')
+      ->where('tratamiento_detalle.codi_tra', $codi_tra)
+      ->get()->result();
+  }
 
   function getEvolucion($data)
   {
@@ -360,11 +373,8 @@ class Historia_model extends CI_Model
     $result['iTotalDisplayRecords'] = $queryLike->num_rows();
     $row = [];
     foreach ($query->result() as $q) {
-
-
       $botones = '<div class="btn-footer text-center">
       <button data-id="' . $q->codi_cit . '" class="editar-citahistoria btn btn-warning btn-xs" data-toggle="modal" data-target="#ModalEditarCitaHistoria">Editar</button>';
-
       $row[] = [$q->codi_cit, $q->fech_cit, $q->nombre_especialidad, $q->medico, $q->nomb_citado, $botones];
     }
     $result['aaData'] = $row;
