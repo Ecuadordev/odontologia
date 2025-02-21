@@ -39,3 +39,36 @@ ADD COLUMN predef VARCHAR(255);
 
 ALTER TABLE usuario
 ADD COLUMN firma VARCHAR(255);
+
+ALTER TABLE procedimiento
+ADD COLUMN que VARCHAR(255);
+
+ALTER TABLE procedimiento
+ADD COLUMN como VARCHAR(255);
+
+ALTER TABLE procedimiento
+ADD COLUMN grafico VARCHAR(255);
+
+ALTER TABLE procedimiento
+ADD COLUMN duracion VARCHAR(255);
+
+ALTER TABLE procedimiento
+ADD COLUMN beneficios VARCHAR(1024);
+
+ALTER TABLE procedimiento
+ADD COLUMN riesgos_frecuentes VARCHAR(1024);
+
+ALTER TABLE procedimiento
+ADD COLUMN riesgos_poco_frecuentes VARCHAR(1024);
+
+ALTER TABLE procedimiento
+ADD COLUMN riesgos_especificos VARCHAR(1024);
+
+ALTER TABLE procedimiento
+ADD COLUMN consecuencias VARCHAR(1024);
+
+ALTER TABLE procedimiento
+ADD COLUMN alternativas VARCHAR(1024);
+
+ALTER TABLE procedimiento
+ADD COLUMN manejo VARCHAR(1024);

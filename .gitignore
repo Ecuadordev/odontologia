@@ -20,5 +20,8 @@ assets/uploads/pacientes/*
 assets/uploads/usuarios/*
 !assets/uploads/usuarios/*.txt
 
+assets/uploads/procedimientos/*
+!assets/uploads/procedimientos/*.txt
+
 application/cache/sessions/*
 .DS_Store
