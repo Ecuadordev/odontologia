@@ -193,7 +193,7 @@ class Tarifario extends CI_Controller
 			$config_grafico['max_height'] = '40000';
 			$this->upload->initialize($config_grafico);
 			$grafico_uploaded = $this->upload->do_upload('grafico');
-			error_log('uploading file: ' . $this->upload->display_errors('<p>', '</p>'));
+
 			if ($grafico_uploaded) {
 				$fileData = $this->upload->data();
 				$data['grafico'] = $fileData['file_name'];
