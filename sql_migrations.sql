@@ -72,3 +72,22 @@ ADD COLUMN alternativas VARCHAR(1024);
 
 ALTER TABLE procedimiento
 ADD COLUMN manejo VARCHAR(1024);
+
+CREATE TABLE
+	consentimiento (
+		codi_consen INT NOT NULL AUTO_INCREMENT,
+		codi_pac INT DEFAULT NULL,
+		codi_enf varchar(6) CHARACTER
+		SET
+			utf8 DEFAULT NULL,
+			codi_tra INT DEFAULT NULL,
+			tipo varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+			para varchar(512) COLLATE utf8_spanish_ci DEFAULT NULL,
+			PRIMARY KEY (codi_consen),
+			KEY codi_pac (codi_pac),
+			KEY consentimiento_ibfk_2 (codi_enf),
+			KEY codi_tra (codi_tra),
+			CONSTRAINT consentimiento_ibfk_1 FOREIGN KEY (codi_pac) REFERENCES paciente (codi_pac) ON DELETE CASCADE ON UPDATE CASCADE,
+			CONSTRAINT consentimiento_ibfk_2 FOREIGN KEY (codi_enf) REFERENCES enfermedad (codi_enf) ON DELETE CASCADE ON UPDATE CASCADE,
+			CONSTRAINT consentimiento_ibfk_3 FOREIGN KEY (codi_tra) REFERENCES tratamiento (codi_tra) ON DELETE CASCADE ON UPDATE CASCADE
+	) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_spanish_ci;
