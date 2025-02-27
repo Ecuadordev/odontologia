@@ -98,6 +98,7 @@ CREATE TABLE
 		cod_recmedi INT NOT NULL AUTO_INCREMENT,
 		pacrec_id INT (8) NOT NULL,
 		recmedi_nombre VARCHAR(255) NOT NULL,
+		recmedi_presentacion VARCHAR(255),
 		recmedi_dosis VARCHAR(255),
 		recmedi_duracion VARCHAR(255),
 		recmedi_cantidad VARCHAR(255),
