@@ -80,20 +80,17 @@ CREATE TABLE
 		codi_enf varchar(6) CHARACTER
 		SET
 			utf8 DEFAULT NULL,
-			id_procedimiento int (11) DEFAULT NULL,
 			codi_tra INT DEFAULT NULL,
-			fecha_con date DEFAULT NULL,
-			para_con varchar(512) COLLATE utf8_spanish_ci DEFAULT NULL,
-			servicio_con varchar(512) COLLATE utf8_spanish_ci DEFAULT NULL,
-			tipo_con varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+			para varchar(512) COLLATE utf8_spanish_ci DEFAULT NULL,
+			servicio varchar(512) COLLATE utf8_spanish_ci DEFAULT NULL,
+			tipo varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
 			PRIMARY KEY (codi_consen),
 			KEY codi_pac (codi_pac),
-			KEY codi_tra (codi_tra),
 			KEY consentimiento_ibfk_2 (codi_enf),
-			KEY consentimiento_ibfk_4 (id_procedimiento),
+			KEY codi_tra (codi_tra),
 			CONSTRAINT consentimiento_ibfk_1 FOREIGN KEY (codi_pac) REFERENCES paciente (codi_pac) ON DELETE CASCADE ON UPDATE CASCADE,
 			CONSTRAINT consentimiento_ibfk_2 FOREIGN KEY (codi_enf) REFERENCES enfermedad (codi_enf) ON DELETE CASCADE ON UPDATE CASCADE,
 			CONSTRAINT consentimiento_ibfk_3 FOREIGN KEY (codi_tra) REFERENCES tratamiento (codi_tra) ON DELETE CASCADE ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_spanish_ci;
 
-ALTER TABLE tratamiento_detalle MODIFY COLUMN id_procedimiento INT (11);
+alter table
