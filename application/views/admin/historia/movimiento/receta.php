@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="form-group">
-					<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#ModalAgregarReceta"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</button>
+					<button id="btn-agregar-receta" class="btn btn-success btn-sm" data-toggle="modal" data-target="#ModalAgregarReceta"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</button>
 				</div>
 			</div>
 		</div>
@@ -14,7 +14,7 @@
 					<thead>
 						<tr class="btn-primary btn-xs">
 							<th style="text-align: center;">Fecha</th>
-							<th style="text-align: center;">Asunto</th>
+							<th style="text-align: center;">Medicamento</th>
 							<th style="text-align: center;">Médico</th>
 							<th style="text-align: center;">Diagnostico</th>
 							<th style="text-align: center;">Opciones</th>
@@ -75,22 +75,6 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="control-label">Asunto</label>
-										<input type="text" name="asunto" class="form-control input-sm">
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="control-label">Receta</label>
-										<textarea name="receta" class="form-control input-sm" rows="5"></textarea>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
 										<label class="control-label">Medico</label>
 										<select name="medico" class="form-control input-sm" style="width: 100%">
 											<option value="">--Selecciona--</option>
@@ -138,6 +122,62 @@
 									</div>
 								</div>
 							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<table id="crearMedicamento" class="table table-bordered">
+											<thead>
+												<tr class="btn-primary btn-xs">
+													<th style="text-align: center;">Medicamento</th>
+													<th style="text-align: center;">Presentación</th>
+													<th style="text-align: center;">Dosis</th>
+													<th style="text-align: center;">Duración</th>
+													<th style="text-align: center;">Cantidad</th>
+													<th style="text-align: center;">Opciones</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<input type="text" name="medicamentos[0][medicamento]" class="form-control input-sm">
+													</td>
+													<td>
+														<input type="text" name="medicamentos[0][presentacion]" class="form-control input-sm">
+													</td>
+													<td>
+														<input type="text" name="medicamentos[0][dosis]" class="form-control input-sm">
+													</td>
+													<td>
+														<input type="text" name="medicamentos[0][duracion]" class="form-control input-sm">
+													</td>
+													<td>
+														<input type="text" name="medicamentos[0][cantidad]" class="form-control input-sm">
+													</td>
+													<td style="text-align: center;">
+														<button type="button" class="btn btn-success btn-sm" style="padding:2px 5px;margin:0px 2px" onclick="agregarFilaMedicamento(this)"><i class="fa fa-plus"></i></button>
+														<button type="button" class="btn btn-danger btn-sm" style="padding:2px 5px;margin:0px 2px" onclick="eliminarFilaMedicamento(this)"><i class="fa fa-trash"></i></button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="control-label">Prescripción</label>
+										<textarea name="receta" class="form-control input-sm" rows="5"></textarea>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-md-6">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
@@ -201,22 +241,6 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="control-label">Asunto</label>
-										<input type="text" name="asunto" class="form-control input-sm">
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label class="control-label">Receta</label>
-										<textarea name="receta" class="form-control input-sm" rows="5"></textarea>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
 										<label class="control-label">Medico</label>
 										<select name="medico" class="form-control input-sm" style="width: 100%">
 											<option value="">--Selecciona--</option>
@@ -264,6 +288,59 @@
 									</div>
 								</div>
 							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<table id="editarMedicamento" class="table table-bordered">
+											<thead>
+												<tr class="btn-primary btn-xs">
+													<th style="text-align: center;">Medicamento</th>
+													<th style="text-align: center;">Presentación</th>
+													<th style="text-align: center;">Dosis</th>
+													<th style="text-align: center;">Duración</th>
+													<th style="text-align: center;">Cantidad</th>
+													<th style="text-align: center;">Opciones</th>
+												</tr>
+											</thead>
+											<tr>
+												<td>
+													<input type="text" name="medicamentos[0][medicamento]" class="form-control input-sm">
+												</td>
+												<td>
+													<input type="text" name="medicamentos[0][presentacion]" class="form-control input-sm">
+												</td>
+												<td>
+													<input type="text" name="medicamentos[0][dosis]" class="form-control input-sm">
+												</td>
+												<td>
+													<input type="text" name="medicamentos[0][duracion]" class="form-control input-sm">
+												</td>
+												<td>
+													<input type="text" name="medicamentos[0][cantidad]" class="form-control input-sm">
+												</td>
+												<td style="text-align: center;">
+													<button type="button" class="btn btn-success btn-sm" style="padding:2px 5px;margin:0px 2px" onclick="agregarFilaMedicamento(this)"><i class="fa fa-plus"></i></button>
+													<button type="button" class="btn btn-danger btn-sm" style="padding:2px 5px;margin:0px 2px" onclick="eliminarFilaMedicamento(this)"><i class="fa fa-trash"></i></button>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="control-label">Prescripción</label>
+										<textarea name="receta" class="form-control input-sm" rows="5"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
@@ -283,3 +360,33 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+<script>
+	function agregarFilaMedicamento(button) {
+		// Find the current row from the button element
+		var currentRow = button.closest('tr');
+		// Clone the row
+		var newRow = currentRow.cloneNode(true);
+		// Clear input values in the cloned row
+		newRow.querySelectorAll('input').forEach(function(input) {
+			input.value = '';
+		});
+		// Update the name attributes to increment the index
+		var index = currentRow.parentElement.children.length;
+		newRow.querySelectorAll('input').forEach(function(input) {
+			input.name = input.name.replace(/\[\d+\]/, '[' + index + ']');
+		});
+		// Append the new row to the table body
+		var table = currentRow.closest('table');
+		table.querySelector('tbody').appendChild(newRow);
+	}
+
+	function eliminarFilaMedicamento(button) {
+		// Find the current row from the button element
+		var currentRow = button.closest('tr');
+		// Remove the row
+		currentRow.remove();
+
+	}
+</script>

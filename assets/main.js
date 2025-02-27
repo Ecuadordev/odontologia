@@ -1912,10 +1912,30 @@ $(function () {
 			enviarFormulario('#FormHistoriaMovimientoAgregarReceta', function (json) {
 				if (json.success) {
 					$('#TableHistoriaMovimientoRecetas').DataTable().ajax.reload();
+					$('#ModalAgregarReceta').modal('hide');
+					$('#FormHistoriaMovimientoAgregarReceta input[name=asunto]').val('');
+					$('#FormHistoriaMovimientoAgregarReceta input[name=fecha]').val('');
+					$('#FormHistoriaMovimientoAgregarReceta input[name=hora]').val('');
+					$('#FormHistoriaMovimientoAgregarReceta textarea[name=receta]').val('');
+					$('#FormHistoriaMovimientoAgregarReceta textarea[name=indicaciones]').val('');
+					$('#FormHistoriaMovimientoAgregarReceta select[name=diagnostico01]').select2('val', '');
+					$('#FormHistoriaMovimientoAgregarReceta select[name=diagnostico02]').select2('val', '');
+					$('#FormHistoriaMovimientoAgregarReceta select[name=diagnostico03]').select2('val', '');
+					$('#FormHistoriaMovimientoAgregarReceta select[name=medico]').select2('val',
+						'');
+					$('#crearMedicamento tbody>tr:first input').val('');
+					$('#crearMedicamento tbody>tr').not(':first').remove();
 				}
 			})
 		}
 	});
+
+	$('#btn-agregar-receta').click(function (event) {
+		event.preventDefault();
+		$('#crearMedicamento tbody>tr:first input').val('');
+		$('#crearMedicamento tbody>tr').not(':first').remove();
+	});
+
 
 	$('#TableHistoriaMovimientoDiagnostico').on('click', '.editar-diagnostico', function (event) {
 		event.preventDefault();
