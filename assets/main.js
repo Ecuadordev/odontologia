@@ -1945,6 +1945,40 @@ $(function () {
 		}
 	});
 
+	$('#TableHistoriaMovimientoRecetas').on('click', '.editar-receta', function (event) {
+		event.preventDefault();
+		//$('input[name=hora]').val(hora());
+		var id = $(this).data('id');
+		$.getJSON(path + 'historia/movimiento/getReceta', { id }, function (json, textStatus) {
+			console.log("json:", json);
+			$('#FormHistoriaMovimientoEditarReceta input[name=id]').val(json.pacrec_id);
+			$('#FormHistoriaMovimientoEditarReceta input[name=asunto]').val(json.pacrec_asunto);
+			$('#FormHistoriaMovimientoEditarReceta input[name=fecha]').val(json.pacrec_fecha);
+			$('#FormHistoriaMovimientoEditarReceta input[name=hora]').val(json.pacrec_hora);
+			$('#FormHistoriaMovimientoEditarReceta textarea[name=receta]').val(json.pacrec_receta);
+			$('#FormHistoriaMovimientoEditarReceta textarea[name=indicaciones]').val(json.pacrec_indicaciones);
+			$('#FormHistoriaMovimientoEditarReceta select[name=diagnostico01]').select2('val', json.codi_enf01);
+			$('#FormHistoriaMovimientoEditarReceta select[name=diagnostico02]').select2('val', json.codi_enf02);
+			$('#FormHistoriaMovimientoEditarReceta select[name=diagnostico03]').select2('val', json.codi_enf03);
+			$('#FormHistoriaMovimientoEditarReceta select[name=medico]').select2('val', json.codi_med);
+		});
+	});
+
+	$('#FormHistoriaMovimientoEditarReceta').validate({
+		ignore: [],
+		rules: {
+
+			diagnostico01: { required: true }
+		},
+		submitHandler: function () {
+			enviarFormulario('#FormHistoriaMovimientoEditarReceta', function (json) {
+				if (json.success) {
+					$('#TableHistoriaMovimientoReceta').DataTable().ajax.reload();
+				}
+			})
+		}
+	});
+
 	$('#TableHistoriaMovimientoDiagnostico').on('click', '.anular-diagnostico', function (event) {
 		event.preventDefault();
 		var id = $(this).data('id');

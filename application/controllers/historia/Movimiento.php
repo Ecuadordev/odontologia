@@ -530,6 +530,14 @@ class Movimiento extends CI_Controller
 		echo json_encode($resp);
 	}
 
+	public function getReceta()
+	{
+		$id = $this->input->get('id');
+		$receta = $this->modelgeneral->getTableWhereRow('paciente_receta', ['pacrec_id' => $id]);
+
+		echo json_encode($receta);
+	}
+
 	public function agregarReceta()
 	{
 		$data['codi_pac'] = $this->input->post('paciente');
@@ -546,6 +554,26 @@ class Movimiento extends CI_Controller
 		$insert = $this->modelgeneral->insertRegist('paciente_receta', $data);
 		$resp = [];
 		if (!is_null($insert)) {
+			$resp['success'] = true;
+		} else {
+			$resp['success'] = false;
+		}
+		echo json_encode($resp);
+	}
+
+	public function editarReceta()
+	{
+		$data['codi_med'] = $this->input->post('medico');
+		$data['pacrec_asunto'] = $this->input->post('asunto');
+		$data['pacrec_receta'] = $this->input->post('receta');
+		$data['pacrec_indicaciones'] = $this->input->post('indicaciones');
+		$data['codi_enf01'] = $this->input->post('diagnostico01');
+		$data['codi_enf02'] = $this->input->post('diagnostico02');
+		$data['codi_enf03'] = $this->input->post('diagnostico03');
+		$where['pacrec_id'] = $this->input->post('id');
+		$edit = $this->modelgeneral->editRegist('paciente_receta', $where, $data);
+		$resp = [];
+		if ($edit) {
 			$resp['success'] = true;
 		} else {
 			$resp['success'] = false;

@@ -58,13 +58,13 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="control-label">Fecha:</label>
+										<label class="control-label">Fecha</label>
 										<input type="text" name="fecha" class="form-control input-sm" value="<?= date('Y-m-d') ?>" readonly>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="control-label">Hora:</label>
+										<label class="control-label">Hora</label>
 										<?php
 										date_default_timezone_set('America/Guayaquil');
 										?>
@@ -75,7 +75,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="control-label">Asunto:</label>
+										<label class="control-label">Asunto</label>
 										<input type="text" name="asunto" class="form-control input-sm">
 									</div>
 								</div>
@@ -83,7 +83,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="control-label">Receta:</label>
+										<label class="control-label">Receta</label>
 										<textarea name="receta" class="form-control input-sm" rows="5"></textarea>
 									</div>
 								</div>
@@ -91,7 +91,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="control-label">Medico:</label>
+										<label class="control-label">Medico</label>
 										<select name="medico" class="form-control input-sm" style="width: 100%">
 											<option value="">--Selecciona--</option>
 											<?php foreach ($medicos as $med): ?>
@@ -106,7 +106,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="control-label">Diagnostico 01:</label>
+										<label class="control-label">Diagnostico 01</label>
 										<select name="diagnostico01" class="form-control select2" style="width: 100%">
 											<option value=""></option>
 											<?php foreach ($diagnosticos as $d): ?>
@@ -117,7 +117,7 @@
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="control-label">Diagnostico 02:</label>
+										<label class="control-label">Diagnostico 02</label>
 										<select name="diagnostico02" class="form-control select2" style="width: 100%">
 											<option value=""></option>
 											<?php foreach ($diagnosticos as $d): ?>
@@ -128,7 +128,7 @@
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="control-label">Diagnostico 03:</label>
+										<label class="control-label">Diagnostico 03</label>
 										<select name="diagnostico03" class="form-control select2" style="width: 100%">
 											<option value=""></option>
 											<?php foreach ($diagnosticos as $d): ?>
@@ -141,7 +141,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="control-label">Indicaciones:</label>
+										<label class="control-label">Indicaciones</label>
 										<textarea name="indicaciones" class="form-control input-sm" rows="5"></textarea>
 									</div>
 								</div>
@@ -217,7 +217,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
-										<label class="control-label">Medico:</label>
+										<label class="control-label">Medico</label>
 										<select name="medico" class="form-control input-sm" style="width: 100%">
 											<option value="">--Selecciona--</option>
 											<?php foreach ($medicos as $med): ?>
