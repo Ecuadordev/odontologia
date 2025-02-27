@@ -552,6 +552,18 @@ class Movimiento extends CI_Controller
 		$data['codi_enf02'] = $this->input->post('diagnostico02');
 		$data['codi_enf03'] = $this->input->post('diagnostico03');
 		$insert = $this->modelgeneral->insertRegist('paciente_receta', $data);
+
+		error_log('insert: ' . $insert);
+		foreach ($this->input->post('medicamentos') as $key => $value) {
+			$data_medicamentos['pacrec_id'] = $insert;
+			$data_medicamentos['recmedi_nombre'] = $value['medicamento'];
+			$data_medicamentos['recmedi_presentacion'] = $value['presentacion'];
+			$data_medicamentos['recmedi_dosis'] = $value['dosis'];
+			$data_medicamentos['recmedi_duracion'] = $value['duracion'];
+			$data_medicamentos['recmedi_cantidad'] = $value['cantidad'];
+			$this->modelgeneral->insertRegist('receta_medicamentos', $data_medicamentos);
+		}
+
 		$resp = [];
 		if (!is_null($insert)) {
 			$resp['success'] = true;
@@ -598,14 +610,20 @@ class Movimiento extends CI_Controller
 		$data['clinica'] = $this->clinica_model->getClinica(null);
 		$data['receta'] = $this->modelgeneral->getTableWhereRow('paciente_receta', ['pacrec_id' => $id]);
 		$data['paciente'] = $this->modelgeneral->getTableWhereRow('paciente', ['codi_pac' => $data['receta']->codi_pac]);
+		$data['alergia'] =  $this->db->from('alergia')
+			->select('alergia.*')
+			->join('paciente_alergia', 'paciente_alergia.cod_ale = alergia.cod_ale')
+			->where('paciente_alergia.codi_pac', $data['receta']->codi_pac)
+			->get()->result();
 		$data['medico'] = $this->modelgeneral->getTableWhereRow('medico', ['codi_med' => $data['receta']->codi_med]);
+		$data['usuario'] = $this->modelgeneral->getTableWhereRow('usuario', ['codi_usu' => $data['medico']->codi_usu]);
 		$data['especialidad'] = $this->modelgeneral->getTableWhereRow('especialidad', ['cod_especialidad' => $data['medico']->cod_especialidad]);
 		$data['diagnostico01'] = $this->modelgeneral->getTableWhereRow('enfermedad', ['codi_enf' => $data['receta']->codi_enf01]);
 		$data['diagnostico02'] = $this->modelgeneral->getTableWhereRow('enfermedad', ['codi_enf' => $data['receta']->codi_enf02]);
 		$data['diagnostico03'] = $this->modelgeneral->getTableWhereRow('enfermedad', ['codi_enf' => $data['receta']->codi_enf03]);
 		$html = $this->load->view('admin/historia/imprimir/receta', $data, TRUE);
+		$htmlFooter = $this->load->view('admin/historia/imprimir/receta_footer', $data, TRUE);
 
-		$htmlFooter = $this->load->view('admin/historia/imprimir/receta_footer', NULL, true);
 		$css = $css = file_get_contents('assets/styles_receta.css');
 
 		$this->mpdf->SetTitle('Receta médica - ' . $data['paciente']->codi_pac);

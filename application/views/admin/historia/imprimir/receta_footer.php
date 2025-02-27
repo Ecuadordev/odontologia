@@ -1,3 +1,16 @@
+<table style="width:100%; display: inline-block;">
+	<tr>
+		<td style="text-align: center;">
+			<?php if (isset($usuario) && isset($usuario->firma)): ?>
+				<img src="<?= base_url('assets/uploads/usuarios/' . $usuario->firma) ?>" width="80">
+			<?php endif; ?>
+		</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">FIRMA</td>
+	</tr>
+</table>
+<br>
 <table style="width:100%; display: inline-block;border:1px solid #000;">
 	<tr>
 		<td style="text-align: left;font-size: 11px">
