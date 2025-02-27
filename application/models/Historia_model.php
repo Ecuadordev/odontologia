@@ -4,190 +4,236 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Historia_model extends CI_Model
 {
 
-  function getHistoria($data)
-  {
-    $medico = $this->session->userdata('medico');
-    $rol = $this->session->userdata('rol');
-    $this->db->from('cita_medica');
-    $this->db->join('paciente', 'cita_medica.codi_pac = paciente.codi_pac');
-    $this->db->where_not_in('cita_medica.cod_citado', '2');
-    $this->db->where('DATE(fech_cit) >=', $data['desde']);
-    $this->db->where('DATE(fech_cit) <=', $data['hasta']);
-    if ($rol == 1) {
-      $this->db->where('codi_med', $medico);
-    }
+	function getHistoria($data)
+	{
+		$medico = $this->session->userdata('medico');
+		$rol = $this->session->userdata('rol');
+		$this->db->from('cita_medica');
+		$this->db->join('paciente', 'cita_medica.codi_pac = paciente.codi_pac');
+		$this->db->where_not_in('cita_medica.cod_citado', '2');
+		$this->db->where('DATE(fech_cit) >=', $data['desde']);
+		$this->db->where('DATE(fech_cit) <=', $data['hasta']);
+		if ($rol == 1) {
+			$this->db->where('codi_med', $medico);
+		}
 
-    $queryLike = $this->db->get();
+		$queryLike = $this->db->get();
 
-    $this->db->from('cita_medica');
-    $this->db->select('cita_medica.codi_pac,CONCAT(nomb_pac," ",apel_pac) AS NombresApellidos,edad_pac,dni_pac, DATE(fech_cit) as fecha_cita,TIME(fech_cit) as hora_cita,esta_pac');
-    $this->db->join('paciente', 'cita_medica.codi_pac = paciente.codi_pac');
-    $this->db->where_not_in('cita_medica.cod_citado', '2');
-    $this->db->where('DATE(fech_cit) >=', $data['desde']);
-    $this->db->where('DATE(fech_cit) <=', $data['hasta']);
+		$this->db->from('cita_medica');
+		$this->db->select('cita_medica.codi_pac,CONCAT(nomb_pac," ",apel_pac) AS NombresApellidos,edad_pac,dni_pac, DATE(fech_cit) as fecha_cita,TIME(fech_cit) as hora_cita,esta_pac');
+		$this->db->join('paciente', 'cita_medica.codi_pac = paciente.codi_pac');
+		$this->db->where_not_in('cita_medica.cod_citado', '2');
+		$this->db->where('DATE(fech_cit) >=', $data['desde']);
+		$this->db->where('DATE(fech_cit) <=', $data['hasta']);
 
-    if ($rol == 1) {
-      $this->db->where('codi_med', $medico);
-    }
-    if (isset($data['nombresApellidos'])) {
-      $this->db->having("NombresApellidos LIKE '%" . $data['nombresApellidos'] . "%'");
-    }
-    $query = $this->db->get();
+		if ($rol == 1) {
+			$this->db->where('codi_med', $medico);
+		}
+		if (isset($data['nombresApellidos'])) {
+			$this->db->having("NombresApellidos LIKE '%" . $data['nombresApellidos'] . "%'");
+		}
+		$query = $this->db->get();
 
-    $result = array();
-    $result['sEcho'] = $data['sEcho'];
-    $result['iTotalRecords'] = $queryLike->num_rows();
-    $result['iTotalDisplayRecords'] = $queryLike->num_rows();
+		$result = array();
+		$result['sEcho'] = $data['sEcho'];
+		$result['iTotalRecords'] = $queryLike->num_rows();
+		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
 
-    $row = [];
-    foreach ($query->result() as $q) {
-      if ($q->esta_pac == 'S') {
-        $estado = '<label class="label label-success">Activo</label>';
-      } elseif ($q->esta_pac == 'N') {
-        $estado = '<label class="label label-info" style="text-align: center;">Inactivo</label>';
-      }
+		$row = [];
+		foreach ($query->result() as $q) {
+			if ($q->esta_pac == 'S') {
+				$estado = '<label class="label label-success">Activo</label>';
+			} elseif ($q->esta_pac == 'N') {
+				$estado = '<label class="label label-info" style="text-align: center;">Inactivo</label>';
+			}
 
-      $opciones = '<div class="btn-footer text-center">
+			$opciones = '<div class="btn-footer text-center">
 
       <a href="' . base_url('historia/movimiento/historia/' . $q->codi_pac) . '" class="btn btn-info btn-xs" style="text-align:center"><i class="fa fa-edit"></i></a>';
 
-      $row[] = [$q->codi_pac, $q->NombresApellidos, $q->edad_pac, $q->dni_pac, $q->fecha_cita, $q->hora_cita, $estado, $opciones];
-    }
-    $result['aaData'] = $row;
-    return $result;
-  }
+			$row[] = [$q->codi_pac, $q->NombresApellidos, $q->edad_pac, $q->dni_pac, $q->fecha_cita, $q->hora_cita, $estado, $opciones];
+		}
+		$result['aaData'] = $row;
+		return $result;
+	}
 
-  function getAlergias($data)
-  {
-    $this->db->from('paciente_alergia');
-    $this->db->join('alergia', 'paciente_alergia.cod_ale = alergia.cod_ale');
-    $this->db->where('codi_pac', $data['paciente']);
-    $this->db->where('pacale_estado', 1);
-    $queryLike = $this->db->get();
+	function getAlergias($data)
+	{
+		$this->db->from('paciente_alergia');
+		$this->db->join('alergia', 'paciente_alergia.cod_ale = alergia.cod_ale');
+		$this->db->where('codi_pac', $data['paciente']);
+		$this->db->where('pacale_estado', 1);
+		$queryLike = $this->db->get();
 
-    $this->db->from('paciente_alergia');
-    $this->db->join('alergia', 'paciente_alergia.cod_ale = alergia.cod_ale');
-    $this->db->where('codi_pac', $data['paciente']);
-    $this->db->where('pacale_estado', 1);
-    if ($data['length'] != -1) {
-      $this->db->limit($data['length'], $data['start']);
-    }
-    if (isset($data['orderCampo'])) {
-      $this->db->order_by($data['orderCampo'], $data['orderDireccion']);
-    }
-    $query = $this->db->get();
+		$this->db->from('paciente_alergia');
+		$this->db->join('alergia', 'paciente_alergia.cod_ale = alergia.cod_ale');
+		$this->db->where('codi_pac', $data['paciente']);
+		$this->db->where('pacale_estado', 1);
+		if ($data['length'] != -1) {
+			$this->db->limit($data['length'], $data['start']);
+		}
+		if (isset($data['orderCampo'])) {
+			$this->db->order_by($data['orderCampo'], $data['orderDireccion']);
+		}
+		$query = $this->db->get();
 
-    $result = array();
-    $result['sEcho'] = $data['sEcho'];
-    $result['iTotalRecords'] = $queryLike->num_rows();
-    $result['iTotalDisplayRecords'] = $queryLike->num_rows();
+		$result = array();
+		$result['sEcho'] = $data['sEcho'];
+		$result['iTotalRecords'] = $queryLike->num_rows();
+		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
 
-    $row = [];
-    foreach ($query->result() as $q) {
-      $boton = '<div class="btn-footer text-center">
+		$row = [];
+		foreach ($query->result() as $q) {
+			$boton = '<div class="btn-footer text-center">
       <button data-id="' . $q->pacale_id . '" class="editar-alergia btn btn-warning btn-xs" data-toggle="modal" data-target="#ModalEditarAlergia">Editar</button>';
 
 
-      $boton .= '<a></a> <button data-id="' . $q->pacale_id . '" class="anular-alergia btn btn-danger btn-xs">Anular</button>';
-      $row[] = [$q->pacale_id, $q->nombre_ale, $q->pacale_observacion, $boton];
-    }
-    $result['aaData'] = $row;
-    return $result;
-  }
+			$boton .= '<a></a> <button data-id="' . $q->pacale_id . '" class="anular-alergia btn btn-danger btn-xs">Anular</button>';
+			$row[] = [$q->pacale_id, $q->nombre_ale, $q->pacale_observacion, $boton];
+		}
+		$result['aaData'] = $row;
+		return $result;
+	}
 
+	function getDiagnostico($data)
+	{
+		$this->db->from('paciente_diagnostico');
+		$this->db->where('codi_pac', $data['paciente']);
+		$this->db->where('pacdiag_estado', 1);
+		$queryLike = $this->db->get();
 
+		$this->db->from('paciente_diagnostico');
+		$this->db->select('pacdiag_id,pacdiag_fecha,codi_enf01,predef,a.desc_enf as diagnostico01');
+		$this->db->join('enfermedad as a', 'paciente_diagnostico.codi_enf01 = a.codi_enf', 'left');
+		$this->db->where('codi_pac', $data['paciente']);
+		$this->db->where('pacdiag_estado', 1);
+		if ($data['length'] != -1) {
+			$this->db->limit($data['length'], $data['start']);
+		}
+		if (isset($data['orderCampo'])) {
+			$this->db->order_by($data['orderCampo'], $data['orderDireccion']);
+		}
+		$query = $this->db->get();
 
-  function getDiagnostico($data)
-  {
-    $this->db->from('paciente_diagnostico');
-    $this->db->where('codi_pac', $data['paciente']);
-    $this->db->where('pacdiag_estado', 1);
-    $queryLike = $this->db->get();
+		$result = array();
+		$result['sEcho'] = $data['sEcho'];
+		$result['iTotalRecords'] = $queryLike->num_rows();
+		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
 
-    $this->db->from('paciente_diagnostico');
-    $this->db->select('pacdiag_id,pacdiag_fecha,codi_enf01,predef,a.desc_enf as diagnostico01');
-    $this->db->join('enfermedad as a', 'paciente_diagnostico.codi_enf01 = a.codi_enf', 'left');
-    $this->db->where('codi_pac', $data['paciente']);
-    $this->db->where('pacdiag_estado', 1);
-    if ($data['length'] != -1) {
-      $this->db->limit($data['length'], $data['start']);
-    }
-    if (isset($data['orderCampo'])) {
-      $this->db->order_by($data['orderCampo'], $data['orderDireccion']);
-    }
-    $query = $this->db->get();
-
-    $result = array();
-    $result['sEcho'] = $data['sEcho'];
-    $result['iTotalRecords'] = $queryLike->num_rows();
-    $result['iTotalDisplayRecords'] = $queryLike->num_rows();
-
-    $row = [];
-    foreach ($query->result() as $q) {
-      $boton = '<div class="btn-footer text-center">
+		$row = [];
+		foreach ($query->result() as $q) {
+			$boton = '<div class="btn-footer text-center">
       <button data-id="' . $q->pacdiag_id . '" class="editar-diagnostico btn btn-warning btn-xs" data-toggle="modal" data-target="#ModalEditarDiagnostico">Editar</button>';
-      $boton .= '<button data-id="' . $q->pacdiag_id . '" class="anular-diagnostico btn btn-danger btn-xs">Anular</button>';
-      //$siglas=$q->codi_enf01;
-      $diagnostico = $q->diagnostico01;
+			$boton .= '<button data-id="' . $q->pacdiag_id . '" class="anular-diagnostico btn btn-danger btn-xs">Anular</button>';
+			//$siglas=$q->codi_enf01;
+			$diagnostico = $q->diagnostico01;
 
-      $row[] = [
-        $q->pacdiag_fecha,
-        $q->codi_enf01,
-        $diagnostico,
-        $boton
-      ];
-    }
-    $result['aaData'] = $row;
-    return $result;
-  }
+			$row[] = [
+				$q->pacdiag_fecha,
+				$q->codi_enf01,
+				$diagnostico,
+				$boton
+			];
+		}
+		$result['aaData'] = $row;
+		return $result;
+	}
 
-  function getPlacas($data)
-  {
-    $this->db->from('paciente_placa');
-    $this->db->where('codi_pac', $data['paciente']);
-    $this->db->where('pla_estado', 1);
-    $queryLike = $this->db->get();
+	function getReceta($data)
+	{
+		$this->db->from('paciente_receta');
+		$this->db->where('codi_pac', $data['paciente']);
+		$this->db->where('pacrec_estado', 1);
+		$queryLike = $this->db->get();
 
-    $this->db->from('paciente_placa');
-    $this->db->where('codi_pac', $data['paciente']);
-    $this->db->where('pla_estado', 1);
-    if ($data['length'] != -1) {
-      $this->db->limit($data['length'], $data['start']);
-    }
-    if (isset($data['orderCampo'])) {
-      $this->db->order_by($data['orderCampo'], $data['orderDireccion']);
-    }
-    $query = $this->db->get();
+		$this->db->from('paciente_receta');
+		$this->db->select('pacrec_id,pacrec_fecha,pacrec_asunto,a1.desc_enf as diagnostico01, medico.nomb_med, medico.apel_med');
+		$this->db->join('enfermedad as a1', 'paciente_receta.codi_enf01 = a1.codi_enf', 'left');
+		$this->db->join('enfermedad as a2', 'paciente_receta.codi_enf02 = a2.codi_enf', 'left');
+		$this->db->join('enfermedad as a3', 'paciente_receta.codi_enf03 = a3.codi_enf', 'left');
+		$this->db->join('medico', 'paciente_receta.codi_med = medico.codi_med', 'left');
+		$this->db->where('codi_pac', $data['paciente']);
+		$this->db->where('pacrec_estado', 1);
+		if ($data['length'] != -1) {
+			$this->db->limit($data['length'], $data['start']);
+		}
+		if (isset($data['orderCampo'])) {
+			$this->db->order_by($data['orderCampo'], $data['orderDireccion']);
+		}
+		$query = $this->db->get();
 
-    $result = array();
-    $result['sEcho'] = $data['sEcho'];
-    $result['iTotalRecords'] = $queryLike->num_rows();
-    $result['iTotalDisplayRecords'] = $queryLike->num_rows();
+		$result = array();
+		$result['sEcho'] = $data['sEcho'];
+		$result['iTotalRecords'] = $queryLike->num_rows();
+		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
 
-    $row = [];
-    foreach ($query->result() as $q) {
-      $boton = '<div class="btn-footer text-center">
+		$row = [];
+		foreach ($query->result() as $q) {
+			$boton = '<div class="btn-footer text-center">
+			<button data-id="' . $q->pacrec_id . '" class="editar-receta btn btn-warning btn-xs" data-toggle="modal" data-target="#ModalEditarReceta" title="Editar receta"><i class="fa fa-pencil" aria-hidden="true"></i></button>&nbsp;';
+			$boton .= '<button data-id="' . $q->pacrec_id . '" class="anular-receta btn btn-danger btn-xs" title="Anular receta"><i class="fa fa-ban" aria-hidden="true"></i></button>&nbsp;';
+			$boton .= '<a href="' . base_url('historia/movimiento/imprimirReceta/' . $q->pacrec_id) . '" target="_blank" class="imprimir-receta btn btn-primary btn-xs" title="Imprimir receta"><i class="fa fa-print" aria-hidden="true"></i></a>';
+
+			$row[] = [
+				$q->pacrec_fecha,
+				$q->pacrec_asunto,
+				$q->nomb_med . " " . $q->apel_med,
+				$q->diagnostico01,
+				$boton
+			];
+		}
+
+		$result['aaData'] = $row;
+		return $result;
+	}
+
+	function getPlacas($data)
+	{
+		$this->db->from('paciente_placa');
+		$this->db->where('codi_pac', $data['paciente']);
+		$this->db->where('pla_estado', 1);
+		$queryLike = $this->db->get();
+
+		$this->db->from('paciente_placa');
+		$this->db->where('codi_pac', $data['paciente']);
+		$this->db->where('pla_estado', 1);
+		if ($data['length'] != -1) {
+			$this->db->limit($data['length'], $data['start']);
+		}
+		if (isset($data['orderCampo'])) {
+			$this->db->order_by($data['orderCampo'], $data['orderDireccion']);
+		}
+		$query = $this->db->get();
+
+		$result = array();
+		$result['sEcho'] = $data['sEcho'];
+		$result['iTotalRecords'] = $queryLike->num_rows();
+		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
+
+		$row = [];
+		foreach ($query->result() as $q) {
+			$boton = '<div class="btn-footer text-center">
 
       <button data-id="' . $q->pla_id . '" class="anular-placa btn btn-danger btn-xs">Anular</button>
       <button data-id="' . $q->pla_id . '" class="editar-placa btn btn-warning btn-xs">Editar</button>';
-      $archivo = '
+			$archivo = '
       <a data-fancybox="gallery" href="' . base_url('assets/uploads/placas/' . $q->pla_archivo) . '"><i class="fa fa-image"></i> Ver placa</a>';
-      $row[] = [
-        $q->pla_fecha,
-        $q->pla_nombre,
-        $q->pla_notas,
-        $archivo,
-        $boton
-      ];
-    }
-    $result['aaData'] = $row;
-    return $result;
-  }
+			$row[] = [
+				$q->pla_fecha,
+				$q->pla_nombre,
+				$q->pla_notas,
+				$archivo,
+				$boton
+			];
+		}
+		$result['aaData'] = $row;
+		return $result;
+	}
 
-  function getHistoriaImprimir($id)
-  {
-    $paciente = $this->db->from('paciente')
-      ->select("paciente.*,CONCAT(apel_pac,' ', nomb_pac) as paciente, dni_pac as dni, CASE sexo_pac WHEN 'M' THEN 'Masculino' ELSE 'Femenino' END as sexo,telf_pac as telefono, dire_pac as direccion,civi_pac as estadocivil,edad_pac as edad,emai_pac as email,paises.nombre as pais, lugar_nacimiento as lugarnacimiento, fena_pac as fechanacimiento, CASE estudios_pac WHEN 'S' THEN 'Secundaria Completa' WHEN 'U' THEN 'Universitario Superior' WHEN 'P' THEN 'Primaria Completa' ELSE 'No Especifica' END as estudios,ocupacion as ocupacion, CASE civi_pac WHEN 'C' THEN 'Casado' WHEN 'S' THEN 'Soltero' WHEN 'V' THEN 'Viudo(a)' ELSE 'Divorciado(a)' END as civil,informacion_clinica as entero, departamento.departamento_nombre as departamento,
+	function getHistoriaImprimir($id)
+	{
+		$paciente = $this->db->from('paciente')
+			->select("paciente.*,CONCAT(apel_pac,' ', nomb_pac) as paciente, dni_pac as dni, CASE sexo_pac WHEN 'M' THEN 'Masculino' ELSE 'Femenino' END as sexo,telf_pac as telefono, dire_pac as direccion,civi_pac as estadocivil,edad_pac as edad,emai_pac as email,paises.nombre as pais, lugar_nacimiento as lugarnacimiento, fena_pac as fechanacimiento, CASE estudios_pac WHEN 'S' THEN 'Secundaria Completa' WHEN 'U' THEN 'Universitario Superior' WHEN 'P' THEN 'Primaria Completa' ELSE 'No Especifica' END as estudios,ocupacion as ocupacion, CASE civi_pac WHEN 'C' THEN 'Casado' WHEN 'S' THEN 'Soltero' WHEN 'V' THEN 'Viudo(a)' ELSE 'Divorciado(a)' END as civil,informacion_clinica as entero, departamento.departamento_nombre as departamento,
       provincia.provincia_nombre as provincia,
       distrito.distrito_nombre as distrito,
         paciente_enfermedadactual.motivo_enfact as motivo,
@@ -234,207 +280,203 @@ class Historia_model extends CI_Model
         paciente_exploracion.estomgtc_exp as estomgtc,
         paciente_exploracion.odontoesto_exp as exmodonto")
 
-      ->join('paises', 'paciente.pais_id=paises.id')
-      ->join('departamento', 'paciente.departamento_id=departamento.departamento_id')
-      ->join('provincia', 'paciente.provincia_id=provincia.provincia_id')
-      ->join('distrito', 'paciente.distrito_id=distrito.distrito_id')
-      ->join('paciente_enfermedadactual', 'paciente_enfermedadactual.codi_pac=paciente.codi_pac')
-      ->join('paciente_consulta', 'paciente_consulta.codi_pac=paciente.codi_pac')
-      ->join('paciente_planes_diagnostico', 'paciente_planes_diagnostico.codi_pac=paciente.codi_pac')
-      ->join('paciente_exploracion', 'paciente_exploracion.codi_pac=paciente.codi_pac')
-      ->where('paciente.codi_pac', $id)
-      ->get()->row();
+			->join('paises', 'paciente.pais_id=paises.id')
+			->join('departamento', 'paciente.departamento_id=departamento.departamento_id')
+			->join('provincia', 'paciente.provincia_id=provincia.provincia_id')
+			->join('distrito', 'paciente.distrito_id=distrito.distrito_id')
+			->join('paciente_enfermedadactual', 'paciente_enfermedadactual.codi_pac=paciente.codi_pac')
+			->join('paciente_consulta', 'paciente_consulta.codi_pac=paciente.codi_pac')
+			->join('paciente_planes_diagnostico', 'paciente_planes_diagnostico.codi_pac=paciente.codi_pac')
+			->join('paciente_exploracion', 'paciente_exploracion.codi_pac=paciente.codi_pac')
+			->where('paciente.codi_pac', $id)
+			->get()->row();
 
-    $paciente->alergias = $this->db->from('paciente_alergia')
-      ->join('alergia', 'paciente_alergia.cod_ale = alergia.cod_ale')
-      ->where('codi_pac', $id)
-      ->get()->result();
+		$paciente->alergias = $this->db->from('paciente_alergia')
+			->join('alergia', 'paciente_alergia.cod_ale = alergia.cod_ale')
+			->where('codi_pac', $id)
+			->get()->result();
 
-    $paciente->odinicial = $this->db->from('paciente_odontograma')
-      ->join('hallazgos', 'paciente_odontograma.id_hal=hallazgos.id_hal')
-      ->join('dientes', 'paciente_odontograma.numero_die=dientes.numero_die')
-      ->where('paciente_odontograma.pacodo_tipo', 'Inicial')
-      ->where('codi_pac', $id)
-      ->get()->result();
+		$paciente->odinicial = $this->db->from('paciente_odontograma')
+			->join('hallazgos', 'paciente_odontograma.id_hal=hallazgos.id_hal')
+			->join('dientes', 'paciente_odontograma.numero_die=dientes.numero_die')
+			->where('paciente_odontograma.pacodo_tipo', 'Inicial')
+			->where('codi_pac', $id)
+			->get()->result();
 
-    $paciente->evolucionado = $this->db->from('paciente_odontograma')
-      ->join('hallazgos', 'paciente_odontograma.id_hal=hallazgos.id_hal')
-      ->join('dientes', 'paciente_odontograma.numero_die=dientes.numero_die')
-      ->where('paciente_odontograma.pacodo_tipo', 'Evolucion')
-      ->where('codi_pac', $id)
-      ->get()->result();
+		$paciente->evolucionado = $this->db->from('paciente_odontograma')
+			->join('hallazgos', 'paciente_odontograma.id_hal=hallazgos.id_hal')
+			->join('dientes', 'paciente_odontograma.numero_die=dientes.numero_die')
+			->where('paciente_odontograma.pacodo_tipo', 'Evolucion')
+			->where('codi_pac', $id)
+			->get()->result();
 
-    $paciente->evolucion = $this->db->from('paciente_evolucion')
-      ->join('especialidad', 'paciente_evolucion.cod_especialidad = especialidad.cod_especialidad')
-      ->join('medico', 'paciente_evolucion.codi_med = medico.codi_med')
-      ->where('paciente_evolucion.pacevol_estado', '1')
-      ->where('codi_pac', $id)
-      ->get()->result();
+		$paciente->evolucion = $this->db->from('paciente_evolucion')
+			->join('especialidad', 'paciente_evolucion.cod_especialidad = especialidad.cod_especialidad')
+			->join('medico', 'paciente_evolucion.codi_med = medico.codi_med')
+			->where('paciente_evolucion.pacevol_estado', '1')
+			->where('codi_pac', $id)
+			->get()->result();
 
-    $paciente->receta = $this->db->from('paciente_receta')
-      ->where('paciente_receta.pacrec_estado', '1')
-      ->where('codi_pac', $id)
-      ->get()->result();
+		$paciente->receta = $this->db->from('paciente_receta')
+			->where('paciente_receta.pacrec_estado', '1')
+			->where('codi_pac', $id)
+			->get()->result();
 
-    $paciente->pacdiagnostico = $this->db->from('paciente_diagnostico')
-      ->join('enfermedad', 'paciente_diagnostico.codi_enf01 = enfermedad.codi_enf')
-      ->where('paciente_diagnostico.pacdiag_estado', '1')
-      ->where('codi_pac', $id)
-      ->get()->result();
+		$paciente->pacdiagnostico = $this->db->from('paciente_diagnostico')
+			->join('enfermedad', 'paciente_diagnostico.codi_enf01 = enfermedad.codi_enf')
+			->where('paciente_diagnostico.pacdiag_estado', '1')
+			->where('codi_pac', $id)
+			->get()->result();
 
-    $paciente->tratamiento = $this->db->from('tratamiento')
-      ->join('medico', 'tratamiento.codi_med = medico.codi_med')
-      ->join('usuario', 'medico.codi_usu = usuario.codi_usu')
-      ->where('tratamiento.estado_tra', '1')
-      ->where('codi_pac', $id)
-      ->get()->result();
+		$paciente->tratamiento = $this->db->from('tratamiento')
+			->join('medico', 'tratamiento.codi_med = medico.codi_med')
+			->join('usuario', 'medico.codi_usu = usuario.codi_usu')
+			->where('tratamiento.estado_tra', '1')
+			->where('codi_pac', $id)
+			->get()->result();
 
-    return $paciente;
-  }
+		return $paciente;
+	}
 
+	function getTratamientoProcedimientos($codi_tra)
+	{
+		return $this->db->from('tratamiento_detalle')
+			->join('procedimiento', 'tratamiento_detalle.id_procedimiento = procedimiento.id_procedimiento')
+			->where('tratamiento_detalle.codi_tra', $codi_tra)
+			->get()->result();
+	}
 
-  function getTratamientoProcedimientos($codi_tra)
-  {
-    return $this->db->from('tratamiento_detalle')
-      ->join('procedimiento', 'tratamiento_detalle.id_procedimiento = procedimiento.id_procedimiento')
-      ->where('tratamiento_detalle.codi_tra', $codi_tra)
-      ->get()->result();
-  }
+	function getEvolucion($data)
+	{
+		$this->db->from('paciente_evolucion');
+		$this->db->join('medico', 'paciente_evolucion.codi_med = medico.codi_med');
+		$this->db->join('especialidad', 'paciente_evolucion.cod_especialidad=especialidad.cod_especialidad');
+		$this->db->where('codi_pac', $data['paciente']);
+		$this->db->where('pacevol_estado', 1);
+		$queryLike = $this->db->get();
 
-  function getEvolucion($data)
-  {
-    $this->db->from('paciente_evolucion');
-    $this->db->join('medico', 'paciente_evolucion.codi_med = medico.codi_med');
-    $this->db->join('especialidad', 'paciente_evolucion.cod_especialidad=especialidad.cod_especialidad');
-    $this->db->where('codi_pac', $data['paciente']);
-    $this->db->where('pacevol_estado', 1);
-    $queryLike = $this->db->get();
+		$this->db->from('paciente_evolucion');
+		$this->db->select('paciente_evolucion.*, fecha_evolucion,pacevol_descripcion,CONCAT(nomb_med," ",apel_med) as medico, nombre_especialidad');
+		$this->db->join('medico', 'paciente_evolucion.codi_med = medico.codi_med');
+		$this->db->join('especialidad', 'paciente_evolucion.cod_especialidad=especialidad.cod_especialidad');
+		$this->db->where('codi_pac', $data['paciente']);
+		$this->db->where('pacevol_estado', 1);
+		if ($data['length'] != -1) {
+			$this->db->limit($data['length'], $data['start']);
+		}
+		if (isset($data['orderCampo'])) {
+			$this->db->order_by($data['orderCampo'], $data['orderDireccion']);
+		}
+		$query = $this->db->get();
 
-    $this->db->from('paciente_evolucion');
-    $this->db->select('paciente_evolucion.*, fecha_evolucion,pacevol_descripcion,CONCAT(nomb_med," ",apel_med) as medico, nombre_especialidad');
-    $this->db->join('medico', 'paciente_evolucion.codi_med = medico.codi_med');
-    $this->db->join('especialidad', 'paciente_evolucion.cod_especialidad=especialidad.cod_especialidad');
-    $this->db->where('codi_pac', $data['paciente']);
-    $this->db->where('pacevol_estado', 1);
-    if ($data['length'] != -1) {
-      $this->db->limit($data['length'], $data['start']);
-    }
-    if (isset($data['orderCampo'])) {
-      $this->db->order_by($data['orderCampo'], $data['orderDireccion']);
-    }
-    $query = $this->db->get();
+		$result = array();
+		$result['sEcho'] = $data['sEcho'];
+		$result['iTotalRecords'] = $queryLike->num_rows();
+		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
 
-    $result = array();
-    $result['sEcho'] = $data['sEcho'];
-    $result['iTotalRecords'] = $queryLike->num_rows();
-    $result['iTotalDisplayRecords'] = $queryLike->num_rows();
-
-    $row = [];
-    foreach ($query->result() as $q) {
-      $boton = '<div class="btn-footer text-center">
+		$row = [];
+		foreach ($query->result() as $q) {
+			$boton = '<div class="btn-footer text-center">
       <button data-id="' . $q->pacevol_id . '" class="editar-evolucion btn btn-warning btn-xs" data-toggle="modal" data-target="#ModalEditarEvolucion">Editar</button>';
 
 
-      $boton .= '<a></a> <button data-id="' . $q->pacevol_id . '" class="anular-evolucion btn btn-danger btn-xs">Anular</button>';
-      $row[] = [$q->fecha_evolucion, $q->pacevol_descripcion, $q->medico, $q->nombre_especialidad, $boton];
-    }
-    $result['aaData'] = $row;
-    return $result;
-  }
+			$boton .= '<a></a> <button data-id="' . $q->pacevol_id . '" class="anular-evolucion btn btn-danger btn-xs">Anular</button>';
+			$row[] = [$q->fecha_evolucion, $q->pacevol_descripcion, $q->medico, $q->nombre_especialidad, $boton];
+		}
+		$result['aaData'] = $row;
+		return $result;
+	}
 
+	function getListadoCitas($data)
+	{
+		$this->db->from('cita_medica');
+		$this->db->join('especialidad', 'cita_medica.cod_especialidad=especialidad.cod_especialidad');
+		$this->db->join('medico', 'cita_medica.codi_med=medico.codi_med');
+		$this->db->join('tipo_citado', 'cita_medica.cod_citado=tipo_citado.cod_citado');
+		$this->db->where('codi_pac', $data['paciente']);
+		$queryLike = $this->db->get();
 
-  function getListadoCitas($data)
-  {
-    $this->db->from('cita_medica');
-    $this->db->join('especialidad', 'cita_medica.cod_especialidad=especialidad.cod_especialidad');
-    $this->db->join('medico', 'cita_medica.codi_med=medico.codi_med');
-    $this->db->join('tipo_citado', 'cita_medica.cod_citado=tipo_citado.cod_citado');
-    $this->db->where('codi_pac', $data['paciente']);
-    $queryLike = $this->db->get();
+		$this->db->from('cita_medica');
+		$this->db->select('cita_medica.*,codi_cit,fech_cit,nombre_especialidad,concat(nomb_med," ",apel_med) as medico,nomb_citado');
+		//$this->db->join('paciente','cita_medica.codi_pac=paciente.codi_pac');
+		$this->db->join('especialidad', 'cita_medica.cod_especialidad=especialidad.cod_especialidad');
+		$this->db->join('medico', 'cita_medica.codi_med=medico.codi_med');
+		$this->db->join('tipo_citado', 'cita_medica.cod_citado=tipo_citado.cod_citado');
+		$this->db->where('codi_pac', $data['paciente']);
+		if ($data['length'] != -1) {
+			$this->db->limit($data['length'], $data['start']);
+		}
+		if (isset($data['orderCampo'])) {
+			$this->db->order_by($data['orderCampo'], $data['orderDireccion']);
+		}
+		$query = $this->db->get();
 
-    $this->db->from('cita_medica');
-    $this->db->select('cita_medica.*,codi_cit,fech_cit,nombre_especialidad,concat(nomb_med," ",apel_med) as medico,nomb_citado');
-    //$this->db->join('paciente','cita_medica.codi_pac=paciente.codi_pac');
-    $this->db->join('especialidad', 'cita_medica.cod_especialidad=especialidad.cod_especialidad');
-    $this->db->join('medico', 'cita_medica.codi_med=medico.codi_med');
-    $this->db->join('tipo_citado', 'cita_medica.cod_citado=tipo_citado.cod_citado');
-    $this->db->where('codi_pac', $data['paciente']);
-    if ($data['length'] != -1) {
-      $this->db->limit($data['length'], $data['start']);
-    }
-    if (isset($data['orderCampo'])) {
-      $this->db->order_by($data['orderCampo'], $data['orderDireccion']);
-    }
-    $query = $this->db->get();
-
-    $result = array();
-    $result['sEcho'] = $data['sEcho'];
-    $result['iTotalRecords'] = $queryLike->num_rows();
-    $result['iTotalDisplayRecords'] = $queryLike->num_rows();
-    $row = [];
-    foreach ($query->result() as $q) {
-      $botones = '<div class="btn-footer text-center">
+		$result = array();
+		$result['sEcho'] = $data['sEcho'];
+		$result['iTotalRecords'] = $queryLike->num_rows();
+		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
+		$row = [];
+		foreach ($query->result() as $q) {
+			$botones = '<div class="btn-footer text-center">
       <button data-id="' . $q->codi_cit . '" class="editar-citahistoria btn btn-warning btn-xs" data-toggle="modal" data-target="#ModalEditarCitaHistoria">Editar</button>';
-      $row[] = [$q->codi_cit, $q->fech_cit, $q->nombre_especialidad, $q->medico, $q->nomb_citado, $botones];
-    }
-    $result['aaData'] = $row;
-    return $result;
-  }
+			$row[] = [$q->codi_cit, $q->fech_cit, $q->nombre_especialidad, $q->medico, $q->nomb_citado, $botones];
+		}
+		$result['aaData'] = $row;
+		return $result;
+	}
+
+	function getTrataHistoria($data)
+	{
+
+		$this->db->from('tratamiento');
+		//	$this->db->join('medico','tratamiento.codi_med=medico.codi_med');
+		$this->db->where('codi_pac', $data['paciente']);
+		$this->db->where('estado_tra', 1);
+		$queryLike = $this->db->get();
+
+		$this->db->from('tratamiento');
+		$this->db->select('tratamiento.*,codi_tra,asunto_tra,fecha_tra,total_tra,estadopago_tra');
+		$this->db->where('codi_pac', $data['paciente']);
+		$this->db->where('estado_tra', 1);
+		if ($data['length'] != -1) {
+			$this->db->limit($data['length'], $data['start']);
+		}
+		if (isset($data['orderCampo'])) {
+			$this->db->order_by($data['orderCampo'], $data['orderDireccion']);
+		}
 
 
-  function getTrataHistoria($data)
-  {
+		if ($data['estado'] == 'Activo') {
+			$this->db->where('estado_tra', TRATAMIENTO_ACTIVO);
+		} elseif ($data['estado'] == 'Anulado') {
+			$this->db->where('estado_tra', TRATAMIENTO_ANULADO);
+		}
+		$query = $this->db->get();
 
-    $this->db->from('tratamiento');
-    //	$this->db->join('medico','tratamiento.codi_med=medico.codi_med');
-    $this->db->where('codi_pac', $data['paciente']);
-    $this->db->where('estado_tra', 1);
-    $queryLike = $this->db->get();
+		$result = array();
+		$result['sEcho'] = $data['sEcho'];
+		$result['iTotalRecords'] = $queryLike->num_rows();
+		$result['iTotalDisplayRecords'] = $queryLike->num_rows();
 
-    $this->db->from('tratamiento');
-    $this->db->select('tratamiento.*,codi_tra,asunto_tra,fecha_tra,total_tra,estadopago_tra');
-    $this->db->where('codi_pac', $data['paciente']);
-    $this->db->where('estado_tra', 1);
-    if ($data['length'] != -1) {
-      $this->db->limit($data['length'], $data['start']);
-    }
-    if (isset($data['orderCampo'])) {
-      $this->db->order_by($data['orderCampo'], $data['orderDireccion']);
-    }
+		$row = [];
+		foreach ($query->result() as $q) {
+			if ($q->estadopago_tra == POR_COBRAR) {
+				$estado = '<label class="label label-warning">Por Cobrar</label>';
+			} elseif ($q->estadopago_tra == PROCESO) {
+				$estado = '<label class="label label-info">Proceso</label>';
+			} elseif ($q->estadopago_tra == COBRADO) {
+				$estado = '<label class="label label-success">Cobrado</label>';
+			} elseif ($q->estadopago_tra == ANULADO) {
+				$estado = '<label class="label label-danger">Anulado</label>';
+			}
 
+			$opciones = '<a href="' . base_url('tratamientos/panel/imprimirTratamiento/' . $q->codi_tra) . '" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>';
 
-    if ($data['estado'] == 'Activo') {
-      $this->db->where('estado_tra', TRATAMIENTO_ACTIVO);
-    } elseif ($data['estado'] == 'Anulado') {
-      $this->db->where('estado_tra', TRATAMIENTO_ANULADO);
-    }
-    $query = $this->db->get();
-
-    $result = array();
-    $result['sEcho'] = $data['sEcho'];
-    $result['iTotalRecords'] = $queryLike->num_rows();
-    $result['iTotalDisplayRecords'] = $queryLike->num_rows();
-
-    $row = [];
-    foreach ($query->result() as $q) {
-      if ($q->estadopago_tra == POR_COBRAR) {
-        $estado = '<label class="label label-warning">Por Cobrar</label>';
-      } elseif ($q->estadopago_tra == PROCESO) {
-        $estado = '<label class="label label-info">Proceso</label>';
-      } elseif ($q->estadopago_tra == COBRADO) {
-        $estado = '<label class="label label-success">Cobrado</label>';
-      } elseif ($q->estadopago_tra == ANULADO) {
-        $estado = '<label class="label label-danger">Anulado</label>';
-      }
-
-      $opciones = '<a href="' . base_url('tratamientos/panel/imprimirTratamiento/' . $q->codi_tra) . '" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>';
-
-      $row[] = [$q->codi_tra, $q->asunto_tra, $q->fecha_tra, $q->total_tra, $estado, $opciones];
-    }
-    $result['aaData'] = $row;
-    return $result;
-  }
-
+			$row[] = [$q->codi_tra, $q->asunto_tra, $q->fecha_tra, $q->total_tra, $estado, $opciones];
+		}
+		$result['aaData'] = $row;
+		return $result;
+	}
 }
 
 /* End of file Historia_model.php */

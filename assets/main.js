@@ -1835,10 +1835,6 @@ $(function () {
 		});
 	});
 
-
-
-
-
 	$('#TableHistoriaMovimientoDiagnostico').DataTable({
 		"language": { "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json" },
 		"searching": false,
@@ -1862,7 +1858,29 @@ $(function () {
 		]
 	});
 
-
+	$('#TableHistoriaMovimientoRecetas').DataTable({
+		"language": { "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json" },
+		"searching": false,
+		"processing": true,
+		"serverSide": true,
+		"iDisplayLength": 10,
+		"aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, 'Todos']],
+		"aaSorting": [[1, 'desc']],
+		"ajax": {
+			"url": path + 'historia/movimiento/jsonReceta',
+			"type": "POST",
+			"data": function (d) {
+				d.paciente = $("#HistoriaContenido").data('paciente');
+			}
+		},
+		"columns": [
+			{ "orderable": true },
+			{ "orderable": true },
+			{ "orderable": true },
+			{ "orderable": true },
+			{ "orderable": false }
+		]
+	});
 
 	$('#FormHistoriaMovimientoAgregarDiagnostico').validate({
 		ignore: [],
@@ -1881,6 +1899,23 @@ $(function () {
 		}
 	});
 
+	$('#FormHistoriaMovimientoAgregarReceta').validate({
+		ignore: [],
+		rules: {
+			fecha: { required: true },
+			hora: { required: true },
+			medico: { required: true },
+			indicaciones: { required: true },
+			diagnostico01: { required: true },
+		},
+		submitHandler: function () {
+			enviarFormulario('#FormHistoriaMovimientoAgregarReceta', function (json) {
+				if (json.success) {
+					$('#TableHistoriaMovimientoRecetas').DataTable().ajax.reload();
+				}
+			})
+		}
+	});
 
 	$('#TableHistoriaMovimientoDiagnostico').on('click', '.editar-diagnostico', function (event) {
 		event.preventDefault();

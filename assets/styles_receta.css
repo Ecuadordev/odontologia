@@ -1,0 +1,91 @@
+/* Reset básico */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Fuente principal y color global */
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Encabezado de la receta */
+.receta-header {
+    background: linear-gradient(135deg, #428bca, #66afe9);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.receta-header h1 {
+    font-family: "Georgia", serif;
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
+.receta-header p {
+    font-size: 1.2em;
+}
+
+/* Contenido de la receta */
+.receta-content {
+    background-color: #fff;
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.receta-content h2 {
+    font-family: "Georgia", serif;
+    font-size: 2em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #428bca;
+    padding-bottom: 5px;
+}
+
+.receta-content h3 {
+    font-family: "Verdana", sans-serif;
+    font-size: 1.4em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.receta-content p {
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+/* Listas de diagnósticos o indicaciones */
+.receta-content ul {
+    list-style: inside square;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+/* Pie de página */
+.receta-footer {
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 30px;
+    padding-top: 10px;
+    border-top: 1px dashed #ccc;
+}
+
+/* Separador decorativo */
+.separator {
+    height: 2px;
+    background: #428bca;
+    margin: 20px 0;
+}
+
+.footer {
+	display: flex;
+	justify-content: space-between;
+}
