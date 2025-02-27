@@ -9,7 +9,7 @@
 		<th class="center">Nº HISTORIA CLÍNICA</th>
 	</tr>
 	<tr>
-		<td class="center"></td>
+		<td class="center"><?= $clinica->nomb_clin; ?></td>
 		<td class="center"><?= explode(" ", $historia->paciente)[1] ?></td>
 		<td class="center"><?= explode(" ", $historia->paciente)[0] ?></td>
 		<td class="center"><?= $historia->sexo[0] ?></td>
@@ -587,7 +587,7 @@
 					<?= $procedimiento->nombre ?><br>
 				<? endforeach; ?>
 			</td>
-			<td><? #= $tratamiento->prescripciones 
+			<td><? #= $tratamiento->prescripciones
 					?></td>
 			<td style="padding:0;">
 				<table style="border:none;margin:0;padding:0;width:115px;">
