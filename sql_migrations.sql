@@ -93,4 +93,14 @@ CREATE TABLE
 			CONSTRAINT consentimiento_ibfk_3 FOREIGN KEY (codi_tra) REFERENCES tratamiento (codi_tra) ON DELETE CASCADE ON UPDATE CASCADE
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_spanish_ci;
 
-alter table
+CREATE TABLE
+	receta_medicamentos (
+		cod_recmedi INT NOT NULL AUTO_INCREMENT,
+		pacrec_id INT (8) NOT NULL,
+		recmedi_nombre VARCHAR(255) NOT NULL,
+		recmedi_dosis VARCHAR(255),
+		recmedi_duracion VARCHAR(255),
+		recmedi_cantidad VARCHAR(255),
+		PRIMARY KEY (cod_recmedi),
+		CONSTRAINT receta_medicamentos_ibfk_1 FOREIGN KEY (pacrec_id) REFERENCES paciente_receta (pacrec_id)
+	);
