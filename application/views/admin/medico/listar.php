@@ -1,23 +1,23 @@
 <div id="content" class="content-wrapper-2">
 	<div class="content-wrapper">
 		<?php
-			$title = '<i class="fa fa-user-md"></i> Medicos';
-			$breadcrumbs = [
-				['url' => '#', 'icon' => 'fa fa-dashboard', 'label' => 'Modulo'],
-				['url' => '#', 'label' => 'Medicos']
-			];
-			include 'partials/content_header.php';
+		$title = '<i class="fa fa-user-md"></i> Medicos';
+		$breadcrumbs = [
+			['url' => '#', 'icon' => 'fa fa-dashboard', 'label' => 'Modulo'],
+			['url' => '#', 'label' => 'Medicos']
+		];
+		include 'partials/content_header.php';
 		?>
 		<?php if ($this->session->flashdata('success')): ?>
-		<script type="text/javascript">
-			$(function(){
-				Swal.fire(
-					'Guardo Exitosamente!',
-					'Su Medico!',
-					'success'
-				)
-			});
-		</script>
+			<script type="text/javascript">
+				$(function() {
+					Swal.fire(
+						'Guardo Exitosamente!',
+						'Su Medico!',
+						'success'
+					)
+				});
+			</script>
 		<?php endif ?>
 		<!-- Main content -->
 		<section class="content">
@@ -38,7 +38,7 @@
 										<div class="form-group">
 											<label class="control-label">Desde</label>
 											<div class="input-group date">
-												<input type="text" name="desde" class="form-control input-sm datepicker" >
+												<input type="text" name="desde" class="form-control input-sm datepicker">
 												<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
 											</div>
 										</div>
@@ -47,7 +47,7 @@
 										<div class="form-group">
 											<label class="control-label">Hasta</label>
 											<div class="input-group date">
-												<input type="text" name="hasta" class="form-control input-sm datepicker" >
+												<input type="text" name="hasta" class="form-control input-sm datepicker">
 												<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
 											</div>
 										</div>
@@ -61,10 +61,10 @@
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Especialidad</label>
-											<select  name="especialidad" class="form-control input-sm">
+											<select name="especialidad" class="form-control input-sm">
 												<option value="">--Todos--</option>
 												<?php foreach ($especialidades as $e): ?>
-												<option value="<?= $e->cod_especialidad ?>"><?= $e->nombre_especialidad ?></option>
+													<option value="<?= $e->cod_especialidad ?>"><?= $e->nombre_especialidad ?></option>
 												<?php endforeach ?>
 											</select>
 										</div>
@@ -88,7 +88,7 @@
 												<th style="background-color: #3c8dbc; color: white; text-align: center;">Medico</th>
 												<th style="background-color: #3c8dbc; color: white; text-align: center;">Especialidad</th>
 												<th style="background-color: #3c8dbc; color: white; text-align: center;">DNI</th>
-												<th style="background-color: #3c8dbc; color: white; text-align: center;">Colegiatura</th>
+												<th style="background-color: #3c8dbc; color: white; text-align: center;">Registro SENECYT</th>
 												<th style="background-color: #3c8dbc; color: white; text-align: center;">F. registro</th>
 												<th style="background-color: #3c8dbc; color: white;text-align: center;">Estado</th>
 												<th style="background-color: #3c8dbc; color: white;text-align: center;">Opciones</th>

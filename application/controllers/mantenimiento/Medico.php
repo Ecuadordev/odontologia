@@ -98,7 +98,7 @@ class Medico extends CI_Controller
 		$this->form_validation->set_rules("apellidos", "apellidos", "required");
 		//$this->form_validation->set_rules("documento","apellidos","required");
 		$this->form_validation->set_rules("dni", "dni", "required");
-		$this->form_validation->set_rules("colegiatura", "Colegiatura", "required");
+		$this->form_validation->set_rules("colegiatura", "Registro SENECYT", "required");
 		$this->form_validation->set_rules("telefono", "Telefono", "required");
 		$this->form_validation->set_rules("direccion", "Direccion", "required");
 		$this->form_validation->set_rules("fechanacimiento", "Fecha Nacimiento", "required");
@@ -223,7 +223,7 @@ class Medico extends CI_Controller
 		$this->form_validation->set_rules("nombre", "nombre", "required");
 		$this->form_validation->set_rules("apellidos", "apellidos", "required");
 		$this->form_validation->set_rules("dni", "Dni", "required");
-		$this->form_validation->set_rules("colegiatura", "Colegiatura", "required");
+		$this->form_validation->set_rules("colegiatura", "Registro SENECYT", "required");
 		$this->form_validation->set_rules("telefono", "Telefono", "required");
 		$this->form_validation->set_rules("direccion", "Direccion", "required");
 		$this->form_validation->set_rules("fechanacimiento", "Fecha Nacimiento", "required");
