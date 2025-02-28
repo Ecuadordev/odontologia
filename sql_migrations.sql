@@ -1,3 +1,5 @@
+/* db BACKUP for demo */
+/* https://drive.google.com/file/d/1T5ip281sQtqpmPxmWyD4BbE3D08XFMyl/view?usp=sharing */
 ALTER TABLE paciente_exploracion
 ADD COLUMN estomgtc_exp VARCHAR(255);
 
