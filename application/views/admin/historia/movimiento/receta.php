@@ -242,7 +242,7 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label class="control-label">Medico</label>
-										<select name="medico" class="form-control input-sm" style="width: 100%">
+										<select name="medico" class="form-control select2" style="width: 100%">
 											<option value="">--Selecciona--</option>
 											<?php foreach ($medicos as $med): ?>
 												<option value="<?= $med->codi_med ?>" <?= ($especialidad->codi_med == $med->codi_med) ? 'selected' : '' ?>><?= $med->apel_med ?></option>

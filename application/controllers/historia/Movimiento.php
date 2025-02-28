@@ -534,6 +534,7 @@ class Movimiento extends CI_Controller
 	{
 		$id = $this->input->get('id');
 		$receta = $this->modelgeneral->getTableWhereRow('paciente_receta', ['pacrec_id' => $id]);
+		$receta->medicamentos = $this->modelgeneral->getTableWhere('receta_medicamentos', ['pacrec_id' => $id]);
 
 		echo json_encode($receta);
 	}
@@ -553,7 +554,6 @@ class Movimiento extends CI_Controller
 		$data['codi_enf03'] = $this->input->post('diagnostico03');
 		$insert = $this->modelgeneral->insertRegist('paciente_receta', $data);
 
-		error_log('insert: ' . $insert);
 		foreach ($this->input->post('medicamentos') as $key => $value) {
 			$data_medicamentos['pacrec_id'] = $insert;
 			$data_medicamentos['recmedi_nombre'] = $value['medicamento'];
@@ -575,6 +575,7 @@ class Movimiento extends CI_Controller
 
 	public function editarReceta()
 	{
+		$where['pacrec_id'] = $this->input->post('id');
 		$data['codi_med'] = $this->input->post('medico');
 		$data['pacrec_asunto'] = $this->input->post('asunto');
 		$data['pacrec_receta'] = $this->input->post('receta');
@@ -582,8 +583,30 @@ class Movimiento extends CI_Controller
 		$data['codi_enf01'] = $this->input->post('diagnostico01');
 		$data['codi_enf02'] = $this->input->post('diagnostico02');
 		$data['codi_enf03'] = $this->input->post('diagnostico03');
-		$where['pacrec_id'] = $this->input->post('id');
 		$edit = $this->modelgeneral->editRegist('paciente_receta', $where, $data);
+
+		$current_medicamentos = array_column($this->input->post('medicamentos'), 'id');
+		$this->db->where('pacrec_id', $this->input->post('id'));
+		if (!empty($current_medicamentos)) {
+			$this->db->where_not_in('cod_recmedi', $current_medicamentos);
+		}
+		$this->db->delete('receta_medicamentos');
+
+		foreach ($this->input->post('medicamentos') as $key => $value) {
+			$data_medicamentos['pacrec_id'] = $this->input->post('id');
+			$data_medicamentos['recmedi_nombre'] = $value['medicamento'];
+			$data_medicamentos['recmedi_presentacion'] = $value['presentacion'];
+			$data_medicamentos['recmedi_dosis'] = $value['dosis'];
+			$data_medicamentos['recmedi_duracion'] = $value['duracion'];
+			$data_medicamentos['recmedi_cantidad'] = $value['cantidad'];
+			if (isset($value['id']) && $value['id'] != '') {
+				$where_medicamentos['cod_recmedi'] = $value['id'];
+				$this->modelgeneral->editRegist('receta_medicamentos', $where_medicamentos, $data_medicamentos);
+			} else {
+				$this->modelgeneral->insertRegist('receta_medicamentos', $data_medicamentos);
+			}
+		}
+
 		$resp = [];
 		if ($edit) {
 			$resp['success'] = true;

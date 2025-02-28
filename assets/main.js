@@ -1970,7 +1970,6 @@ $(function () {
 		//$('input[name=hora]').val(hora());
 		var id = $(this).data('id');
 		$.getJSON(path + 'historia/movimiento/getReceta', { id }, function (json, textStatus) {
-			console.log("json:", json);
 			$('#FormHistoriaMovimientoEditarReceta input[name=id]').val(json.pacrec_id);
 			$('#FormHistoriaMovimientoEditarReceta input[name=asunto]').val(json.pacrec_asunto);
 			$('#FormHistoriaMovimientoEditarReceta input[name=fecha]').val(json.pacrec_fecha);
@@ -1981,6 +1980,35 @@ $(function () {
 			$('#FormHistoriaMovimientoEditarReceta select[name=diagnostico02]').select2('val', json.codi_enf02);
 			$('#FormHistoriaMovimientoEditarReceta select[name=diagnostico03]').select2('val', json.codi_enf03);
 			$('#FormHistoriaMovimientoEditarReceta select[name=medico]').select2('val', json.codi_med);
+			$('#editarMedicamento tbody>tr').remove();
+			let counter = 0;
+			json.medicamentos.forEach(function (element) {
+				$('#editarMedicamento tbody').append(`
+					<tr>
+						<td>
+							<input type="hidden" name="medicamentos[${counter}][id]" value="${element.cod_recmedi}">
+							<input type="text" name="medicamentos[${counter}][medicamento]" value="${element.recmedi_nombre}" class="form-control">
+						</td>
+						<td>
+							<input type="text" name="medicamentos[${counter}][presentacion]" value="${element.recmedi_presentacion}" class="form-control">
+						</td>
+						<td>
+							<input type="text" name="medicamentos[${counter}][dosis]" value="${element.recmedi_dosis}" class="form-control">
+						</td>
+						<td>
+							<input type="text" name="medicamentos[${counter}][duracion]" value="${element.recmedi_duracion}" class="form-control">
+						</td>
+						<td>
+							<input type="text" name="medicamentos[${counter}][cantidad]" value="${element.recmedi_cantidad}" class="form-control">
+						</td>
+						<td style="text-align: center;">
+							<button type="button" class="btn btn-success btn-sm" style="padding:2px 5px;margin:0px 2px" onclick="agregarFilaMedicamento(this)"><i class="fa fa-plus"></i></button>
+							<button type="button" class="btn btn-danger btn-sm" style="padding:2px 5px;margin:0px 2px" onclick="eliminarFilaMedicamento(this)"><i class="fa fa-trash"></i></button>
+						</td>
+					</tr>
+				`);
+				counter++;
+			});
 		});
 	});
 
@@ -1993,7 +2021,20 @@ $(function () {
 		submitHandler: function () {
 			enviarFormulario('#FormHistoriaMovimientoEditarReceta', function (json) {
 				if (json.success) {
-					$('#TableHistoriaMovimientoReceta').DataTable().ajax.reload();
+					$('#TableHistoriaMovimientoRecetas').DataTable().ajax.reload();
+					$('#ModalEditarReceta').modal('hide');
+					$('#FormHistoriaMovimientoEditarReceta input[name=asunto]').val('');
+					$('#FormHistoriaMovimientoEditarReceta input[name=fecha]').val('');
+					$('#FormHistoriaMovimientoEditarReceta input[name=hora]').val('');
+					$('#FormHistoriaMovimientoEditarReceta textarea[name=receta]').val('');
+					$('#FormHistoriaMovimientoEditarReceta textarea[name=indicaciones]').val('');
+					$('#FormHistoriaMovimientoEditarReceta select[name=diagnostico01]').select2('val', '');
+					$('#FormHistoriaMovimientoEditarReceta select[name=diagnostico02]').select2('val', '');
+					$('#FormHistoriaMovimientoEditarReceta select[name=diagnostico03]').select2('val', '');
+					$('#FormHistoriaMovimientoEditarReceta select[name=medico]').select2('val',
+						'');
+					$('#editarMedicamento tbody>tr:first input').val('');
+					$('#editarMedicamento tbody>tr').not(':first').remove();
 				}
 			})
 		}
