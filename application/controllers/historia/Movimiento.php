@@ -658,6 +658,14 @@ class Movimiento extends CI_Controller
 		$this->mpdf->Output('Receta médica - ' . $data['paciente']->codi_pac, 'I');
 	}
 
+	public function anularReceta()
+	{
+		$this->modelgeneral->deleteRegist('receta_medicamentos', ['pacrec_id' => $this->input->get('id')]);
+		$this->modelgeneral->deleteRegist('paciente_receta', ['pacrec_id' => $this->input->get('id')]);
+		$resp['success'] = true;
+		echo json_encode($resp);
+	}
+
 	function getDiagnosticos()
 	{
 		$id = $this->input->get('id');

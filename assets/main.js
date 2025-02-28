@@ -2011,6 +2011,40 @@ $(function () {
 		});
 	});
 
+	$('#TableHistoriaMovimientoRecetas').on('click', '.anular-receta', function (event) {
+		event.preventDefault();
+		var id = $(this).data('id');
+		Swal.fire({
+			title: "Confirmar",
+			type: "warning",
+			cancelButtonText: 'No',
+			confirmButtonText: 'Si',
+			showCancelButton: true,
+			confirmButtonColor: "#007AFF",
+			cancelButtonColor: "#d43f3a",
+			text: "¿Anular Receta?"
+		}).then((result) => {
+			if (result.value) {
+				$.getJSON(path + 'historia/movimiento/anularReceta', { id }, function (json, textStatus) {
+					if (json.success) {
+						Swal.fire({
+							title: "Buen trabajo",
+							text: "La solicitud ha sido procesada.",
+							type: "success"
+						});
+						$('#TableHistoriaMovimientoRecetas').DataTable().ajax.reload();
+					} else {
+						Swal.fire({
+							title: "Error",
+							text: "Ocurrio un error, vuelva a intentarlo.",
+							type: "error"
+						});
+					}
+				});
+			}
+		});
+	});
+
 	$('#FormHistoriaMovimientoEditarReceta').validate({
 		ignore: [],
 		rules: {
