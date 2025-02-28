@@ -147,7 +147,7 @@ class Historia_model extends CI_Model
 		$queryLike = $this->db->get();
 
 		$this->db->from('paciente_receta');
-		$this->db->select('pacrec_id,pacrec_fecha,pacrec_asunto,a1.desc_enf as diagnostico01, medico.nomb_med, medico.apel_med');
+		$this->db->select('pacrec_id,pacrec_fecha,a1.desc_enf as diagnostico01, medico.nomb_med, medico.apel_med');
 		$this->db->join('enfermedad as a1', 'paciente_receta.codi_enf01 = a1.codi_enf', 'left');
 		$this->db->join('enfermedad as a2', 'paciente_receta.codi_enf02 = a2.codi_enf', 'left');
 		$this->db->join('enfermedad as a3', 'paciente_receta.codi_enf03 = a3.codi_enf', 'left');
@@ -172,11 +172,10 @@ class Historia_model extends CI_Model
 			$boton = '<div class="btn-footer text-center">
 			<button data-id="' . $q->pacrec_id . '" class="editar-receta btn btn-warning btn-xs" data-toggle="modal" data-target="#ModalEditarReceta" title="Editar receta"><i class="fa fa-pencil" aria-hidden="true"></i></button>&nbsp;';
 			$boton .= '<button data-id="' . $q->pacrec_id . '" class="anular-receta btn btn-danger btn-xs" title="Anular receta"><i class="fa fa-ban" aria-hidden="true"></i></button>&nbsp;';
-			$boton .= '<a href="' . base_url('historia/movimiento/imprimirReceta/' . $q->pacrec_id) . '" target="_blank" class="imprimir-receta btn btn-primary btn-xs" title="Imprimir receta"><i class="fa fa-print" aria-hidden="true"></i></a>';
+			$boton .= '<a href="' . base_url('historia/movimiento/imprimirReceta/' . $q->pacrec_id) . '" target="_blank" class="imprimir-receta btn btn-primary btn-xs" title="Imprimir receta"><i class="fa fa-print" aria-hidden="true"></i></a></div>';
 
 			$row[] = [
 				$q->pacrec_fecha,
-				$q->pacrec_asunto,
 				$q->nomb_med . " " . $q->apel_med,
 				$q->diagnostico01,
 				$boton

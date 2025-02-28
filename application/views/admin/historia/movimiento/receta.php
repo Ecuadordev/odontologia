@@ -14,7 +14,6 @@
 					<thead>
 						<tr class="btn-primary btn-xs">
 							<th style="text-align: center;">Fecha</th>
-							<th style="text-align: center;">Medicamento</th>
 							<th style="text-align: center;">Médico</th>
 							<th style="text-align: center;">Diagnostico</th>
 							<th style="text-align: center;">Opciones</th>

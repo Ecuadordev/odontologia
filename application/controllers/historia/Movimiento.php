@@ -494,7 +494,7 @@ class Movimiento extends CI_Controller
 		$data['length'] = $this->input->get_post('length', true);
 		$data['sEcho'] = $this->input->get_post('_', true);
 
-		$columns = array('pacrec_fecha', 'pacrec_asunto', 'codi_med', 'codi_enf01', 'codi_enf02', 'codi_enf03');
+		$columns = array('pacrec_fecha');
 		$orderCampo = $this->input->get_post('order', true);
 		$orderCampo = $orderCampo[0]['column'];
 		$orderCampo = $columns[$orderCampo];
