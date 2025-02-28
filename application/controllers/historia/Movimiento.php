@@ -632,6 +632,7 @@ class Movimiento extends CI_Controller
 		);
 		$data['clinica'] = $this->clinica_model->getClinica(null);
 		$data['receta'] = $this->modelgeneral->getTableWhereRow('paciente_receta', ['pacrec_id' => $id]);
+		$data['medicamentos'] = $this->modelgeneral->getTableWhere('receta_medicamentos', ['pacrec_id' => $id]);
 		$data['paciente'] = $this->modelgeneral->getTableWhereRow('paciente', ['codi_pac' => $data['receta']->codi_pac]);
 		$data['alergia'] =  $this->db->from('alergia')
 			->select('alergia.*')

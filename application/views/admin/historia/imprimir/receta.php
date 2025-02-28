@@ -46,8 +46,41 @@
 		<?php endif; ?>
 	</ul>
 	<hr>
-	<h3>Asunto:</h3>
-	<p><?= $receta->pacrec_asunto; ?></p>
+	<h3>Medicamento:</h3>
+	<p>
+	<table style="width:100%; display: inline-block;border-collapse:collapse;" class="table table-bordered">
+		<thead>
+			<tr class="btn-primary btn-xs">
+				<th style="text-align: center; border: 1px solid #000;background: #ccc;">Medicamento</th>
+				<th style="text-align: center; border: 1px solid #000;background: #ccc;">Presentación</th>
+				<th style="text-align: center; border: 1px solid #000;background: #ccc;">Dosis</th>
+				<th style="text-align: center; border: 1px solid #000;background: #ccc;">Duración</th>
+				<th style="text-align: center; border: 1px solid #000;background: #ccc;">Cantidad</th>
+			</tr>
+		</thead>
+		<tbody>
+			<? foreach ($medicamentos as $medicamento): ?>
+				<tr>
+					<td style="text-align: center; border: 1px solid #000;">
+						<?= $medicamento->recmedi_nombre ?>
+					</td>
+					<td style="text-align: center; border: 1px solid #000;">
+						<?= $medicamento->recmedi_presentacion ?>
+					</td>
+					<td style="text-align: center; border: 1px solid #000;">
+						<?= $medicamento->recmedi_dosis ?>
+					</td>
+					<td style="text-align: center; border: 1px solid #000;">
+						<?= $medicamento->recmedi_duracion ?>
+					</td>
+					<td style="text-align: center; border: 1px solid #000;">
+						<?= $medicamento->recmedi_cantidad ?>
+					</td>
+				</tr>
+			<? endforeach; ?>
+		</tbody>
+	</table>
+	</p>
 	<hr>
 	<h3>Receta:</h3>
 	<p><?= nl2br($receta->pacrec_receta); ?></p>
