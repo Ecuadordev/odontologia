@@ -107,3 +107,7 @@ CREATE TABLE
 		PRIMARY KEY (cod_recmedi),
 		CONSTRAINT receta_medicamentos_ibfk_1 FOREIGN KEY (pacrec_id) REFERENCES paciente_receta (pacrec_id)
 	);
+
+ALTER TABLE `codeigniter`.`cita_medica` ENGINE = InnoDB;
+
+ALTER TABLE cita_medica ADD CONSTRAINT cita_medica_ibfk_1 FOREIGN KEY (codi_pac) REFERENCES paciente (codi_pac) ON DELETE CASCADE ON UPDATE CASCADE;
